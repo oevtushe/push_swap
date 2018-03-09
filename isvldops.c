@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 09:30:43 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 09:32:29 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/09 15:43:27 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int			isvldops(t_list *op_stack)
 		if (!is_vldop(op))
 			break ;
 		op_stack = op_stack->next;
-		++vld;
 	}
-	vld = !op_stack && vld ? 1 : 0;
+	vld = !op_stack ? 1 : 0;
 	return (vld);
 }

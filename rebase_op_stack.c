@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 10:08:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 12:06:52 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/09 15:44:28 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,15 @@ void				rebase_op_stack(t_list **op_stack)
 	char		*oper_nm;
 
 	rn = *op_stack;
-	while (rn)
+	if (rn)
 	{
-		oper_nm = (char *)rn->content;
-		rn->content = get_opc(oper_nm);
-		rn->content_size = sizeof(t_opc);
-		rn = rn->next;
+		while (rn)
+		{
+			oper_nm = (char *)rn->content;
+			rn->content = get_opc(oper_nm);
+			rn->content_size = sizeof(t_opc);
+			rn = rn->next;
+		}
+		ft_lstcorder(op_stack);
 	}
-	ft_lstcorder(op_stack);
 }

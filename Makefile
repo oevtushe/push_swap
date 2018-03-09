@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/03/09 10:13:25 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/03/09 15:55:22 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,10 @@ SRCS			:= checker.c \
 				checker_readers.c \
 				isvldarg.c \
 				isvldops.c \
+				other_executors.c \
+				op_executor.c \
+				stack_rotators.c \
+				st_issorted.c \
 				rebase_op_stack.c \
 				checker_error.c \
 				ft_isnumber.c 

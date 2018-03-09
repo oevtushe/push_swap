@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_readers.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/03/09 15:52:42 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/03/09 15:52:44 by oevtushe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 t_list	*read_args_stack(char **data, int size)
@@ -28,7 +40,7 @@ t_list	*read_operations(int fd)
 	t_list	*tmp;
 
 	op_stack = NULL;
-	while (get_next_line(fd, &line))
+	while (get_next_line(fd, &line) > 0)
 	{
 		tmp = ft_lstnew(line, ft_strlen(line) + 1);
 		ft_lstadd(&op_stack, tmp);
