@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 15:54:10 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/09 16:02:07 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,6 @@ void	print_str_elem(t_list *elem)
 {
 	ft_putstr((char *)elem->content);
 	ft_putchar('\n');
-}
-
-int		st_issorted(t_list *stack)
-{
-	int cur;
-	int	prev;
-	int	srt;
-
-	srt = 0;
-	if (stack)
-	{
-		prev = *(int *)stack->content;
-		while (stack)
-		{
-			cur = *(int *)stack->content;
-			if (cur < prev)
-				break ;
-			++srt;
-			stack = stack->next;
-			prev = cur;
-		}
-		srt = srt > 0 && !stack ? 1 : 0;
-	}
-	return (srt);
 }
 
 int		main(int argc, char **argv)

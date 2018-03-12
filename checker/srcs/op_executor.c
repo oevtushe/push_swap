@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 14:51:17 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/09 16:06:42 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ void		op_executor(t_list **a_stack, t_list *op_stack)
 		ft_putstr(" -----\n");
 		ft_putstr("stack a:\n");
 		ft_lstiter(*a_stack, print_int_elem);
-		ft_putstr("\nstack b:\n");
+		ft_putstr("_\n");
+		ft_putstr("stack b:\n");
 		ft_lstiter(b_stack, print_int_elem);
-		ft_putstr("\n\n");
+		ft_putstr("_\n\n");
 		op_stack = op_stack->next;
 	}
 }

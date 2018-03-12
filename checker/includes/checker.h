@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 15:57:01 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/09 16:02:22 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ t_list	*read_args_stack(char **data, int size);
 t_list	*read_operations(int fd);
 void	checker_error(const char *message);
 
-int		st_issorted(t_list *stack)
+int		st_issorted(t_list *stack);
 
 #endif
