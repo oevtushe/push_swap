@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/03/12 13:28:53 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/03/13 15:15:53 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ SRCS_DIR		:= srcs
 OBJS_DIR		:= objs
 
 FTM_DIR			:= ../srcs/libftmulti
-FT_DIR			:= ../srcs/libftmulti/libft
-GNL_DIR			:= ../srcs/libftmulti/gnl
-FTP_DIR			:= ../srcs/libftmulti/ft_printf
+FT_DIR			:= $(FTM_DIR)/libft
+GNL_DIR			:= $(FTM_DIR)/gnl
+FTP_DIR			:= $(FTM_DIR)/ft_printf
 
-include $(FT_DIR)/Pretty.mk
 include	$(FTM_DIR)/Libftmulti.mk
+include $(FT_DIR)/Pretty.mk
 
 NAME			:= checker
 
@@ -47,18 +47,18 @@ CFLAGS			:= -Wall -Werror -Wextra
 MFLAGS			:= --no-print-directory -C
 IFLAGS			:= -I$(DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR)
 
-all: $(FTM_NAME) $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(FTM_NAME) $(OBJS)
 	@$(call EXEC_P,$@)
 	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(FTM_NAME) $(IFLAGS)
 
 $(FTM_NAME): $(FTM_SRCS) $(FTM_DEPS)
-	@$(MAKE) $(MFLAGS) $(FTM_DIR)
+	@$(MAKE) RPTH=$(FTM_DIR) $(MFLAGS) $(FTM_DIR)
 
 $(OBJS): |$(OBJS_DIR)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(DEPS) $(FTP_DEPS)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(DEPS) $(FTM_DEPS)
 	@$(call COMPILE_P,$@)
 	@$(CC) $(CFLAGS) -o $@ -c $< $(IFLAGS)
 
