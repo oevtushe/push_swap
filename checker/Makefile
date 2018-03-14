@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/03/13 15:15:53 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/03/14 12:55:54 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,11 @@ SRCF			:= checker.c \
 				isvldarg.c \
 				isvldops.c \
 				other_executors.c \
+				stack_printers.c \
+				op_printers.c \
 				op_executor.c \
 				stack_rotators.c \
+				op_print.c \
 				st_issorted.c \
 				rebase_op_stack.c \
 				checker_error.c \

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/13 16:08:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/14 13:23:22 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,26 @@ void	rebase_op_stack(t_list **op_stack);
 int		isvldarg(char **args, int size);
 int		isvldops(t_list *op_stack);
 
+void	op_print(t_list **a, t_list **b, t_operation op);
+void	print_swap(t_list **a, t_list **b, void (*pf)(t_list **a, t_list **b, char *color));
+void	print_sswap(t_list **a, t_list **b);
+void	print_row(t_list **a, t_list **b);
+void	print_crow_b(t_list **a, t_list **b, char *color);
+void	print_crow_a(t_list **a, t_list **b, char *color);
+void	print_crow(t_list **a, t_list **b, char *color);
+
 /*
 ** Operation executors
 */
 
 void	op_executor(t_list **a_stack, t_list *op_stack);
-void	execute_rev_rotate(t_list **stack);
-void	execute_rev_rrotate(t_list **a, t_list **b);
-void	execute_rotate(t_list **stack);
-void	execute_rrotate(t_list **a, t_list **b);
-void	execute_swap(t_list *stack);
-void	execute_sswap(t_list *a, t_list *b);
-void	execute_push(t_list **fst, t_list **scd);
+int		execute_rev_rotate(t_list **stack);
+int		execute_rev_rrotate(t_list **a, t_list **b);
+int		execute_rotate(t_list **stack);
+int		execute_rrotate(t_list **a, t_list **b);
+int		execute_swap(t_list *stack);
+int		execute_sswap(t_list *a, t_list *b);
+int		execute_push(t_list **fst, t_list **scd);
 
 int		ft_isnumber(char *str);
 t_list	*read_args_stack(char **data, int size);
