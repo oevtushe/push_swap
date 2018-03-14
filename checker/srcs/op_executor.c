@@ -6,28 +6,11 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 16:06:42 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/14 08:13:32 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-static void	print_opc_elem(t_list *elem)
-{
-	t_opc *opc;
-
-	opc = (t_opc *)elem->content;
-	ft_putstr(opc->op_name);
-}
-
-static void	print_int_elem(t_list *elem)
-{
-	int	i;
-
-	i = *(int *)elem->content;
-	ft_putnbr(i);
-	ft_putchar('\n');
-}
 
 static void	op_execute(t_list **a, t_list **b, t_operation op)
 {
@@ -55,6 +38,30 @@ static void	op_execute(t_list **a, t_list **b, t_operation op)
 		execute_rev_rrotate(a, b);
 }
 
+void		print_stacks(t_list *a, t_list *b, t_opc *opc)
+{
+	ft_printf("----- Operation: %s -----\n", opc->op_name);
+	while (a || b)
+	{
+		if (a)
+		{
+			ft_printf("%d", *(int*)a->content);
+			a = a->next;
+		}
+		else
+			ft_printf(" ");
+		if (b)
+		{
+			ft_printf("%5d\n", *(int*)b->content);
+			b = b->next;
+		}
+		else
+			ft_printf("%5s\n", " ");
+	}
+	ft_printf("%c%5c\n", '_', '_');
+	ft_printf("%c%5c\n", 'a', 'b');
+}
+
 void		op_executor(t_list **a_stack, t_list *op_stack)
 {
 	t_opc		*opc;
@@ -65,15 +72,7 @@ void		op_executor(t_list **a_stack, t_list *op_stack)
 	{
 		opc = (t_opc *)op_stack->content;
 		op_execute(a_stack, &b_stack, opc->abbr);
-		ft_putstr("----- Operation: ");
-		print_opc_elem(op_stack);
-		ft_putstr(" -----\n");
-		ft_putstr("stack a:\n");
-		ft_lstiter(*a_stack, print_int_elem);
-		ft_putstr("_\n");
-		ft_putstr("stack b:\n");
-		ft_lstiter(b_stack, print_int_elem);
-		ft_putstr("_\n\n");
+		print_stacks(*a_stack, b_stack, opc);
 		op_stack = op_stack->next;
 	}
 }
