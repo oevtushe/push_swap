@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 16:02:22 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/13 16:08:27 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define CHECKER_H
 
 # include <stdlib.h>
-# include "libft.h"
 # include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef	enum	e_operation
 {
