@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/15 11:02:37 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/15 11:35:02 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	print_crow(t_list **a, t_list **b, char *color);
 ** Operation executors
 */
 
-void		op_executor(t_list **a_stack, t_list *op_stack);
+void		op_executor(t_list **a_stack, t_list **b_stack, t_list *op_stack);
 int			execute_rev_rotate(t_list **stack);
 t_excstat	execute_rev_rrotate(t_list **a, t_list **b);
 int			execute_rotate(t_list **stack);
