@@ -32,6 +32,14 @@ typedef	enum	e_operation
 	OP_RRR
 }				t_operation;
 
+typedef	enum	e_excstat
+{
+	ES_BM,
+	ES_AM,
+	ES_BOTH,
+	ES_NONE
+}				t_excstat;
+
 /*
 ** Operation container
 */
@@ -47,9 +55,9 @@ void	rebase_op_stack(t_list **op_stack);
 int		isvldarg(char **args, int size);
 int		isvldops(t_list *op_stack);
 
-void	op_print(t_list **a, t_list **b, t_operation op);
+void	print_info(t_list *a, t_list *b, t_opc *opc, t_excstat stat);
 void	print_swap(t_list **a, t_list **b, void (*pf)(t_list **a, t_list **b, char *color));
-void	print_sswap(t_list **a, t_list **b);
+void	print_sswap(t_list **a, t_list **b, t_excstat stat);
 void	print_row(t_list **a, t_list **b);
 void	print_crow_b(t_list **a, t_list **b, char *color);
 void	print_crow_a(t_list **a, t_list **b, char *color);
@@ -59,14 +67,14 @@ void	print_crow(t_list **a, t_list **b, char *color);
 ** Operation executors
 */
 
-void	op_executor(t_list **a_stack, t_list *op_stack);
-int		execute_rev_rotate(t_list **stack);
-int		execute_rev_rrotate(t_list **a, t_list **b);
-int		execute_rotate(t_list **stack);
-int		execute_rrotate(t_list **a, t_list **b);
-int		execute_swap(t_list *stack);
-int		execute_sswap(t_list *a, t_list *b);
-int		execute_push(t_list **fst, t_list **scd);
+void		op_executor(t_list **a_stack, t_list *op_stack);
+int			execute_rev_rotate(t_list **stack);
+t_excstat	execute_rev_rrotate(t_list **a, t_list **b);
+int			execute_rotate(t_list **stack);
+t_excstat	execute_rrotate(t_list **a, t_list **b);
+int			execute_swap(t_list *stack);
+t_excstat	execute_sswap(t_list *a, t_list *b);
+int			execute_push(t_list **fst, t_list **scd);
 
 t_list	*read_args_stack(char **data, int size);
 t_list	*read_operations(int fd);

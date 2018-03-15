@@ -6,14 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/13 16:01:25 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/14 09:04:06 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 #include "ft_printf.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 void	print_str_elem(t_list *elem)
 {

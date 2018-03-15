@@ -34,7 +34,7 @@ SRCF			:= checker.c \
 				op_printers.c \
 				op_executor.c \
 				stack_rotators.c \
-				op_print.c \
+				print_info.c \
 				st_issorted.c \
 				rebase_op_stack.c \
 				checker_error.c
