@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/14 13:23:22 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/15 11:02:37 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int		execute_swap(t_list *stack);
 int		execute_sswap(t_list *a, t_list *b);
 int		execute_push(t_list **fst, t_list **scd);
 
-int		ft_isnumber(char *str);
 t_list	*read_args_stack(char **data, int size);
 t_list	*read_operations(int fd);
 void	checker_error(const char *message);
