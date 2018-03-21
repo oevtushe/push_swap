@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/13 16:08:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/21 13:01:17 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ typedef	enum	e_operation
 	OP_RRR
 }				t_operation;
 
+typedef	enum	e_excstat
+{
+	ES_BM,
+	ES_AM,
+	ES_BOTH,
+	ES_NONE
+}				t_excstat;
+
 /*
 ** Operation container
 */
@@ -42,29 +50,39 @@ typedef	struct	s_opc
 	char		*op_name;
 }				t_opc;
 
-void	rebase_op_stack(t_list **op_stack);
+void			rebase_op_stack(t_list **op_stack);
 
-int		isvldarg(char **args, int size);
-int		isvldops(t_list *op_stack);
+int				isvldarg(char **args, int size);
+int				isvldops(t_list *op_stack);
+
+void			print_info(t_list *a, t_list *b, t_opc *opc, t_excstat stat);
+void			print_swap(t_list **a, t_list **b,
+			void (*pf)(t_list **a, t_list **b, char *color));
+void			print_sswap(t_list **a, t_list **b, t_excstat stat);
+void			print_row(t_list **a, t_list **b);
+void			print_crow_b(t_list **a, t_list **b, char *color);
+void			print_crow_a(t_list **a, t_list **b, char *color);
+void			print_crow(t_list **a, t_list **b, char *color);
 
 /*
 ** Operation executors
 */
 
-void	op_executor(t_list **a_stack, t_list *op_stack);
-void	execute_rev_rotate(t_list **stack);
-void	execute_rev_rrotate(t_list **a, t_list **b);
-void	execute_rotate(t_list **stack);
-void	execute_rrotate(t_list **a, t_list **b);
-void	execute_swap(t_list *stack);
-void	execute_sswap(t_list *a, t_list *b);
-void	execute_push(t_list **fst, t_list **scd);
+void			op_executor(t_list **a_stack, t_list **b_stack,
+			t_list *op_stack,
+			void (*print)(t_list*, t_list*, t_opc*, t_excstat));
+int				execute_rev_rotate(t_list **stack);
+t_excstat		execute_rev_rrotate(t_list **a, t_list **b);
+int				execute_rotate(t_list **stack);
+t_excstat		execute_rrotate(t_list **a, t_list **b);
+int				execute_swap(t_list *stack);
+t_excstat		execute_sswap(t_list *a, t_list *b);
+int				execute_push(t_list **fst, t_list **scd);
 
-int		ft_isnumber(char *str);
-t_list	*read_args_stack(char **data, int size);
-t_list	*read_operations(int fd);
-void	checker_error(const char *message);
+t_list			*read_args_stack(char **data, int size);
+t_list			*read_operations(int fd);
+void			checker_error(const char *message);
 
-int		st_issorted(t_list *stack);
+int				st_issorted(t_list *stack);
 
 #endif
