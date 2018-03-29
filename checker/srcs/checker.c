@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/21 12:57:37 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/03/29 17:07:11 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_list	*get_ops(void)
 {
 	t_list *op_stack;
 
-	op_stack = read_operations(1);
+	op_stack = read_operations(0);
 	if (isvldops(op_stack))
 		rebase_op_stack(&op_stack);
 	else
