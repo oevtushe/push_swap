@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/03/15 11:07:21 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/01 16:45:56 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,28 +14,21 @@ DEPS_DIR		:= includes
 SRCS_DIR		:= srcs
 OBJS_DIR		:= objs
 
-FTM_DIR			:= ../srcs/libftmulti
-FT_DIR			:= $(FTM_DIR)/libft
-GNL_DIR			:= $(FTM_DIR)/gnl
-FTP_DIR			:= $(FTM_DIR)/ft_printf
+UT_DIR			:= ../utils
 
-include	$(FTM_DIR)/Libftmulti.mk
-include $(FT_DIR)/Pretty.mk
+include			$(UT_DIR)/Utils.mk
+include			$(FT_DIR)/Pretty.mk
 
 NAME			:= checker
 
 DEPF			:= checker.h
 SRCF			:= checker.c \
-				checker_readers.c \
-				isvldarg.c \
+				read_operations.c \
 				isvldops.c \
-				other_executors.c \
 				stack_printers.c \
 				op_printers.c \
 				op_executor.c \
-				stack_rotators.c \
 				print_info.c \
-				st_issorted.c \
 				rebase_op_stack.c \
 				checker_error.c
 
@@ -47,20 +40,21 @@ CC				:= gcc
 RM				:= rm -rf
 CFLAGS			:= -Wall -Werror -Wextra
 MFLAGS			:= --no-print-directory -C
-IFLAGS			:= -I$(DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR)
+IFLAGS			:= -I$(DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR) -I$(UT_DEPS_DIR)
 
 all: $(NAME)
 
-$(NAME): $(FTM_NAME) $(OBJS)
+$(NAME): $(UT_NAME) $(OBJS)
 	@$(call EXEC_P,$@)
-	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(FTM_NAME) $(IFLAGS)
+	@$(CC) $(CFLAGS) -o $@ $(OBJS) $(UT_NAME) $(IFLAGS)
 
-$(FTM_NAME): $(FTM_SRCS) $(FTM_DEPS)
-	@$(MAKE) RPTH=$(FTM_DIR) $(MFLAGS) $(FTM_DIR)
+# Utils
+$(UT_NAME): $(UT_SRCS) $(UT_DEPS)
+	@$(MAKE) RPTH=$(UT_DIR) $(MFLAGS) $(UT_DIR)
 
 $(OBJS): |$(OBJS_DIR)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(DEPS) $(FTM_DEPS)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(DEPS) $(UT_DEPS)
 	@$(call COMPILE_P,$@)
 	@$(CC) $(CFLAGS) -o $@ -c $< $(IFLAGS)
 
@@ -69,11 +63,11 @@ $(OBJS_DIR):
 	@mkdir $(OBJS_DIR)
 
 clean:
-	@$(MAKE) clean $(MFLAGS) $(FTM_DIR)
+	@$(MAKE) clean $(MFLAGS) $(UT_DIR)
 	@$(RM) $(OBJS_DIR)
 
 fclean: clean
-	@$(MAKE) fclean $(MFLAGS) $(FTM_DIR)
+	@$(MAKE) fclean $(MFLAGS) $(UT_DIR)
 	@$(RM) $(NAME)
 re: fclean
 	@$(MAKE)
