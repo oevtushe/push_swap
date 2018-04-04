@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   lst_safe_swap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/02 12:00:53 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/02 12:01:02 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/04/04 13:10:52 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/04/04 13:10:54 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void init_op(t_opc *r, t_opc *rr, t_opc *s, char name)
 	}
 }
 
-void	swap(t_stack **stack, int i, int j)
+void	lst_safe_swap(t_stack **stack, int i, int j)
 {
 	int		idx;
 	t_opc	r;

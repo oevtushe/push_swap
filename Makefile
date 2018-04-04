@@ -25,13 +25,16 @@ DEPF			:= push_swap.h
 SRCF			:= isvldarg.c \
 					ps_error.c \
 					new_stack.c \
-					quickselect.c \
+					lst_quickselect.c \
 					st_separate.c \
 					push_exec_pr.c \
 					init_push.c \
 					comparators.c \
 					lstgeti.c \
-					swap.c \
+					lst_safe_swap.c \
+					lsttoari.c \
+					arr_quickselect.c \
+					find_median.c \
 					read_args_stack.c \
 					push_swap.c
 

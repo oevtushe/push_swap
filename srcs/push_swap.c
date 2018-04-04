@@ -19,13 +19,13 @@ void	print_int(t_list *elem)
 
 void	sort2(t_stack **stack)
 {
-	quickselect(stack, 0, 1, 1);
+	lst_quickselect(stack, 0, 1, 1);
 }
 
 void	sort3(t_stack **stack)
 {
-	quickselect(stack, 0, 2, 1);
-	quickselect(stack, 0, 2, 2);
+	lst_quickselect(stack, 0, 2, 1);
+	lst_quickselect(stack, 0, 2, 2);
 }
 
 void	little_sort(t_stack **stack, t_bounds b)
@@ -34,6 +34,44 @@ void	little_sort(t_stack **stack, t_bounds b)
 		sort3(stack);
 	else if (b.r - b.p == 2)
 		sort2(stack);
+}
+
+int		get_eff_rot(t_list *lst, int median)
+{
+	int td;
+	int dt;
+	int	size;
+	int *arr;
+
+	arr = lsttoari(lst);
+	size = ft_lstlen(lst) - 1;
+	dt = size;
+	while (td < size && arr[td] != median)
+		++td;
+	if (td == size && arr[td] != median)
+		td = -1;
+	while (dt >= 0 && arr[dt] != median)
+		++dt;
+	if (td > dt)
+		return (-1);
+	return (1);
+}
+
+void	split_median(t_stack **stack)
+{
+	int		idx;
+	int		median;
+	t_list	*lst;
+
+	idx = 0;
+	lst = (*stack)->lst;
+	median = find_median(lst);
+	while (lstgeti(lst, idx++) != median)
+	{
+		if (get_eff_rot(lst, median))
+			op_execute()
+		lst = lst->next;
+	}
 }
 
 int		main(int argc, char **argv)
@@ -55,12 +93,13 @@ int		main(int argc, char **argv)
 	bb.r = 0;
 	a = new_stack(lst, 'a');
 	b = new_stack(NULL, 'b');
-	st_separate(&a, &b, ba, 'a');
-	
+	find_median(lst);
+	/*
 	ft_printf("Stack a:\n");
 	ft_lstiter(a->lst, print_int);
 	ft_printf("\n");
 	ft_printf("Stack b:\n");
 	ft_lstiter(b->lst, print_int);
+	*/
 	return (0);
 }

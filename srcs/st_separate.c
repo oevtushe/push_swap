@@ -44,7 +44,7 @@ int		st_separate(t_stack **a, t_stack **b, t_bounds bounds, char which)
 		cmp = hmiddle_cmp;
 	fuck_init_push(&p, which);
 	pushed = 0;
-	median = quickselect(a, bounds.p, bounds.r, ((bounds.r - bounds.p) / 2) + 1);
+	median = lst_quickselect(a, bounds.p, bounds.r, ((bounds.r - bounds.p) / 2) + 1);
 	ft_printf("median = %d\n", median);
 	idx = -1;
 	while (++idx <= bounds.r)
