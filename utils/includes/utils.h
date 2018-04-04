@@ -39,6 +39,16 @@ typedef	enum	e_excstat
 	ES_NONE
 }				t_excstat;
 
+/*
+** Operation container
+*/
+
+typedef	struct	s_opc
+{
+	t_operation	abbr;
+	char		*op_name;
+}				t_opc;
+
 int			st_issorted(t_list *stack);
 t_excstat	op_execute(t_list **a, t_list **b, t_operation op);
 int			isvldarg(char **args, int size);

@@ -16,14 +16,22 @@ OBJS_DIR		:= objs
 
 UT_DIR			:= utils
 
-include	$(UT_DIR)/Utils.mk
-include $(FT_DIR)/Pretty.mk
+include			$(UT_DIR)/Utils.mk
+include 		$(FT_DIR)/Pretty.mk
 
 NAME			:= push_swap
 
-DEPS			:= push_swap.h
+DEPF			:= push_swap.h
 SRCF			:= isvldarg.c \
 					ps_error.c \
+					new_stack.c \
+					quickselect.c \
+					st_separate.c \
+					push_exec_pr.c \
+					init_push.c \
+					comparators.c \
+					lstgeti.c \
+					swap.c \
 					read_args_stack.c \
 					push_swap.c
 
@@ -35,7 +43,7 @@ CC				:= gcc
 RM				:= rm -rf
 CFLAGS			:= -Wall -Werror -Wextra
 MFLAGS			:= --no-print-directory -C
-IFLAGS			:= -I$(DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR)
+IFLAGS			:= -I$(DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR) -I$(UT_DEPS_DIR)
 
 all: $(NAME)
 

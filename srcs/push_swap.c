@@ -6,221 +6,61 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/29 17:38:39 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/02 09:49:09 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		lstget(t_list *list, int idx)
+void	print_int(t_list *elem)
 {
-	int		i;
-
-	i = 0;
-	while (list && i < idx)
-	{
-		++i;
-		list = list->next;
-	}
-	return (*(int*)list->content);
+	ft_printf("%d\n", *(int*)elem->content);
 }
 
-void	print_swap_td(int btw, char st_name)
+void	sort2(t_stack **stack)
 {
-	int i;
-
-	i = btw;
-	if (i > 0)
-	{
-		while (i--)
-		{
-			ft_printf("s%c\n", st_name);
-			ft_printf("r%c\n", st_name);
-		}
-	}
+	quickselect(stack, 0, 1, 1);
 }
 
-void	print_swap_dt(int btw, char st_name)
+void	sort3(t_stack **stack)
 {
-	int i;
-
-	i = btw;
-	if (i > 0)
-	{
-		while (i--)
-		{
-			ft_printf("rr%c\n", st_name);
-			ft_printf("s%c\n", st_name);
-		}
-	}
+	quickselect(stack, 0, 2, 1);
+	quickselect(stack, 0, 2, 2);
 }
 
-typedef	struct		s_stack
+void	little_sort(t_stack **stack, t_bounds b)
 {
-	char st_name;
-	t_list *list;
-}					t_stack;
-
-t_stack	*new_stack(char st_name, t_list *list)
-{
-	t_stack *stack;
-
-	stack = (t_stack*)malloc(sizeof(t_stack));
-	if (stack)
-	{
-		stack->st_name = st_name;
-		stack->list = list;
-	}
-	return (stack);
-}
-
-void	print_swap(int i, int j, int r, char st_name)
-{
-	int coa;
-	int cob;
-
-	if (i != j)
-	{
-		coa = ((j - i + 1) - 2) * 4 + 1;
-		cob = (r - (j - i)) * 4 + 3;
-		//ft_printf("----- coa = %d, cob = %d, r = %d -----\n", coa, cob, r);
-		if (coa > cob)
-		{
-			print_swap_dt(r - (j - i) - 1, st_name);
-			ft_printf("rr%c\n", st_name);
-			ft_printf("s%c\n", st_name);
-			ft_printf("r%c\n", st_name);
-			print_swap_td(r - (j - i) - 1, st_name);
-		}
-		else
-		{
-			print_swap_td((j - i) - 1, st_name);
-			ft_printf("s%c\n", st_name);
-			print_swap_dt((j  - i) - 1, st_name);
-		}
-	}
-}
-
-void	swap(int *a, int *b)
-{
-	int c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
-}
-
-void	print_int(t_list *item)
-{
-	ft_printf("%d\n", *(int*)item->content);
-}
-
-void	push_back(int size, char st_name)
-{
-	while (size--)
-		ft_printf("p%c\n", st_name);
-}
-
-void	print_arr(int *arr, int size)
-{
-	int i;
-
-	i = 0;
-	while (i < size)
-		ft_printf("%d ", arr[i++]);
-	ft_putchar('\n');
-}
-
-int		partition(int *arr, int b, int e, char st_name)
-{
-	int		i;
-	int		j;
-	char	st_ops;
-	int		pivot;
-
-	i = b - 1;
-	j = e + 1;
-	pivot = arr[b];
-	st_ops = (st_name == 'a') ? 'b' : 'a';
-	while (1)
-	{
-		while (arr[++i] < pivot)
-			ft_printf("p%c\n", st_ops);
-		while (arr[--j] > pivot);
-		if (i < j)
-		{
-			swap(&arr[i], &arr[j]);
-			print_swap(i, j, e, st_name);
-			ft_printf("p%c\n", st_ops);
-		}
-		else
-			return (j);
-	}
-}
-
-void	rev_ia(int *arr, int size)
-{
-	int i;
-	int j;
-	int	c;
-
-	i = 0;
-	j = size - 1;
-	while (i < j)
-	{
-		c = arr[i];
-		arr[i] = arr[j];
-		arr[j] = c;
-		++i;
-		--j;
-	}
-}
-
-void	quicksort(int *arr, int b, int r, char st_name)
-{
-	int		p;
-	char	st_ops;
-
-	st_ops = (st_name == 'a') ? 'b' : 'a';
-	if (b < r)
-	{
-		p = partition(arr, b, r, st_name);
-		rev_ia(arr, p + 1);
-		print_arr(arr, 4);
-
-		quicksort(arr, b, p, st_ops);
-		quicksort(arr, p + 1, r, st_name);
-
-		push_back(p ? p + 1 : p, st_name);
-	}
-}
-
-int		*ft_getia(char **arr, const int size)
-{
-	int i;
-	int	*ia;
-
-	i = 0;
-	ia = ft_memalloc(sizeof(int) * size);
-	while (i < size)
-	{
-		ia[i] = ft_atoi(arr[i]);
-		++i;
-	}
-	return (ia);
+	if (b.r - b.p == 3)
+		sort3(stack);
+	else if (b.r - b.p == 2)
+		sort2(stack);
 }
 
 int		main(int argc, char **argv)
 {
-	int		i;
-	int		*arr;
+	t_stack		*a;
+	t_stack		*b;
+	t_list		*lst;
+	t_bounds	ba;
+	t_bounds	bb;
 
-	arr = NULL;
+	lst = NULL;
 	if (isvldarg(&argv[1], argc - 1))
-		arr = ft_getia(&argv[1], argc - 1);
+		lst = read_args_stack(&argv[1], argc - 1);
 	else
 		ps_error("Error\n");
-	quicksort(arr, 0, argc - 2, 'a');
-	i = 0;
+	ba.p = 0;
+	ba.r = ft_lstlen(lst) - 1;
+	bb.p = 0;
+	bb.r = 0;
+	a = new_stack(lst, 'a');
+	b = new_stack(NULL, 'b');
+	st_separate(&a, &b, ba, 'a');
+	
+	ft_printf("Stack a:\n");
+	ft_lstiter(a->lst, print_int);
+	ft_printf("\n");
+	ft_printf("Stack b:\n");
+	ft_lstiter(b->lst, print_int);
 	return (0);
 }
