@@ -35,6 +35,7 @@ SRCF			:= isvldarg.c \
 					lsttoari.c \
 					arr_quickselect.c \
 					find_median.c \
+					split_median.c \
 					read_args_stack.c \
 					push_swap.c
 

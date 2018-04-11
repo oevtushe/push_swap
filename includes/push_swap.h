@@ -27,6 +27,12 @@ typedef struct		s_bounds
 	int r;
 }					t_bounds;
 
+typedef struct		s_group
+{
+	int		gr_id;
+	t_list	*stack;
+}					t_group;
+
 int			isvldarg(char **args, int size);
 t_list		*read_args_stack(char **data, int size);
 void		ps_error(char *message);
@@ -38,6 +44,7 @@ int			lstgeti(t_list *lst, int idx);
 int			lst_quickselect(t_stack **stack, int p, int r, int i);
 int			arr_quickselect(int *arr, int p, int r, int i);
 int			find_median(t_list *lst);
+t_group		*split_median(t_group *gr);
 int			st_separate(t_stack **from, t_stack **to, t_bounds bounds, char which);
 void		init_push(t_stack **stack, t_opc *op);
 void		push_exec_pr(t_stack **st1, t_stack **st2, t_opc opc);

@@ -17,6 +17,7 @@ int		find_median(t_list *lst)
 	int *arr;
 	int	size;
 	int median;
+	int	middle;
 
 	median = -42;
 	if (lst)
@@ -25,7 +26,8 @@ int		find_median(t_list *lst)
         if (arr)
         {
             size = ft_lstlen(lst) - 1;
-            median = arr_quickselect(arr, 0, size, (size / 2) + 1);
+			middle = (size % 2 == 0) ? (size / 2) + 1 : (size / 2) + 2;
+            median = arr_quickselect(arr, 0, size, middle);
             free(arr);
         }
     }
