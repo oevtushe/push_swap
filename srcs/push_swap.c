@@ -36,41 +36,37 @@ void	little_sort(t_stack **stack, t_bounds b)
 		sort2(stack);
 }
 
-int		get_eff_rot(t_list *lst, int median)
+t_group	*new_group(int gr_id, t_list *stack)
 {
-	int td;
-	int dt;
-	int	size;
-	int *arr;
+	t_group	*gr;
 
-	arr = lsttoari(lst);
-	size = ft_lstlen(lst) - 1;
-	dt = size;
-	while (td < size && arr[td] != median)
-		++td;
-	if (td == size && arr[td] != median)
-		td = -1;
-	while (dt >= 0 && arr[dt] != median)
-		++dt;
-	if (td > dt)
-		return (-1);
-	return (1);
+	gr = ft_memalloc(sizeof(t_group));
+	if (gr)
+	{
+		gr->gr_id = gr_id;
+		gr->stack = stack;
+	}
+	return (gr);
 }
 
-void	split_median(t_stack **stack)
+void	del_int(void *content, size_t content_size)
 {
-	int		idx;
-	int		median;
-	t_list	*lst;
+	++content_size;
+	free(content);
+}
 
-	idx = 0;
-	lst = (*stack)->lst;
-	median = find_median(lst);
-	while (lstgeti(lst, idx++) != median)
+void	full_split(t_stack **a, t_stack **b)
+{
+	t_group *cur;
+	t_group	*tmp;
+	int		gr_size;
+
+	cur = (*a)->lst->content;
+	gr_size = ft_lstlen(cur->stack);
+	while (gr_size > 3)
 	{
-		if (get_eff_rot(lst, median))
-			op_execute()
-		lst = lst->next;
+		split_median(cur);
+		gr_size = ft_lstlen(cur->stack);
 	}
 }
 
@@ -79,21 +75,20 @@ int		main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	t_list		*lst;
-	t_bounds	ba;
-	t_bounds	bb;
+	t_group		*gr;
 
 	lst = NULL;
 	if (isvldarg(&argv[1], argc - 1))
 		lst = read_args_stack(&argv[1], argc - 1);
 	else
 		ps_error("Error\n");
-	ba.p = 0;
-	ba.r = ft_lstlen(lst) - 1;
-	bb.p = 0;
-	bb.r = 0;
-	a = new_stack(lst, 'a');
+	gr = new_group(1, a->lst);
+	a = new_stack(gr, 'a');
 	b = new_stack(NULL, 'b');
-	find_median(lst);
+	full_split(&a, &b);
+	ft_lstiter(split_median(gr)->stack, print_int);
+	ft_printf("-----\n");
+	ft_lstiter(gr->stack, print_int);
 	/*
 	ft_printf("Stack a:\n");
 	ft_lstiter(a->lst, print_int);

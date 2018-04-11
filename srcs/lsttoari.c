@@ -23,7 +23,7 @@ int     *lsttoari(t_list *lst)
     if (lst)
     {
         size = ft_lstlen(lst);
-        arr = ft_memalloc(size);
+        arr = ft_memalloc(size * sizeof(int));
         if (arr)
         {
             while (lst)
