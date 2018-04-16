@@ -43,6 +43,10 @@ static int	partition(int *arr, int p, int r)
 	return (i + 1);
 }
 
+/*
+** @param	r	last arr index.
+*/
+
 int		arr_quickselect(int *arr, int p, int r, int i)
 {
 	int q;

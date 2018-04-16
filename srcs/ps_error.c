@@ -15,4 +15,5 @@
 void	ps_error(char *message)
 {
 	ft_putstr_fd(message, 2);
+	exit(1);
 }

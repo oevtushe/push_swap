@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lsttoari.c                                         :+:      :+:    :+:   */
+/*   op_execute_wrp.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/04 12:33:15 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/04 12:33:17 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/04/14 16:41:52 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/04/14 16:41:54 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int     *lsttoari(t_list *lst)
+void	op_execute_wrp(t_list **a, t_list **b, t_operation op)
 {
-    int idx;
-    int size;
-    int *arr;
-
-    idx = 0;
-    arr = NULL;
-    if (lst)
-    {
-        size = ft_lstlen(lst);
-        arr = ft_memalloc(size * sizeof(int));
-        if (arr)
-        {
-            while (lst)
-            {
-                arr[idx++] = *(int*)lst->content;
-                lst = lst->next;
-            }
-        }
-    }
-    return (arr);
+	print_op(op);
+	op_execute(a, b, op);
 }

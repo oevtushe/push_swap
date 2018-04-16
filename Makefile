@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/01 16:52:54 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/14 17:49:23 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,21 +23,26 @@ NAME			:= push_swap
 
 DEPF			:= push_swap.h
 SRCF			:= isvldarg.c \
-					ps_error.c \
+					arr_quickselect.c \
 					new_stack.c \
 					lst_quickselect.c \
-					st_separate.c \
 					push_exec_pr.c \
 					init_push.c \
 					comparators.c \
 					lstgeti.c \
 					lst_safe_swap.c \
 					lsttoari.c \
-					arr_quickselect.c \
-					find_median.c \
-					split_median.c \
+					lstntoari.c \
+					little_sort.c \
+					rebase_lst_data.c \
 					read_args_stack.c \
-					push_swap.c
+					sort3_fncs.c \
+					split_nmedian.c \
+					op_execute_wrp.c \
+					print_op.c \
+					ps_error.c \
+					push_swap.c \
+					find_nmedian.c
 
 DEPS			:= $(addprefix $(DEPS_DIR)/,$(DEPF))
 SRCS			:= $(addprefix $(SRCS_DIR)/,$(SRCF))
