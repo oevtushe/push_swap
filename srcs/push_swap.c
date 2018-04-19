@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/14 17:51:33 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:59:16 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,15 @@ int		main(int argc, char **argv)
 	t_stack		*a;
 	t_stack		*b;
 	t_list		*lst;
+	char		**arr;
+	int			size;
 
 	lst = NULL;
-	if (isvldarg(&argv[1], argc - 1))
-		lst = read_args_stack(&argv[1], argc - 1);
+	if (argc < 2)
+		return (1);
+	arr = split_arr(&argv[1], argc - 1, &size);
+	if (isvldarg(arr, size))
+		lst = read_args_stack(arr, size);
 	else
 		ps_error("Error\n");
 	a = new_stack(lst, 'a');
@@ -77,5 +82,6 @@ int		main(int argc, char **argv)
 	ft_lstiter(a->lst, print_int);
 	ft_printf("-----\n\n");
 	ft_lstiter(b->lst, print_int);
+	free_str_arr(&arr, size);
 	return (0);
 }
