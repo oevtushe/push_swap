@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/19 13:30:47 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/19 13:42:52 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ SRCF			:=  arr_quickselect.c \
 					sort3_fncs.c \
 					split_nmedian.c \
 					op_execute_wrp.c \
-					print_op.c \
 					ps_error.c \
 					push_swap.c \
 					find_nmedian.c

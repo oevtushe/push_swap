@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 13:29:54 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 13:42:45 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int			find_nmedian(t_list *lst, int size);
 void		split_nmedian(t_stack **stack1, t_stack **stack2, int size, int ngrp);
 void		init_push(t_stack **stack, t_opc *op);
 void		push_exec_pr(t_stack **st1, t_stack **st2, t_opc opc);
-void		print_op(t_operation op);
-void		op_execute_wrp(t_list **a, t_list **b, t_operation op);
 
 void		sort3(t_stack **stack);
 void		sort2(t_stack **stack);
@@ -53,5 +51,6 @@ int     	*lsttoari(t_list *lst);
 void		rebase_lst_data(t_list *lst);
 int     	*lstntoari(t_list *lst, int size);
 void		ps_error(char *message);
+void		op_execute_wrp(t_list **a, t_list **b, t_operation op);
 
 #endif
