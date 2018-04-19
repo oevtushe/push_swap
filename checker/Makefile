@@ -23,11 +23,11 @@ NAME			:= checker
 
 DEPF			:= checker.h
 SRCF			:= checker.c \
-				read_operations.c \
 				isvldops.c \
 				stack_printers.c \
 				op_printers.c \
 				op_executor.c \
+				checker_readers.c \
 				print_info.c \
 				rebase_op_stack.c \
 				checker_error.c

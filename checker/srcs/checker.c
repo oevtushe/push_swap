@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include "checker.h"
 #include "ft_printf.h"
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 static void		verdict(t_list *a, t_list *b)
 {
@@ -34,11 +37,11 @@ static t_list	*get_a(char **arr, int size)
 	return (stack);
 }
 
-static t_list	*get_ops(void)
+static t_list	*get_ops(int fd)
 {
 	t_list *op_stack;
 
-	op_stack = read_operations(0);
+	op_stack = read_operations(fd);
 	if (isvldops(op_stack))
 		rebase_op_stack(&op_stack);
 	else
@@ -46,17 +49,29 @@ static t_list	*get_ops(void)
 	return (op_stack);
 }
 
-int				main(int argc, char **argv)
+void			checker(char **arr, int size, \
+		void (*print) (t_list*, t_list*, t_opc*, t_excstat), int fd)
 {
-	int		si;
 	t_list	*a_stack;
 	t_list	*b_stack;
 	t_list	*op_stack;
-	void	(*print) (t_list *, t_list *, t_opc *, t_excstat);
 
-	si = 1;
 	a_stack = NULL;
 	b_stack = NULL;
+	a_stack = get_a(arr, size);
+	op_stack = get_ops(fd);
+	op_executor(&a_stack, &b_stack, op_stack, print);
+	verdict(a_stack, b_stack);
+}
+
+int				main(int argc, char **argv)
+{
+	int		fd;
+	int		si;
+	void	(*print) (t_list*, t_list*, t_opc*, t_excstat);
+
+	fd = 0;
+	si = 1;
 	print = NULL;
 	if (argc < 2)
 		return (1);
@@ -65,9 +80,14 @@ int				main(int argc, char **argv)
 		print = print_info;
 		++si;
 	}
-	a_stack = get_a(&argv[si], argc - si);
-	op_stack = get_ops();
-	op_executor(&a_stack, &b_stack, op_stack, print);
-	verdict(a_stack, b_stack);
+	if (ft_strequ(argv[si], "-fd"))
+	{
+		if ((fd = open(argv[++si], O_RDONLY)) < 0)
+			checker_error("Something wrong with the file !\n");
+		++si;
+	}
+	checker(&argv[si], argc - si, print, fd);
+	if (fd > 0)
+		close(fd);
 	return (0);
 }
