@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/14 17:49:23 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/19 13:30:47 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,20 +22,16 @@ include 		$(FT_DIR)/Pretty.mk
 NAME			:= push_swap
 
 DEPF			:= push_swap.h
-SRCF			:= isvldarg.c \
-					arr_quickselect.c \
+SRCF			:=  arr_quickselect.c \
 					new_stack.c \
-					lst_quickselect.c \
 					push_exec_pr.c \
 					init_push.c \
 					comparators.c \
-					lstgeti.c \
 					lst_safe_swap.c \
 					lsttoari.c \
 					lstntoari.c \
 					little_sort.c \
 					rebase_lst_data.c \
-					read_args_stack.c \
 					sort3_fncs.c \
 					split_nmedian.c \
 					op_execute_wrp.c \
