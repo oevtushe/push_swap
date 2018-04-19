@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 10:59:16 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:41:51 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ void	split_group(t_stack **stack1, t_stack **stack2)
 		sort3(stack1);
 	else
 		sort2(stack1);
+	if (top_grp_len((*stack2)->lst) == 3)
+		rsort3(stack2);
+	else
+		rsort2(stack2);
 }
 
 int		main(int argc, char **argv)
