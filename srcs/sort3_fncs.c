@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:42:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/14 18:27:18 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 13:20:40 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void    sort213(t_list **a, t_list **b, int which)
 ** 1
 */
 
-void    sort231(t_list **a, t_list **b, char which)
+void    sort231(t_list **a, t_list **b, int which)
 {
     t_operation r;
     t_operation s;

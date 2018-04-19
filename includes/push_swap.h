@@ -41,7 +41,7 @@ void		rsort2(t_stack **stack);
 void    	sort321(t_list **a, t_list **b, int which);
 void    	sort312(t_list **a, t_list **b, int which);
 void    	sort213(t_list **a, t_list **b, int which);
-void    	sort231(t_list **a, t_list **b, char which);
+void    	sort231(t_list **a, t_list **b, int which);
 void    	sort132(t_list **a, t_list **b, int which);
 
 /*
