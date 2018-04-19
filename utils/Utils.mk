@@ -36,6 +36,7 @@ UT_SRCF		:= executors1.c \
 				executors2.c \
 				isvldarg.c \
 				get_simple_args.c \
+				free_str_arr.c \
 				op_execute.c \
 				read_args_stack.c \
 				st_issorted.c

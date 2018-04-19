@@ -61,5 +61,6 @@ t_excstat	execute_rev_rrotate(t_list **a, t_list **b);
 int			execute_rotate(t_list **stack);
 t_excstat	execute_rrotate(t_list **a, t_list **b);
 char		**split_arr(char **arr, int size, int *new_size);
+void		free_str_arr(char ***arr, int size);
 
 #endif
