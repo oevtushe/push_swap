@@ -6,16 +6,12 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/29 17:07:11 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:12:27 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "checker.h"
-#include "ft_printf.h"
-#include <sys/stat.h>
-#include <sys/types.h>
 #include <fcntl.h>
+#include "checker.h"
 
 static void		verdict(t_list *a, t_list *b)
 {
@@ -69,6 +65,7 @@ int				main(int argc, char **argv)
 	int		fd;
 	int		si;
 	void	(*print) (t_list*, t_list*, t_opc*, t_excstat);
+	char	**arr;
 
 	fd = 0;
 	si = 1;
@@ -86,8 +83,10 @@ int				main(int argc, char **argv)
 			checker_error("Something wrong with the file !\n");
 		++si;
 	}
-	checker(&argv[si], argc - si, print, fd);
+	arr = split_arr(&argv[si], argc - si, &si);
+	checker(arr, si, print, fd);
 	if (fd > 0)
 		close(fd);
+	free_str_arr(&arr, si);
 	return (0);
 }
