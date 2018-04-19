@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/01 16:45:56 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/19 10:15:13 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCF			:= checker.c \
 				stack_printers.c \
 				op_printers.c \
 				op_executor.c \
-				checker_readers.c \
+				read_operations.c \
 				print_info.c \
 				rebase_op_stack.c \
 				checker_error.c
