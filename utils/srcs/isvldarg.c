@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 09:34:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/01 13:58:20 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/16 17:51:36 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ static int	vldval(unsigned int res, int sign, char *val, int i)
 	return (1);
 }
 
+/*
+** Checks if a string is a valid integer.
+*/
+
 static int	isvldint(char *str)
 {
 	int				i;
@@ -78,10 +82,8 @@ int			isvldarg(char **args, int size)
 
 	valid = 0;
 	cnt = size - 1;
-	while (cnt >= 0 && ft_isnumber(args[cnt]) && isvldint(args[cnt]))
+	while (cnt >= 0 && isvldint(args[cnt]))
 		--cnt;
-	if (cnt < 0)
-		valid = 1;
 	valid = cnt < 0 && no_duplicates(args, size) ? 1 : 0;
 	return (valid);
 }
