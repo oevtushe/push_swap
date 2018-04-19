@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 11:40:42 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/01 14:59:44 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/19 10:11:50 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ include		$(GNL_DIR)/Gnl.mk
 UT_SRCF		:= executors1.c \
 				executors2.c \
 				isvldarg.c \
+				get_simple_args.c \
 				op_execute.c \
 				read_args_stack.c \
 				st_issorted.c

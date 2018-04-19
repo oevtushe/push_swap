@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 15:03:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 09:06:56 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:21:54 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char			**split_arr(char **arr, int size, int *new_size)
 		if (ft_strchr(arr[i], ' '))
 			*new_size = split_and_put(&new_arr, arr[i], &j, *new_size);
 		else
-			new_arr[++j] = arr[i];
+			new_arr[++j] = ft_strdup(arr[i]);
 	}
 	return (new_arr);
 }

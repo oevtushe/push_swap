@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/31 11:34:36 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 10:11:24 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int			execute_rev_rotate(t_list **stack);
 t_excstat	execute_rev_rrotate(t_list **a, t_list **b);
 int			execute_rotate(t_list **stack);
 t_excstat	execute_rrotate(t_list **a, t_list **b);
+char		**split_arr(char **arr, int size, int *new_size);
 
 #endif
