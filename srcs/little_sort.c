@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:47:59 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/14 18:46:04 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 12:52:10 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,19 @@ void	rsort3(t_stack **stack)
 	c = *(int*)(*stack)->lst->next->next->content;
 	// 1 2 3
 	if (a < b && a < c && b < c)
-		sort321(&(*stack)->lst, NULL, (*stack)->name);
+		sort321(NULL, &(*stack)->lst, (*stack)->name);
 	// 1 3 2
 	else if (a < b && a < c && b > c)
-		sort312(&(*stack)->lst, NULL, (*stack)->name);
+		sort312(NULL, &(*stack)->lst, (*stack)->name);
 	// 3 1 2
 	else if (a > b && c > b && a > c)
-		sort132(&(*stack)->lst, NULL, (*stack)->name);
+		sort132(NULL, &(*stack)->lst, (*stack)->name);
 	// 2 1 3
 	else if (a > b && c > b && a < c)
-		sort231(&(*stack)->lst, NULL, (*stack)->name);
-	// 2 1 3
-	else if (a < c && b < c && a > b)
-		sort213(&(*stack)->lst, NULL, (*stack)->name);
+		sort231(NULL, &(*stack)->lst, (*stack)->name);
+	// 2 3 1
+	else if (a > c && b > c && a < b)
+		sort213(NULL, &(*stack)->lst, (*stack)->name);
 }
 
 void	rsort2(t_stack **stack)
