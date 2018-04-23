@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 09:34:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/16 17:51:36 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/19 15:58:59 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,44 +37,6 @@ static int	no_duplicates(char **args, int size)
 	return (rs);
 }
 
-static int	vldval(unsigned int res, int sign, char *val, int i)
-{
-	if ((sign > 0 && res > INT_MAX) ||
-			(sign < 0 && res > (-1L * INT_MIN)) ||
-				(val[i]))
-		return (0);
-	return (1);
-}
-
-/*
-** Checks if a string is a valid integer.
-*/
-
-static int	isvldint(char *str)
-{
-	int				i;
-	unsigned int	res;
-	int				sign;
-	int				len;
-
-	i = 0;
-	sign = 1;
-	res = 0;
-	len = -1;
-	if (str[i] == '-')
-	{
-		sign = -1;
-		++i;
-	}
-	else if (str[i] == '+')
-		++i;
-	while (str[i] == '0')
-		++i;
-	while (++len < 10 && ft_isdigit(str[i]))
-		res = res * 10 + str[i++] - '0';
-	return (vldval(res, sign, str, i));
-}
-
 int			isvldarg(char **args, int size)
 {
 	int	valid;
@@ -82,7 +44,7 @@ int			isvldarg(char **args, int size)
 
 	valid = 0;
 	cnt = size - 1;
-	while (cnt >= 0 && isvldint(args[cnt]))
+	while (cnt >= 0 && ft_isvldint(args[cnt]))
 		--cnt;
 	valid = cnt < 0 && no_duplicates(args, size) ? 1 : 0;
 	return (valid);
