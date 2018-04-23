@@ -52,6 +52,7 @@ void		rebase_lst_data(t_list *lst);
 int     	*lstntoari(t_list *lst, int size);
 void		ps_error(char *message);
 void		op_execute_wrp(t_list **a, t_list **b, t_operation op);
+t_list		*get_next_group(t_list *lst);
 int			top_grp_len(t_list *lst);
 
 #endif

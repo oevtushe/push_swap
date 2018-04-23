@@ -30,6 +30,7 @@ SRCF			:=  arr_quickselect.c \
 					top_grp_len.c \
 					lst_safe_swap.c \
 					lsttoari.c \
+					get_next_group.c \
 					lstntoari.c \
 					little_sort.c \
 					rebase_lst_data.c \
