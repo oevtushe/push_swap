@@ -31,6 +31,8 @@ int			find_nmedian(t_list *lst, int size);
 void		split_nmedian(t_stack **stack1, t_stack **stack2, int size, int ngrp);
 void		init_push(t_stack **stack, t_opc *op);
 void		push_exec_pr(t_stack **st1, t_stack **st2, t_opc opc);
+void		split_group_a(t_stack **stack1, t_stack **stack2);
+void		split_group_b(t_stack **stack1, t_stack **stack2);
 
 void		sort3(t_stack **stack);
 void		sort2(t_stack **stack);

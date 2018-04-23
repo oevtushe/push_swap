@@ -34,6 +34,7 @@ SRCF			:=  arr_quickselect.c \
 					lstntoari.c \
 					little_sort.c \
 					rebase_lst_data.c \
+					split_group.c \
 					sort3_fncs.c \
 					split_nmedian.c \
 					op_execute_wrp.c \
