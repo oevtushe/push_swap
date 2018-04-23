@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 13:42:45 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:29:12 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void		rebase_lst_data(t_list *lst);
 int     	*lstntoari(t_list *lst, int size);
 void		ps_error(char *message);
 void		op_execute_wrp(t_list **a, t_list **b, t_operation op);
+int			top_grp_len(t_list *lst);
 
 #endif

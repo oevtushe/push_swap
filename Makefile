@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/19 13:42:52 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/23 13:29:46 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCF			:=  arr_quickselect.c \
 					push_exec_pr.c \
 					init_push.c \
 					comparators.c \
+					top_grp_len.c \
 					lst_safe_swap.c \
 					lsttoari.c \
 					lstntoari.c \
