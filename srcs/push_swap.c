@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 12:41:51 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/23 13:46:47 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,44 +23,38 @@ void	del_int(void *content, size_t content_size)
 	free(content);
 }
 
-int		top_grp_len(t_list *lst)
+int		get_group(t_stack **a, int group)
 {
-	int		len;
-	size_t	cur_grp;
+	int		pos;
 
-	len = 0;
-	cur_grp = lst->content_size;
-	while (lst && lst->content_size == cur_grp)
+	pos = 0;
+	while ((int)(*a)->lst->content_size != group)
 	{
-		++len;
-		lst = lst->next;
+		op_execute_wrp(&(*a)->lst, NULL, OP_RA);
+		++pos;
 	}
-	return (len);
+	return (pos);
 }
 
-void	split_group(t_stack **stack1, t_stack **stack2)
+void	sort_stacks(t_stack **a, t_stack **b)
 {
-	t_list	*lst1;
-	t_list	*lst2;
-	int		top_len;
-	int		grp_cnt;
+	t_list	*lst;
+	int		rot_cnt;
 
-	lst1 = (*stack1)->lst;
-	lst2 = (*stack2)->lst;
-	grp_cnt = (int)(*stack1)->lst->content_size;
-	while ((top_len = top_grp_len((*stack1)->lst)) > 3)
+	split_group_a(a, b);
+	while ((*b)->lst)
+		split_group_b(a, b);
+	lst = (*a)->lst;
+	rot_cnt = 0;
+	while ((lst = get_next_group(lst)) && !rot_cnt)
 	{
-		++grp_cnt;
-		split_nmedian(stack1, stack2, top_len, grp_cnt);
+		if (top_grp_len(lst) > 3)
+			rot_cnt = get_group(a, lst->content_size);
 	}
-	if (top_len == 3)
-		sort3(stack1);
-	else
-		sort2(stack1);
-	if (top_grp_len((*stack2)->lst) == 3)
-		rsort3(stack2);
-	else
-		rsort2(stack2);
+	if (rot_cnt)
+		sort_stacks(a, b);
+	while (rot_cnt--)
+		op_execute_wrp(&(*a)->lst, NULL, OP_RRA);
 }
 
 int		main(int argc, char **argv)
@@ -82,10 +76,25 @@ int		main(int argc, char **argv)
 	a = new_stack(lst, 'a');
 	b = new_stack(NULL, 'b');
 	rebase_lst_data(lst);
-	split_group(&a, &b);
+	sort_stacks(&a, &b);
+/*
 	ft_lstiter(a->lst, print_int);
 	ft_printf("-----\n\n");
 	ft_lstiter(b->lst, print_int);
+*/
+/*
+	split_group_a(&a, &b);
+	ft_lstiter(a->lst, print_int);
+	ft_printf("-----\n\n");
+	ft_lstiter(b->lst, print_int);
+	if (b->lst)
+		split_group_b(&a, &b);
+	if (b->lst)
+		split_group_b(&a, &b);
+	ft_lstiter(a->lst, print_int);
+	ft_printf("-----\n\n");
+	ft_lstiter(b->lst, print_int);
+*/
 	free_str_arr(&arr, size);
 	return (0);
 }

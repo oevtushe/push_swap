@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/16 09:00:42 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/23 10:05:50 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@
 ** @param	ngrp	separated group number.
 */
 
-void		split_nmedian(t_stack **stack1, t_stack **stack2, int size, int ngrp)
+void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp)
 {
 	int		median;
 	int		rot_cnt;
+	int		ls;
 
 	rot_cnt = 0;
-	median = find_nmedian((*stack1)->lst, size);
-	ft_printf("median = %d\n", median);
-	while (size--)
+	median = find_nmedian((*stack1)->lst, grp_size);
+	ls = last_less_elem(stack1, (int)(*stack1)->lst->content_size, median);
+	//ft_printf("(a)median = %d\n", median);
+	while (ls--)
 	{
 		if (*(int*)(*stack1)->lst->content < median)
 		{
@@ -40,4 +42,33 @@ void		split_nmedian(t_stack **stack1, t_stack **stack2, int size, int ngrp)
 			op_execute_wrp(&(*stack1)->lst, NULL, OP_RA);
 		}
 	}
+	while (rot_cnt--)
+		op_execute_wrp(&(*stack1)->lst, NULL, OP_RRA);
+}
+
+void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp)
+{
+	int		median;
+	int		rot_cnt;
+	int		ls;
+
+	rot_cnt = 0;
+	median = find_nmedian((*stack2)->lst, grp_size);
+	ls = last_bigger_elem(stack2, (int)(*stack2)->lst->content_size, median);
+	//ft_printf("(b)median = %d\n", median);
+	while (ls--)
+	{
+		if (*(int*)(*stack2)->lst->content >= median)
+		{
+			(*stack2)->lst->content_size = ngrp;
+			op_execute_wrp(&(*stack1)->lst, &(*stack2)->lst, OP_PA);
+		}
+		else
+		{
+			++rot_cnt;
+			op_execute_wrp(NULL, &(*stack2)->lst, OP_RB);
+		}
+	}
+	while (rot_cnt--)
+		op_execute_wrp(NULL, &(*stack2)->lst, OP_RRB);
 }
