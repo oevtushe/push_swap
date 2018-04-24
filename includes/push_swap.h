@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/23 13:29:12 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/24 10:09:38 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,11 @@ void		ps_error(char *message);
 void		op_execute_wrp(t_list **a, t_list **b, t_operation op);
 t_list		*get_next_group(t_list *lst);
 int			top_grp_len(t_list *lst);
+
+/*
+** Debug
+*/
+
+void		dprint_stacks(t_stack *a, t_stack *b);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/23 13:29:46 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/24 09:50:42 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ DEPF			:= push_swap.h
 SRCF			:=  arr_quickselect.c \
 					new_stack.c \
 					push_exec_pr.c \
+					dprint_stacks.c \
 					init_push.c \
 					comparators.c \
 					top_grp_len.c \
