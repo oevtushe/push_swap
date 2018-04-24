@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 09:33:24 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/23 09:39:35 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:30:21 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			last_bigger_elem(t_stack **stack, int grp, int n)
 	lst = (*stack)->lst;
 	while (lst && (int)lst->content_size == grp)
 	{
-		if (*(int*)lst->content > n)
+		if (*(int*)lst->content >= n)
 			pos = i;
 		++i;
 		lst = lst->next;
