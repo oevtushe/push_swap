@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/23 15:38:50 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:31:17 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** @param	ngrp	separated group number.
 */
 
-void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp)
+void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt)
 {
 	int		median;
 	int		rot_cnt;
@@ -32,7 +32,7 @@ void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp
 	{
 		if (*(int*)(*stack1)->lst->content < median)
 		{
-			(*stack1)->lst->content_size = ngrp;
+			(*stack1)->lst->content_size = group_cnt;
 			op_execute_wrp(&(*stack1)->lst, &(*stack2)->lst, OP_PB);
 		}
 		else
@@ -46,7 +46,7 @@ void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp
 			op_execute_wrp(&(*stack1)->lst, NULL, OP_RRA);
 }
 
-void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp)
+void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt)
 {
 	int		median;
 	int		rot_cnt;
@@ -59,7 +59,7 @@ void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp
 	{
 		if (*(int*)(*stack2)->lst->content >= median)
 		{
-			(*stack2)->lst->content_size = ngrp;
+			(*stack2)->lst->content_size = group_cnt;
 			op_execute_wrp(&(*stack1)->lst, &(*stack2)->lst, OP_PA);
 		}
 		else

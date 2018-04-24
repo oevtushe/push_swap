@@ -28,8 +28,8 @@ typedef struct		s_stack
 void	    lst_safe_swap(t_stack **stack, int i, int j);
 int			arr_quickselect(int *arr, int p, int r, int i);
 int			find_nmedian(t_list *lst, int size);
-void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp);
-void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int ngrp);
+void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt);
+void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt);
 void		init_push(t_stack **stack, t_opc *op);
 void		push_exec_pr(t_stack **st1, t_stack **st2, t_opc opc);
 void		split_group_a(t_stack **stack1, t_stack **stack2);
