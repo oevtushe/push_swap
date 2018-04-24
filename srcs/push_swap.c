@@ -6,16 +6,11 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/23 13:46:47 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/24 11:55:00 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_int(t_list *elem)
-{
-	ft_printf("elem: %d\ngroup: %zu\n\n", *(int*)elem->content, elem->content_size);
-}
 
 void	del_int(void *content, size_t content_size)
 {
@@ -23,7 +18,7 @@ void	del_int(void *content, size_t content_size)
 	free(content);
 }
 
-int		get_group(t_stack **a, int group)
+int		rot_to_grp(t_stack **a, int group)
 {
 	int		pos;
 
@@ -38,23 +33,12 @@ int		get_group(t_stack **a, int group)
 
 void	sort_stacks(t_stack **a, t_stack **b)
 {
-	t_list	*lst;
-	int		rot_cnt;
+	int		group_cnt;
 
-	split_group_a(a, b);
+	group_cnt = 0;
+	split_group_a(a, b, &group_cnt);
 	while ((*b)->lst)
-		split_group_b(a, b);
-	lst = (*a)->lst;
-	rot_cnt = 0;
-	while ((lst = get_next_group(lst)) && !rot_cnt)
-	{
-		if (top_grp_len(lst) > 3)
-			rot_cnt = get_group(a, lst->content_size);
-	}
-	if (rot_cnt)
-		sort_stacks(a, b);
-	while (rot_cnt--)
-		op_execute_wrp(&(*a)->lst, NULL, OP_RRA);
+		split_group_b(a, b, &group_cnt);
 }
 
 int		main(int argc, char **argv)
@@ -77,24 +61,6 @@ int		main(int argc, char **argv)
 	b = new_stack(NULL, 'b');
 	rebase_lst_data(lst);
 	sort_stacks(&a, &b);
-/*
-	ft_lstiter(a->lst, print_int);
-	ft_printf("-----\n\n");
-	ft_lstiter(b->lst, print_int);
-*/
-/*
-	split_group_a(&a, &b);
-	ft_lstiter(a->lst, print_int);
-	ft_printf("-----\n\n");
-	ft_lstiter(b->lst, print_int);
-	if (b->lst)
-		split_group_b(&a, &b);
-	if (b->lst)
-		split_group_b(&a, &b);
-	ft_lstiter(a->lst, print_int);
-	ft_printf("-----\n\n");
-	ft_lstiter(b->lst, print_int);
-*/
 	free_str_arr(&arr, size);
 	return (0);
 }
