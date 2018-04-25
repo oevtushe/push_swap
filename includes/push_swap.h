@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/24 10:09:38 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:23:47 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		split_group_b(t_stack **stack1, t_stack **stack2, int *group_cnt);
 int			last_bigger_elem(t_stack **stack, int grp, int n);
 int			last_less_elem(t_stack **stack, int grp, int n);
 
+void		sort3optimized(t_stack **stack);
 void		sort3(t_stack **stack);
 void		sort2(t_stack **stack);
 void		rsort3(t_stack **stack);

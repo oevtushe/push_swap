@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:59:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/24 13:31:57 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/24 14:27:07 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@ static void	top_sort(t_stack **stack)
 
 	t1 = top_grp_len((*stack)->lst);
 	if (t1 == 3)
-		sort3(stack);
+	{
+		if (!get_next_group((*stack)->lst))
+			sort3optimized(stack);
+		else
+			sort3(stack);
+	}
 	else if (t1 == 2)
 		sort2(stack);
 }

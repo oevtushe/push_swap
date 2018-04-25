@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/24 09:50:42 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/24 14:26:23 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCF			:=  arr_quickselect.c \
 					init_push.c \
 					comparators.c \
 					top_grp_len.c \
+					sort3optimized.c \
 					lst_safe_swap.c \
 					lsttoari.c \
 					last_significant_elem.c \
