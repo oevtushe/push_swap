@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 10:11:24 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/25 10:07:42 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 typedef	enum	e_operation
 {
+	OP_NONE,
 	OP_SA,
 	OP_SB,
 	OP_SS,
@@ -33,10 +34,10 @@ typedef	enum	e_operation
 
 typedef	enum	e_excstat
 {
+	ES_NONE,
 	ES_BM,
 	ES_AM,
-	ES_BOTH,
-	ES_NONE
+	ES_BOTH
 }				t_excstat;
 
 /*
