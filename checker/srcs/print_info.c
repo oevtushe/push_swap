@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 15:20:31 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/30 16:59:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,47 +30,32 @@ static void		op_print(t_list **a, t_list **b, t_operation op, t_pformat *pfmt)
 	}
 }
 
-static int		stack_max_int_len(t_list *a)
+static char		*make_header(t_pformat *pfmt)
 {
-	int		max;
+	char		*tmp;
 
-	max = *(int*)a->content;
-	while (a)
-	{
-		if (*(int*)a->content > max)
-			max = *(int*)a->content;
-		a = a->next;
-	}
-	return (ft_intln(max));
+	tmp = ft_strdup(" Operation: %s ");
+	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '-', -1);
+	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '-', 1);
+	ft_strconnect(&tmp, "\033[2J\033[;;H", -1);
+	ft_strconnect(&tmp, "\n", 1);
+	return (tmp);
 }
 
-
-t_pformat		*init_format(t_list *a, char *op_name, t_excstat stat)
-{
-	t_pformat	*fmt;
-
-	fmt = (t_pformat*)ft_memalloc(sizeof(t_pformat));
-	fmt->bi_ln = stack_max_int_len(a);
-	fmt->spcs = 14 + (ft_strlen(op_name) == 3 ? 1 : 0);
-	fmt->bottom = NULL;
-	fmt->color = RED;
-	fmt->stat = stat;
-	return (fmt);
-}
-
-void			print_info(t_list *a, t_list *b, t_opc *opc, t_excstat stat)
+void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
 {
 	char		c;
-	t_pformat	*fmt;
+	char		*header;
 
-	fmt = init_format(a, opc->op_name, stat);
-	ft_printf("\033[2J\033[;;H----- Operation: %s -----\n", opc->op_name);
-	op_print(&a, &b, opc->abbr, fmt);
-	fmt->stat = ES_NONE;
+	header = make_header(pfmt);
+	ft_printf(header, opc->op_name);
+	op_print(&a, &b, opc->abbr, pfmt);
+	pfmt->stat = ES_NONE;
 	while (a || b)
-		print_row(&a, &b, fmt);
+		print_row(&a, &b, pfmt);
 	ft_printf("%c%5c\n", '_', '_');
 	ft_printf("%c%5c\n", 'a', 'b');
 	ft_printf("\n%s%s->%s ", BOLD, GREEN, RESET);
 	read(1, &c, 1);
+	free(header);
 }

@@ -27,6 +27,7 @@ SRCF			:= checker.c \
 				print_row.c \
 				op_executor.c \
 				read_operations.c \
+				str_join_number.c \
 				print_info.c \
 				rebase_op_stack.c \
 				checker_error.c
