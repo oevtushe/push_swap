@@ -6,17 +6,31 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 16:50:13 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:08:48 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
+static void			init_bottom(t_bottom *bottom, char *st_name, int bi_ln)
+{
+	bottom->name = ft_strdup(st_name);
+	bottom->separator = ft_strnew(bi_ln + 2);
+	ft_memset(bottom->separator, '_', bi_ln + 2);
+	bottom->separator[0] = '|';
+	bottom->separator[bi_ln + 1] = '|';
+	bottom->is_sp_printed = 0;
+	bottom->is_nm_printed = 0;
+}
+
 static void			init_format(t_pformat *pfmt, char *op_name, t_excstat stat)
 {
 	pfmt->spcs = 15 + (ft_strlen(op_name) == 3 ? 1 : 0);
-	pfmt->bottom = NULL;
 	pfmt->stat = stat;
+	init_bottom(pfmt->ba, "a", pfmt->bi_ln);
+	init_bottom(pfmt->bb, "b", pfmt->bi_ln);
+	ft_strcntllr(&pfmt->bb->separator, ft_strlen(pfmt->bb->separator) + pfmt->spcs, ' ', -1);
+	ft_strcntllr(&pfmt->bb->name, ft_strlen(pfmt->bb->name) + pfmt->spcs, ' ', -1);
 }
 
 static int		stack_max_int_len(t_list *a)
@@ -41,6 +55,8 @@ void				op_executor(t_list **a_stack, t_list **b_stack,
 	t_pformat	*pfmt;
 
 	pfmt = (t_pformat*)ft_memalloc(sizeof(t_pformat));
+	pfmt->ba = (t_bottom*)ft_memalloc(sizeof(t_bottom));
+	pfmt->bb = (t_bottom*)ft_memalloc(sizeof(t_bottom));
 	pfmt->color = RED;
 	pfmt->bi_ln = stack_max_int_len(*a_stack);
 	while (op_stack)
