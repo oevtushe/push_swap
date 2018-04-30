@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:32:13 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 16:33:24 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:01:23 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,21 @@ void		print_row(t_list **a, t_list **b, t_pformat *pfmt)
 	}
 	else
 	{
-		tmp = str_join_number("%", pfmt->bi_ln + 2, "s");
-		ft_printf(tmp, " ");
+		if (!pfmt->ba->is_sp_printed)
+		{
+			ft_putstr(pfmt->ba->separator);
+			pfmt->ba->is_sp_printed = 1;
+		}
+		else if (!pfmt->ba->is_nm_printed)
+		{
+			ft_putstr(pfmt->ba->name);
+			pfmt->ba->is_nm_printed = 1;
+		}
+		else
+		{
+			tmp = str_join_number("%", pfmt->bi_ln + 2, "s");
+			ft_printf(tmp, " ");
+		}
 	}
 	if (b && *b)
 	{
@@ -54,5 +67,17 @@ void		print_row(t_list **a, t_list **b, t_pformat *pfmt)
 		free(tmp);
 	}
 	else
+	{
+		if (!pfmt->bb->is_sp_printed)
+		{
+			ft_putstr(pfmt->bb->separator);
+			pfmt->bb->is_sp_printed = 1;
+		}
+		else if (!pfmt->bb->is_nm_printed)
+		{
+			ft_putstr(pfmt->bb->name);
+			pfmt->bb->is_nm_printed = 1;
+		}
 		ft_putchar('\n');
+	}
 }

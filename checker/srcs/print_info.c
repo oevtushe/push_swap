@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 16:59:39 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:24:55 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,9 @@ void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
 	ft_printf(header, opc->op_name);
 	op_print(&a, &b, opc->abbr, pfmt);
 	pfmt->stat = ES_NONE;
-	while (a || b)
+	while (a || b || !pfmt->ba->is_nm_printed || !pfmt->ba->is_sp_printed ||
+			!pfmt->bb->is_nm_printed || !pfmt->bb->is_sp_printed)
 		print_row(&a, &b, pfmt);
-	ft_printf("%c%5c\n", '_', '_');
-	ft_printf("%c%5c\n", 'a', 'b');
 	ft_printf("\n%s%s->%s ", BOLD, GREEN, RESET);
 	read(1, &c, 1);
 	free(header);
