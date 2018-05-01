@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 18:38:03 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/01 10:40:57 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,16 @@ static void		op_print(t_list **a, t_list **b, t_operation op, t_pformat *pfmt)
 static char		*make_header(t_pformat *pfmt)
 {
 	char		*tmp;
+	int			c3;
 
 	tmp = ft_strdup(" Operation: %s ");
-	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '-', -1);
-	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '-', 1);
+	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '_', -1);
+	c3 = ft_strlen(tmp);
+	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '_', 1);
+	tmp[0] = ' ';
+	tmp[pfmt->bi_ln + 1] = ' ';
+	tmp[c3] = ' ';
+	tmp[ft_strlen(tmp) - 1] = ' ';
 	ft_strconnect(&tmp, "\033[2J\033[;;H", -1);
 	ft_strconnect(&tmp, "\n", 1);
 	return (tmp);
