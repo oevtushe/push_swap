@@ -6,13 +6,50 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:32:13 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 18:01:23 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/01 09:56:13 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void		print_row(t_list **a, t_list **b, t_pformat *pfmt)
+static void	empty_a(t_pformat *pfmt)
+{
+	char	*tmp;
+
+	if (!pfmt->ba->is_sp_printed)
+	{
+		ft_putstr(pfmt->ba->separator);
+		pfmt->ba->is_sp_printed = 1;
+	}
+	else if (!pfmt->ba->is_nm_printed)
+	{
+		ft_putstr(pfmt->ba->name);
+		pfmt->ba->is_nm_printed = 1;
+	}
+	else
+	{
+		tmp = str_join_number("%", pfmt->bi_ln + 2, "s");
+		ft_printf(tmp, " ");
+		free(tmp);
+	}
+}
+
+static void	empty_b(t_pformat *pfmt)
+{
+	if (!pfmt->bb->is_sp_printed)
+	{
+		ft_putstr(pfmt->bb->separator);
+		pfmt->bb->is_sp_printed = 1;
+	}
+	else if (!pfmt->bb->is_nm_printed)
+	{
+		ft_putstr(pfmt->bb->name);
+		pfmt->bb->is_nm_printed = 1;
+	}
+	ft_putchar('\n');
+}
+
+static void	print_elem_a(t_list **a, t_pformat *pfmt)
 {
 	char	*tmp;
 
@@ -32,23 +69,13 @@ void		print_row(t_list **a, t_list **b, t_pformat *pfmt)
 		*a = (*a)->next;
 	}
 	else
-	{
-		if (!pfmt->ba->is_sp_printed)
-		{
-			ft_putstr(pfmt->ba->separator);
-			pfmt->ba->is_sp_printed = 1;
-		}
-		else if (!pfmt->ba->is_nm_printed)
-		{
-			ft_putstr(pfmt->ba->name);
-			pfmt->ba->is_nm_printed = 1;
-		}
-		else
-		{
-			tmp = str_join_number("%", pfmt->bi_ln + 2, "s");
-			ft_printf(tmp, " ");
-		}
-	}
+		empty_a(pfmt);
+}
+
+static void	print_elem_b(t_list **b, t_pformat *pfmt)
+{
+	char	*tmp;
+
 	if (b && *b)
 	{
 		if (pfmt->stat == ES_BM || pfmt->stat == ES_BOTH)
@@ -67,17 +94,11 @@ void		print_row(t_list **a, t_list **b, t_pformat *pfmt)
 		free(tmp);
 	}
 	else
-	{
-		if (!pfmt->bb->is_sp_printed)
-		{
-			ft_putstr(pfmt->bb->separator);
-			pfmt->bb->is_sp_printed = 1;
-		}
-		else if (!pfmt->bb->is_nm_printed)
-		{
-			ft_putstr(pfmt->bb->name);
-			pfmt->bb->is_nm_printed = 1;
-		}
-		ft_putchar('\n');
-	}
+		empty_b(pfmt);
+}
+
+void		print_row(t_list **a, t_list **b, t_pformat *pfmt)
+{
+	print_elem_a(a, pfmt);
+	print_elem_b(b, pfmt);
 }
