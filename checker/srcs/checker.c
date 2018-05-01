@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 10:12:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/04/30 16:28:05 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static t_list	*get_ops(int fd)
 }
 
 void			checker(char **arr, int size, \
-		void (*print) (t_list*, t_list*, t_opc*, t_excstat), int fd)
+		void (*print) (t_list*, t_list*, t_opc*, t_pformat*), int fd)
 {
 	t_list	*a_stack;
 	t_list	*b_stack;
@@ -64,7 +64,7 @@ int				main(int argc, char **argv)
 {
 	int		fd;
 	int		si;
-	void	(*print) (t_list*, t_list*, t_opc*, t_excstat);
+	void	(*print) (t_list*, t_list*, t_opc*, t_pformat*);
 	char	**arr;
 
 	fd = 0;

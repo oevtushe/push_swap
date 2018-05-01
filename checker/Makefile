@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/19 10:15:13 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/04/30 15:32:46 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ NAME			:= checker
 DEPF			:= checker.h
 SRCF			:= checker.c \
 				isvldops.c \
-				stack_printers.c \
-				op_printers.c \
+				print_row.c \
 				op_executor.c \
 				read_operations.c \
+				str_join_number.c \
 				print_info.c \
 				rebase_op_stack.c \
 				checker_error.c

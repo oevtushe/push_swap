@@ -6,58 +6,60 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/21 12:24:21 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/01 10:40:57 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void		print_cstacks(t_list **a, t_list **b, t_excstat stat)
+static void		op_print(t_list **a, t_list **b, t_operation op, t_pformat *pfmt)
 {
-	void (*pf)(t_list **, t_list **, char*);
-
-	pf = NULL;
-	if (stat == ES_BOTH)
-		pf = print_crow;
-	else if (stat == ES_AM)
-		pf = print_crow_a;
-	else if (stat == ES_BM)
-		pf = print_crow_b;
-	if (pf)
-		while (*a || *b)
-			pf(a, b, RED);
+	if (pfmt->stat != ES_NONE)
+	{
+		if (op == OP_SA || op == OP_SB || op == OP_SS)
+		{
+			print_row(a, b, pfmt);
+			print_row(a, b, pfmt);
+		}
+		else if (op == OP_PA || op == OP_PB)
+			print_row(a, b, pfmt);
+		else if (op == OP_RA || op == OP_RB || op == OP_RR ||
+					op == OP_RRA || op == OP_RRB || op == OP_RRR)
+			while (*a || *b)
+				print_row(a, b, pfmt);
+	}
 }
 
-static void		op_print(t_list **a, t_list **b, t_operation op, t_excstat stat)
+static char		*make_header(t_pformat *pfmt)
 {
-	if (op == OP_SA && stat == ES_AM)
-		print_swap(a, b, print_crow_a);
-	else if (op == OP_SB && stat == ES_BM)
-		print_swap(a, b, print_crow_b);
-	else if (op == OP_SS && stat != ES_NONE)
-		print_sswap(a, b, stat);
-	else if (op == OP_PA && stat == ES_AM)
-		print_crow_a(a, b, RED);
-	else if (op == OP_PB && stat == ES_BM)
-		print_crow_b(a, b, RED);
-	else if ((op == OP_RA || op == OP_RRA) && stat == ES_AM)
-		print_cstacks(a, b, stat);
-	else if ((op == OP_RB || op == OP_RRB) && stat == ES_BM)
-		print_cstacks(a, b, stat);
-	else if ((op == OP_RR || op == OP_RRR) && stat != ES_NONE)
-		print_cstacks(a, b, stat);
+	char		*tmp;
+	int			c3;
+
+	tmp = ft_strdup(" Operation: %s ");
+	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '_', -1);
+	c3 = ft_strlen(tmp);
+	ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->bi_ln + 2, '_', 1);
+	tmp[0] = ' ';
+	tmp[pfmt->bi_ln + 1] = ' ';
+	tmp[c3] = ' ';
+	tmp[ft_strlen(tmp) - 1] = ' ';
+	ft_strconnect(&tmp, "\033[2J\033[;;H", -1);
+	ft_strconnect(&tmp, "\n", 1);
+	return (tmp);
 }
 
-void			print_info(t_list *a, t_list *b, t_opc *opc, t_excstat stat)
+void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
 {
-	char c;
+	char		c;
+	char		*header;
 
-	ft_printf("\033[2J\033[;;H----- Operation: %s -----\n", opc->op_name);
-	op_print(&a, &b, opc->abbr, stat);
-	while (a || b)
-		print_row(&a, &b);
-	ft_printf("%c%5c\n", '_', '_');
-	ft_printf("%c%5c\n", 'a', 'b');
+	header = make_header(pfmt);
+	ft_printf(header, opc->op_name);
+	op_print(&a, &b, opc->abbr, pfmt);
+	pfmt->stat = ES_NONE;
+	while (a || b || !pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
+		print_row(&a, &b, pfmt);
 	ft_printf("\n%s%s->%s ", BOLD, GREEN, RESET);
 	read(1, &c, 1);
+	free(header);
 }
