@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 10:40:57 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/01 14:09:41 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char		*make_header(t_pformat *pfmt)
 
 void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
 {
-	char		c;
+	char		*command;
 	char		*header;
 
 	header = make_header(pfmt);
@@ -60,6 +60,7 @@ void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
 	while (a || b || !pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
 		print_row(&a, &b, pfmt);
 	ft_printf("\n%s%s->%s ", BOLD, GREEN, RESET);
-	read(1, &c, 1);
+	get_next_line(1, &command);
+	free(command);
 	free(header);
 }
