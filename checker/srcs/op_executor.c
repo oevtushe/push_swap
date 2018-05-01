@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 18:08:48 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/01 10:56:14 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 static void			init_bottom(t_bottom *bottom, char *st_name, int bi_ln)
 {
+	int		b_spaces;
+
+	b_spaces = (bi_ln - ft_strlen(st_name)) / 2 + 1;
 	bottom->name = ft_strdup(st_name);
+	ft_strcntllr(&bottom->name, ft_strlen(bottom->name) + b_spaces, ' ', -1);
+	ft_strcntllr(&bottom->name, ft_strlen(bottom->name) + b_spaces, ' ', 1);
 	bottom->separator = ft_strnew(bi_ln + 2);
 	ft_memset(bottom->separator, '_', bi_ln + 2);
 	bottom->separator[0] = '|';
@@ -59,6 +64,8 @@ void				op_executor(t_list **a_stack, t_list **b_stack,
 	pfmt->bb = (t_bottom*)ft_memalloc(sizeof(t_bottom));
 	pfmt->color = RED;
 	pfmt->bi_ln = stack_max_int_len(*a_stack);
+	if (!(pfmt->bi_ln % 2))
+		++pfmt->bi_ln;
 	while (op_stack)
 	{
 		opc = (t_opc *)op_stack->content;
