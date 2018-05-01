@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/30 15:32:46 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/01 12:06:28 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ DEPF			:= checker.h
 SRCF			:= checker.c \
 				isvldops.c \
 				print_row.c \
+				new_opc.c \
 				op_executor.c \
+				new_pformat.c \
 				read_operations.c \
 				str_join_number.c \
 				print_info.c \
