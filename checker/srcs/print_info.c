@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 14:09:41 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 10:55:01 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,28 @@ static char		*make_header(t_pformat *pfmt)
 	return (tmp);
 }
 
+char	*prompt(void)
+{
+	char	*cmd;
+
+	PRINT_PROMPT;
+	get_next_line(1, &cmd);
+	return (cmd);
+}
+
+void	print_extra(t_list *a_stack, t_list *b_stack, t_pformat *pfmt, char *text)
+{
+	t_opc	*tmp;
+
+	tmp = new_opc(OP_NONE, text);
+	init_format(pfmt, tmp->op_name, ES_NONE);
+	print_info(a_stack, b_stack, tmp, pfmt);
+	free(prompt());
+	free(tmp);
+}
+
 void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
 {
-	char		*command;
 	char		*header;
 
 	header = make_header(pfmt);
@@ -59,8 +78,5 @@ void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
 	pfmt->stat = ES_NONE;
 	while (a || b || !pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
 		print_row(&a, &b, pfmt);
-	ft_printf("\n%s%s->%s ", BOLD, GREEN, RESET);
-	get_next_line(1, &command);
-	free(command);
 	free(header);
 }
