@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 10:08:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 11:29:53 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/01 14:48:47 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static t_opc		*get_opc(char *oper_nm)
+t_opc				*get_opc(char *oper_nm)
 {
 	if (ft_strequ(oper_nm, "sa"))
 		return (new_opc(OP_SA, oper_nm));

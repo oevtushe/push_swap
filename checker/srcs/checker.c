@@ -6,20 +6,12 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/30 16:28:05 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 10:47:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "checker.h"
-
-static void		verdict(t_list *a, t_list *b)
-{
-	if (!b && st_issorted(a))
-		ft_putstr("OK\n");
-	else
-		ft_putstr("KO\n");
-}
 
 static t_list	*get_a(char **arr, int size)
 {
@@ -45,8 +37,7 @@ static t_list	*get_ops(int fd)
 	return (op_stack);
 }
 
-void			checker(char **arr, int size, \
-		void (*print) (t_list*, t_list*, t_opc*, t_pformat*), int fd)
+static void		checker(char **arr, int size, t_odata *odata)
 {
 	t_list	*a_stack;
 	t_list	*b_stack;
@@ -55,38 +46,59 @@ void			checker(char **arr, int size, \
 	a_stack = NULL;
 	b_stack = NULL;
 	a_stack = get_a(arr, size);
-	op_stack = get_ops(fd);
-	op_executor(&a_stack, &b_stack, op_stack, print);
+	if (odata->debug)
+		op_read_and_exec(&a_stack, &b_stack, odata->fd);
+	else
+	{
+		op_stack = get_ops(odata->fd);
+		op_executor(&a_stack, &b_stack, op_stack, odata->print);
+	}
 	verdict(a_stack, b_stack);
+}
+
+static t_odata	*init_odata(char **args, int *si)
+{
+	t_odata *odata;
+
+	odata = ft_memalloc(sizeof(t_odata));
+	odata->fd = 0;
+	odata->debug = 0;
+	odata->print = NULL;
+	if (ft_strequ(args[*si], "-c"))
+	{
+		odata->print = print_info;
+		++(*si);
+	}
+	if (ft_strequ(args[*si], "-d"))
+	{
+		odata->print = print_info;
+		odata->debug = 1;
+		++(*si);
+	}
+	else if (ft_strequ(args[*si], "-fd"))
+	{
+		if ((odata->fd = open(args[++(*si)], O_RDONLY)) < 0)
+			checker_error("Something wrong with the file !\n");
+		++(*si);
+	}
+	return (odata);
 }
 
 int				main(int argc, char **argv)
 {
-	int		fd;
 	int		si;
-	void	(*print) (t_list*, t_list*, t_opc*, t_pformat*);
 	char	**arr;
+	t_odata *odata;
 
-	fd = 0;
 	si = 1;
-	print = NULL;
 	if (argc < 2)
 		return (1);
-	if (ft_strequ(argv[si], "-c"))
-	{
-		print = print_info;
-		++si;
-	}
-	if (ft_strequ(argv[si], "-fd"))
-	{
-		if ((fd = open(argv[++si], O_RDONLY)) < 0)
-			checker_error("Something wrong with the file !\n");
-		++si;
-	}
+	odata = init_odata(argv, &si);
 	arr = split_arr(&argv[si], argc - si, &si);
-	checker(arr, si, print, fd);
-	if (fd > 0)
-		close(fd);
+	checker(arr, si, odata);
+	if (odata->fd > 0)
+		close(odata->fd);
 	free_str_arr(&arr, si);
+	free(odata);
 	return (0);
 }
