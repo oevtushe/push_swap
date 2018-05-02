@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/24 11:55:00 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:04:13 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int		main(int argc, char **argv)
 	a = new_stack(lst, 'a');
 	b = new_stack(NULL, 'b');
 	rebase_lst_data(lst);
-	sort_stacks(&a, &b);
+	if (!st_issorted(lst))
+		sort_stacks(&a, &b);
 	free_str_arr(&arr, size);
 	return (0);
 }
