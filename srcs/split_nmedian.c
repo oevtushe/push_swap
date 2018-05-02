@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 14:51:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 16:15:27 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			posofne(t_list *list)
+static int	posofne(t_list *list)
 {
 	int		med;
 	int		pos;
@@ -29,6 +29,17 @@ int			posofne(t_list *list)
 		}
 	}
 	return (pos);
+}
+
+static void	op_execute_rot_opt(t_stack **a, t_stack **b, int *opt)
+{
+	if ((*b)->lst && opt && !get_next_group((*b)->lst))
+	{
+		op_execute_wrp(&(*a)->lst, &(*b)->lst, OP_RR);
+		--(*opt);
+	}
+	else
+		op_execute_wrp(&(*a)->lst, NULL, OP_RA);
 }
 
 /*
@@ -59,13 +70,7 @@ void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int grou
 		else
 		{
 			++rot_cnt;
-			if (opt && !get_next_group((*stack2)->lst))
-			{
-				op_execute_wrp(&(*stack1)->lst, &(*stack2)->lst, OP_RR);
-				--opt;
-			}
-			else
-				op_execute_wrp(&(*stack1)->lst, NULL, OP_RA);
+			op_execute_rot_opt(stack1, stack2, &opt);
 		}
 	}
 	if (get_next_group((*stack1)->lst))
