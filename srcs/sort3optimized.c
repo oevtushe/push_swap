@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 14:25:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/24 14:26:42 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 14:08:08 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	sort321_opt(t_list **a, t_list **b, int which)
 
 	s = which == 'a' ? OP_SA : OP_SB;
     rr = which == 'a' ? OP_RRA : OP_RRB;
-	op_execute_wrp(a, b, s);
+	op_execute_swap_opt(a, b);
 	op_execute_wrp(a, b, rr);
 }
 
@@ -71,26 +71,26 @@ static void    sort132_opt(t_list **a, t_list **b, int which)
     s = which == 'a' ? OP_SA : OP_SB;
     rr = which == 'a' ? OP_RRA : OP_RRB;
     op_execute_wrp(a, b, rr);
-    op_execute_wrp(a, b, s);
+	op_execute_swap_opt(a, b);
 }
 
-void	sort3optimized(t_stack **stack)
+void	sort3optimized(t_stack **a_stack, t_stack **b_stack)
 {
 	int a;
 	int b;
 	int c;
 
-	a = *(int*)(*stack)->lst->content;
-	b = *(int*)(*stack)->lst->next->content;
-	c = *(int*)(*stack)->lst->next->next->content;
+	a = *(int*)(*a_stack)->lst->content;
+	b = *(int*)(*a_stack)->lst->next->content;
+	c = *(int*)(*a_stack)->lst->next->next->content;
 	if (a > b && a > c && b > c)
-		sort321_opt(&(*stack)->lst, NULL, (*stack)->name);
+		sort321_opt(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a > b && a > c && b < c)
-		sort312_opt(&(*stack)->lst, NULL, (*stack)->name);
+		sort312_opt(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a < b && c < b && a < c)
-		sort132_opt(&(*stack)->lst, NULL, (*stack)->name);
+		sort132_opt(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a < b && c < b && a > c)
-		sort231_opt(&(*stack)->lst, NULL, (*stack)->name);
+		sort231_opt(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a < c && b < c && a > b)
-		sort213(&(*stack)->lst, NULL, (*stack)->name);
+		sort213(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 }
