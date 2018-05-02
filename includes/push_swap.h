@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/24 14:23:47 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 14:12:52 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void		split_group_b(t_stack **stack1, t_stack **stack2, int *group_cnt);
 int			last_bigger_elem(t_stack **stack, int grp, int n);
 int			last_less_elem(t_stack **stack, int grp, int n);
 
-void		sort3optimized(t_stack **stack);
-void		sort3(t_stack **stack);
-void		sort2(t_stack **stack);
+void		sort3optimized(t_stack **a_stack, t_stack **b_stack);
+void		sort3(t_stack **a_stack, t_stack **b_stack);
+void		sort2(t_stack **a_stack, t_stack **b_stack);
 void		rsort3(t_stack **stack);
 void		rsort2(t_stack **stack);
 void    	sort321(t_list **a, t_list **b, int which);
@@ -58,6 +58,7 @@ void		rebase_lst_data(t_list *lst);
 int     	*lstntoari(t_list *lst, int size);
 void		ps_error(char *message);
 void		op_execute_wrp(t_list **a, t_list **b, t_operation op);
+void		op_execute_swap_opt(t_list **a, t_list **b);
 t_list		*get_next_group(t_list *lst);
 int			top_grp_len(t_list *lst);
 
