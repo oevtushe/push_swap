@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:42:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 13:20:40 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 13:51:23 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	sort321(t_list **a, t_list **b, int which)
 	s = which == 'a' ? OP_SA : OP_SB;
 	r = which == 'a' ? OP_RA : OP_RB;
     rr = which == 'a' ? OP_RRA : OP_RRB;
-	op_execute_wrp(a, b, s);
+	op_execute_swap_opt(a, b);
 	op_execute_wrp(a, b, r);
 	op_execute_wrp(a, b, s);
 	op_execute_wrp(a, b, rr);
@@ -49,7 +49,7 @@ void	sort312(t_list **a, t_list **b, int which)
     s = which == 'a' ? OP_SA : OP_SB;
     r = which == 'a' ? OP_RA : OP_RB;
     rr = which == 'a' ? OP_RRA : OP_RRB;
-    op_execute_wrp(a, b, s);
+	op_execute_swap_opt(a, b);
     op_execute_wrp(a, b, r);
     op_execute_wrp(a, b, s);
     op_execute_wrp(a, b, rr);
@@ -66,7 +66,7 @@ void    sort213(t_list **a, t_list **b, int which)
     t_operation s;
 
     s = which == 'a' ? OP_SA : OP_SB;
-    op_execute_wrp(a, b, s);
+	op_execute_swap_opt(a, b);
 }
 
 /*
@@ -85,7 +85,7 @@ void    sort231(t_list **a, t_list **b, int which)
     r = which == 'a' ? OP_RA : OP_RB;
     rr = which == 'a' ? OP_RRA : OP_RRB;
     op_execute_wrp(a, b, r);
-    op_execute_wrp(a, b, s);
+	op_execute_swap_opt(a, b);
     op_execute_wrp(a, b, rr);
     op_execute_wrp(a, b, s);
 }
@@ -106,6 +106,6 @@ void    sort132(t_list **a, t_list **b, int which)
     r = which == 'a' ? OP_RA : OP_RB;
     rr = which == 'a' ? OP_RRA : OP_RRB;
     op_execute_wrp(a, b, r);
-    op_execute_wrp(a, b, s);
+	op_execute_swap_opt(a, b);
     op_execute_wrp(a, b, rr);
 }

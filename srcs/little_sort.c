@@ -6,31 +6,31 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:47:59 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 12:52:10 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 14:13:04 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort3(t_stack **stack)
+void	sort3(t_stack **a_stack, t_stack **b_stack)
 {
 	int a;
 	int b;
 	int c;
 
-	a = *(int*)(*stack)->lst->content;
-	b = *(int*)(*stack)->lst->next->content;
-	c = *(int*)(*stack)->lst->next->next->content;
+	a = *(int*)(*a_stack)->lst->content;
+	b = *(int*)(*a_stack)->lst->next->content;
+	c = *(int*)(*a_stack)->lst->next->next->content;
 	if (a > b && a > c && b > c)
-		sort321(&(*stack)->lst, NULL, (*stack)->name);
+		sort321(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a > b && a > c && b < c)
-		sort312(&(*stack)->lst, NULL, (*stack)->name);
+		sort312(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a < b && c < b && a < c)
-		sort132(&(*stack)->lst, NULL, (*stack)->name);
+		sort132(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a < b && c < b && a > c)
-		sort231(&(*stack)->lst, NULL, (*stack)->name);
+		sort231(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 	else if (a < c && b < c && a > b)
-		sort213(&(*stack)->lst, NULL, (*stack)->name);
+		sort213(&(*a_stack)->lst, &(*b_stack)->lst, (*a_stack)->name);
 }
 
 void	rsort3(t_stack **stack)
@@ -70,14 +70,13 @@ void	rsort2(t_stack **stack)
 		op_execute_wrp(&(*stack)->lst, NULL, OP_SA);
 }
 
-void	sort2(t_stack **stack)
+void	sort2(t_stack **a_stack, t_stack **b_stack)
 {
 	int a;
 	int b;
 
-	a = *(int*)(*stack)->lst->content;
-	b = *(int*)(*stack)->lst->next->content;
+	a = *(int*)(*a_stack)->lst->content;
+	b = *(int*)(*a_stack)->lst->next->content;
 	if (a > b)
-		op_execute_wrp(&(*stack)->lst, NULL, OP_SA);
+		op_execute_swap_opt(&(*a_stack)->lst, &(*b_stack)->lst);
 }
-
