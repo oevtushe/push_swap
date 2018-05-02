@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 14:12:52 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:36:24 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,6 @@ int			last_less_elem(t_stack **stack, int grp, int n);
 void		sort3optimized(t_stack **a_stack, t_stack **b_stack);
 void		sort3(t_stack **a_stack, t_stack **b_stack);
 void		sort2(t_stack **a_stack, t_stack **b_stack);
-void		rsort3(t_stack **stack);
-void		rsort2(t_stack **stack);
-void    	sort321(t_list **a, t_list **b, int which);
-void    	sort312(t_list **a, t_list **b, int which);
-void    	sort213(t_list **a, t_list **b, int which);
-void    	sort231(t_list **a, t_list **b, int which);
-void    	sort132(t_list **a, t_list **b, int which);
 
 /*
 ** Tools
