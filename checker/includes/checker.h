@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 09:49:29 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:20:15 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ char			*prompt(void);
 void			print_extra(t_list *a_stack, t_list *b_stack, t_pformat *pfmt, char *text);
 void			stat(t_list *lst);
 void 			verdict(t_list *a, t_list *b);
+t_odata			*init_odata(char **args, int *si, int size);
 
 #endif

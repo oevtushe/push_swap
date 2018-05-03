@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 09:50:28 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:17:21 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,40 +58,6 @@ static void		checker(char **arr, int size, t_odata *odata)
 	verdict(a_stack, b_stack);
 }
 
-static t_odata	*init_odata(char **args, int *si)
-{
-	t_odata *odata;
-
-	odata = ft_memalloc(sizeof(t_odata));
-	odata->fd = 0;
-	odata->debug = 0;
-	odata->stat = 0;
-	odata->print = NULL;
-	if (ft_strequ(args[*si], "-c"))
-	{
-		odata->print = print_info;
-		++(*si);
-	}
-	if (ft_strequ(args[*si], "-d"))
-	{
-		odata->print = print_info;
-		odata->debug = 1;
-		++(*si);
-	}
-	else if (ft_strequ(args[*si], "-fd"))
-	{
-		if ((odata->fd = open(args[++(*si)], O_RDONLY)) < 0)
-			checker_error("Something wrong with the file !\n");
-		++(*si);
-	}
-	else if (ft_strequ(args[*si], "-s"))
-	{
-		odata->stat = 1;
-		++(*si);
-	}
-	return (odata);
-}
-
 int				main(int argc, char **argv)
 {
 	int		si;
@@ -101,7 +67,7 @@ int				main(int argc, char **argv)
 	si = 1;
 	if (argc < 2)
 		return (1);
-	odata = init_odata(argv, &si);
+	odata = init_odata(argv, &si, argc);
 	arr = split_arr(&argv[si], argc - si, &si);
 	checker(arr, si, odata);
 	if (odata->fd > 0)
