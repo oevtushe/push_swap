@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:32:13 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 09:56:13 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 15:58:47 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static void	empty_a(t_pformat *pfmt)
 {
-	char	*tmp;
-
 	if (!pfmt->ba->is_sp_printed)
 	{
 		ft_putstr(pfmt->ba->separator);
@@ -27,11 +25,7 @@ static void	empty_a(t_pformat *pfmt)
 		pfmt->ba->is_nm_printed = 1;
 	}
 	else
-	{
-		tmp = str_join_number("%", pfmt->bi_ln + 2, "s");
-		ft_printf(tmp, " ");
-		free(tmp);
-	}
+		ft_printf("%*s", pfmt->bi_ln + 2, " ");
 }
 
 static void	empty_b(t_pformat *pfmt)
@@ -51,21 +45,13 @@ static void	empty_b(t_pformat *pfmt)
 
 static void	print_elem_a(t_list **a, t_pformat *pfmt)
 {
-	char	*tmp;
-
 	if (a && *a)
 	{
 		if (pfmt->stat == ES_AM || pfmt->stat == ES_BOTH)
-		{
-			tmp = str_join_number("|%s%-", pfmt->bi_ln, "d%s|");
-			ft_printf(tmp, pfmt->color, *(int*)(*a)->content, RESET);
-		}
+			ft_printf("|%s%-*d%s|", pfmt->color, 
+					pfmt->bi_ln, *(int*)(*a)->content, RESET);
 		else
-		{
-			tmp = str_join_number("|%-", pfmt->bi_ln, "d|");
-			ft_printf(tmp, *(int*)(*a)->content);
-		}
-		free(tmp);
+			ft_printf("|%-*d|", pfmt->bi_ln, *(int*)(*a)->content);
 		*a = (*a)->next;
 	}
 	else
@@ -74,24 +60,15 @@ static void	print_elem_a(t_list **a, t_pformat *pfmt)
 
 static void	print_elem_b(t_list **b, t_pformat *pfmt)
 {
-	char	*tmp;
-
 	if (b && *b)
 	{
 		if (pfmt->stat == ES_BM || pfmt->stat == ES_BOTH)
-		{
-			tmp = str_join_number("|%s%", pfmt->bi_ln, "d%s|\n");
-			ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->spcs, ' ', -1);
-			ft_printf(tmp, pfmt->color, *(int*)(*b)->content, RESET);
-		}
+			ft_printf("%*s|%s%*d%s|\n", pfmt->spcs, " ", 
+					pfmt->color, pfmt->bi_ln, *(int*)(*b)->content, RESET);
 		else
-		{
-			tmp = str_join_number("|%", pfmt->bi_ln, "d|\n");
-			ft_strcntllr(&tmp, ft_strlen(tmp) + pfmt->spcs, ' ', -1);
-			ft_printf(tmp, *(int*)(*b)->content);
-		}
+			ft_printf("%*s|%*d|\n", pfmt->spcs, " ", 
+					pfmt->bi_ln, *(int*)(*b)->content);
 		*b = (*b)->next;
-		free(tmp);
 	}
 	else
 		empty_b(pfmt);
