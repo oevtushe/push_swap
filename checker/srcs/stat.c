@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 09:16:58 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 10:15:39 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:39:53 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void			stat(t_list *lst)
 	col1 = cal_col(stat, 4);
 	col2 = cal_col(&stat[4], 3);
 	col3 = cal_col(&stat[7], 4);
-	ft_printf("Statistics:\n");
+	ft_printf("\033[2J\033[;;H%s%sStatistics%s:\n", UNDERLINE, GREEN, RESET);
 	ft_printf("     pa  [%*d]     %*s     pb  [%*d]\n",
 			col1, stat[0], col2 + 6, "", col3, stat[7]);
 	ft_printf("     ra  [%*d]     rr  [%*d]     rb  [%*d]\n",
