@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 10:41:59 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 09:49:29 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef	struct	s_odata
 {
 	int		fd;
 	int		debug;
+	int		stat;
 	void	(*print) (t_list*, t_list*, t_opc*, t_pformat*);
 }				t_odata;
 
@@ -61,6 +62,7 @@ void			op_read_and_exec(t_list **a, t_list **b, int fd);
 void			init_format(t_pformat *pfmt, char *op_name, t_excstat stat);
 char			*prompt(void);
 void			print_extra(t_list *a_stack, t_list *b_stack, t_pformat *pfmt, char *text);
+void			stat(t_list *lst);
 void 			verdict(t_list *a, t_list *b);
 
 #endif
