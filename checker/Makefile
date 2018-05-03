@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/03 09:49:42 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/03 14:25:15 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCF			:= checker.c \
 				init_format.c \
 				op_read_and_exec.c \
 				verdict.c \
+				init_odata.c \
 				stat.c \
 				read_operations.c \
 				str_join_number.c \
