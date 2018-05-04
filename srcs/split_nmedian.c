@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 16:15:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/04 11:19:00 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static int	posofne(t_list *list)
 	pos = 0;
 	if (list && ft_lstlen(list) > 3)
 	{
-		pos = 1;
 		med = find_nmedian(list, top_grp_len(list));
 		while (list && *(int*)list->content < med)
 		{
@@ -33,7 +32,7 @@ static int	posofne(t_list *list)
 
 static void	op_execute_rot_opt(t_stack **a, t_stack **b, int *opt)
 {
-	if ((*b)->lst && opt && !get_next_group((*b)->lst))
+	if ((*b)->lst && *opt && !get_next_group((*b)->lst))
 	{
 		op_execute_wrp(&(*a)->lst, &(*b)->lst, OP_RR);
 		--(*opt);
