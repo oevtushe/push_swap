@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 12:34:24 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/01 16:44:56 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/04 16:28:16 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ $(UT_NAME): $(UT_OBJS)
 	@$(call DONE_P)
 
 $(UT_OBJS_DIR)/%.o: $(UT_SRCS_DIR)/%.c $(UT_DEPS)
-	@$(call COMPILE_P,$(@:$(UT_DIR)/%=$(RPTH)/%))
+	@$(call COMPILE_P,$(@:%=$(RPTH)/%))
 	@$(CC) $(CFLAGS) -o $@ -c $< $(IFLAGS)
 
 $(FT_OBJS_DIR)/%.o: $(FT_DIR)/%.c $(FT_DEPS)
