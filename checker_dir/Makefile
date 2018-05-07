@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/07 14:04:28 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/07 15:59:53 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,12 @@ CFLAGS			:= -Wall -Werror -Wextra
 MFLAGS			:= --no-print-directory -C
 IFLAGS			:= -I$(CH_DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR) -I$(UT_DEPS_DIR)
 
+CH_ENAME		?= $(CH_NAME)
+
 all: $(CH_NAME)
 
 $(CH_NAME): $(UT_NAME) $(CH_OBJS)
-	@$(call EXEC_P,$@)
+	@$(call EXEC_P,$(CH_ENAME))
 	@$(CC) $(CFLAGS) -o $@ $(CH_OBJS) $(UT_NAME) $(IFLAGS)
 
 # Utils
