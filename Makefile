@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/02 13:52:06 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/07 17:11:02 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,23 +23,18 @@ NAME			:= push_swap
 
 DEPF			:= push_swap.h
 SRCF			:=  arr_quickselect.c \
-					new_stack.c \
-					push_exec_pr.c \
-					dprint_stacks.c \
-					init_push.c \
 					comparators.c \
 					top_grp_len.c \
 					sort3optimized.c \
+					sort3.c \
+					sort2.c \
 					op_execute_swap_opt.c \
-					lst_safe_swap.c \
 					lsttoari.c \
 					last_significant_elem.c \
 					get_next_group.c \
 					lstntoari.c \
-					little_sort.c \
 					rebase_lst_data.c \
 					split_group.c \
-					sort3_fncs.c \
 					split_nmedian.c \
 					op_execute_wrp.c \
 					ps_error.c \

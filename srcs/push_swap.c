@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 17:04:13 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/07 17:17:31 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,49 +18,34 @@ void	del_int(void *content, size_t content_size)
 	free(content);
 }
 
-int		rot_to_grp(t_stack **a, int group)
-{
-	int		pos;
-
-	pos = 0;
-	while ((int)(*a)->lst->content_size != group)
-	{
-		op_execute_wrp(&(*a)->lst, NULL, OP_RA);
-		++pos;
-	}
-	return (pos);
-}
-
-void	sort_stacks(t_stack **a, t_stack **b)
+void	sort_stacks(t_list **lst1, t_list **lst2)
 {
 	int		group_cnt;
 
 	group_cnt = 0;
-	split_group_a(a, b, &group_cnt);
-	while ((*b)->lst)
-		split_group_b(a, b, &group_cnt);
+	split_group_a(lst1, lst2, &group_cnt);
+	while (*lst2)
+		split_group_b(lst1, lst2, &group_cnt);
 }
 
 int		main(int argc, char **argv)
 {
-	t_stack		*a;
-	t_stack		*b;
-	t_list		*lst;
+	t_list		*a;
+	t_list		*b;
 	char		**arr;
 	int			size;
 
-	lst = NULL;
+	a = NULL;
+	b = NULL;
 	if (argc < 2)
 		return (1);
 	arr = split_arr(&argv[1], argc - 1, &size);
 	if (isvldarg(arr, size))
-		lst = read_args_stack(arr, size);
+		a = read_args_stack(arr, size);
 	else
 		ps_error("Error\n");
-	a = new_stack(lst, 'a');
-	b = new_stack(NULL, 'b');
-	rebase_lst_data(lst);
-	if (!st_issorted(lst))
+	rebase_lst_data(a);
+	if (!st_issorted(a))
 		sort_stacks(&a, &b);
 	free_str_arr(&arr, size);
 	return (0);
