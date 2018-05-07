@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/07 14:12:46 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/07 14:30:37 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/07 15:31:36 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ PS_SRCS_DIR		:= srcs
 PS_OBJS_DIR		:= objs
 
 UT_DIR			:= utils
-CH_DIR			:= checker
+CH_DIR			:= checker_dir
 
 include			$(CH_DIR)/Checker.mk
 

@@ -6,13 +6,13 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/07 14:57:53 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/07 15:32:55 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include			Push_Swap.mk
 
-CH_NAME			:= checker_e
+CH_NAME			:= checker
 
 CC				:= gcc
 RM				:= rm -rf
