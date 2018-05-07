@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:42:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/07 14:19:35 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 17:21:45 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,23 @@ static void	sort132(t_list **a, t_list **b)
     op_execute_wrp(a, b, OP_RRA);
 }
 
-void		sort3(t_stack **a_stack, t_stack **b_stack)
+void		sort3(t_list **lst1, t_list **lst2)
 {
 	int a;
 	int b;
 	int c;
 
-	a = *(int*)(*a_stack)->lst->content;
-	b = *(int*)(*a_stack)->lst->next->content;
-	c = *(int*)(*a_stack)->lst->next->next->content;
+	a = *(int*)(*lst1)->content;
+	b = *(int*)(*lst1)->next->content;
+	c = *(int*)(*lst1)->next->next->content;
 	if (a > b && a > c && b > c)
-		sort321(&(*a_stack)->lst, &(*b_stack)->lst);
+		sort321(lst1, lst2);
 	else if (a > b && a > c && b < c)
-		sort312(&(*a_stack)->lst, &(*b_stack)->lst);
+		sort312(lst1, lst2);
 	else if (a < b && c < b && a < c)
-		sort132(&(*a_stack)->lst, &(*b_stack)->lst);
+		sort132(lst1, lst2);
 	else if (a < b && c < b && a > c)
-		sort231(&(*a_stack)->lst, &(*b_stack)->lst);
+		sort231(lst1, lst2);
 	else if (a < c && b < c && a > b)
-		op_execute_swap_opt(&(*a_stack)->lst, &(*b_stack)->lst);
+		op_execute_swap_opt(lst1, lst2);
 }
