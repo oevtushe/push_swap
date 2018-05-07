@@ -6,11 +6,11 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/04 13:27:07 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/04 16:18:10 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/07 15:34:35 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CH_NAME			:= ../checker_e
+CH_NAME			:= ../checker
 
 CH_DIR			?= .
 CH_DEPS_DIR		:= $(CH_DIR)/includes
