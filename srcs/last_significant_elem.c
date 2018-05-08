@@ -6,21 +6,19 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 09:33:24 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/24 11:30:21 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 17:08:05 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			last_bigger_elem(t_stack **stack, int grp, int n)
+int			last_bigger_elem(t_list *lst, int grp, int n)
 {
 	int		i;
 	int		pos;
-	t_list *lst;
 
 	i = 0;
 	pos = -2;
-	lst = (*stack)->lst;
 	while (lst && (int)lst->content_size == grp)
 	{
 		if (*(int*)lst->content >= n)
@@ -31,15 +29,13 @@ int			last_bigger_elem(t_stack **stack, int grp, int n)
 	return (pos + 1);
 }
 
-int			last_less_elem(t_stack **stack, int grp, int n)
+int			last_less_elem(t_list *lst, int grp, int n)
 {
 	int		i;
 	int		pos;
-	t_list *lst;
 
 	i = 0;
 	pos = -2;
-	lst = (*stack)->lst;
 	while (lst && (int)lst->content_size == grp)
 	{
 		if (*(int*)lst->content < n)

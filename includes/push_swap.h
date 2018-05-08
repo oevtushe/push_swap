@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 17:36:24 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/07 17:09:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,27 @@
 
 # include "utils.h"
 
-typedef struct		s_stack
-{
-	char	name;
-	t_list	*lst;
-}					t_stack;
-
 /*
 ** Algorithm
 */
 
-void	    lst_safe_swap(t_stack **stack, int i, int j);
 int			arr_quickselect(int *arr, int p, int r, int i);
 int			find_nmedian(t_list *lst, int size);
-void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt);
-void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt);
-void		init_push(t_stack **stack, t_opc *op);
-void		push_exec_pr(t_stack **st1, t_stack **st2, t_opc opc);
-void		split_group_a(t_stack **stack1, t_stack **stack2, int *group_cnt);
-void		split_group_b(t_stack **stack1, t_stack **stack2, int *group_cnt);
-int			last_bigger_elem(t_stack **stack, int grp, int n);
-int			last_less_elem(t_stack **stack, int grp, int n);
+void		split_nmedian_a(t_list **lst1, t_list **lst2, int grp_size, int group_cnt);
+void		split_nmedian_b(t_list **lst1, t_list **lst2, int grp_size, int group_cnt);
+void		split_group_a(t_list **lst1, t_list **lst2, int *group_cnt);
+void		split_group_b(t_list **lst1, t_list **lst2, int *group_cnt);
+int			last_bigger_elem(t_list *lst, int grp, int n);
+int			last_less_elem(t_list *lst, int grp, int n);
 
-void		sort3optimized(t_stack **a_stack, t_stack **b_stack);
-void		sort3(t_stack **a_stack, t_stack **b_stack);
-void		sort2(t_stack **a_stack, t_stack **b_stack);
+void		sort3optimized(t_list **lst1, t_list **lst2);
+void		sort3(t_list **lst1, t_list **lst2);
+void		sort2(t_list **lst1, t_list **lst2);
 
 /*
 ** Tools
 */
 
-t_stack     *new_stack(t_list *lst, char name);
 int     	*lsttoari(t_list *lst);
 void		rebase_lst_data(t_list *lst);
 int     	*lstntoari(t_list *lst, int size);
@@ -54,11 +44,5 @@ void		op_execute_wrp(t_list **a, t_list **b, t_operation op);
 void		op_execute_swap_opt(t_list **a, t_list **b);
 t_list		*get_next_group(t_list *lst);
 int			top_grp_len(t_list *lst);
-
-/*
-** Debug
-*/
-
-void		dprint_stacks(t_stack *a, t_stack *b);
 
 #endif

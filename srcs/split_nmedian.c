@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/04 11:19:00 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/03 17:13:22 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int	posofne(t_list *list)
 	pos = 0;
 	if (list && ft_lstlen(list) > 3)
 	{
+		pos = 1;
 		med = find_nmedian(list, top_grp_len(list));
 		while (list && *(int*)list->content < med)
 		{
@@ -30,15 +31,15 @@ static int	posofne(t_list *list)
 	return (pos);
 }
 
-static void	op_execute_rot_opt(t_stack **a, t_stack **b, int *opt)
+static void	op_execute_rot_opt(t_list **lst1, t_list **lst2, int *opt)
 {
-	if ((*b)->lst && *opt && !get_next_group((*b)->lst))
+	if (*lst2 && opt && !get_next_group(*lst2))
 	{
-		op_execute_wrp(&(*a)->lst, &(*b)->lst, OP_RR);
+		op_execute_wrp(lst1, lst2, OP_RR);
 		--(*opt);
 	}
 	else
-		op_execute_wrp(&(*a)->lst, NULL, OP_RA);
+		op_execute_wrp(lst1, NULL, OP_RA);
 }
 
 /*
@@ -48,58 +49,58 @@ static void	op_execute_rot_opt(t_stack **a, t_stack **b, int *opt)
 ** @param	ngrp	separated group number.
 */
 
-void		split_nmedian_a(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt)
+void		split_nmedian_a(t_list **lst1, t_list **lst2, int grp_size, int group_cnt)
 {
 	int		median;
 	int		rot_cnt;
 	int		ls;
 	int		opt;
 
-	opt = posofne((*stack2)->lst);
+	opt = posofne(*lst2);
 	rot_cnt = 0;
-	median = find_nmedian((*stack1)->lst, grp_size);
-	ls = last_less_elem(stack1, (int)(*stack1)->lst->content_size, median);
+	median = find_nmedian(*lst1, grp_size);
+	ls = last_less_elem(*lst1, (int)(*lst1)->content_size, median);
 	while (ls--)
 	{
-		if (*(int*)(*stack1)->lst->content < median)
+		if (*(int*)(*lst1)->content < median)
 		{
-			(*stack1)->lst->content_size = group_cnt;
-			op_execute_wrp(&(*stack1)->lst, &(*stack2)->lst, OP_PB);
+			(*lst1)->content_size = group_cnt;
+			op_execute_wrp(lst1, lst2, OP_PB);
 		}
 		else
 		{
 			++rot_cnt;
-			op_execute_rot_opt(stack1, stack2, &opt);
+			op_execute_rot_opt(lst1, lst2, &opt);
 		}
 	}
-	if (get_next_group((*stack1)->lst))
+	if (get_next_group(*lst1))
 		while (rot_cnt--)
-			op_execute_wrp(&(*stack1)->lst, NULL, OP_RRA);
+			op_execute_wrp(lst1, NULL, OP_RRA);
 }
 
-void		split_nmedian_b(t_stack **stack1, t_stack **stack2, int grp_size, int group_cnt)
+void		split_nmedian_b(t_list **lst1, t_list **lst2, int grp_size, int group_cnt)
 {
 	int		median;
 	int		rot_cnt;
 	int		ls;
 
 	rot_cnt = 0;
-	median = find_nmedian((*stack2)->lst, grp_size);
-	ls = last_bigger_elem(stack2, (int)(*stack2)->lst->content_size, median);
+	median = find_nmedian(*lst2, grp_size);
+	ls = last_bigger_elem(*lst2, (int)(*lst2)->content_size, median);
 	while (ls--)
 	{
-		if (*(int*)(*stack2)->lst->content >= median)
+		if (*(int*)(*lst2)->content >= median)
 		{
-			(*stack2)->lst->content_size = group_cnt;
-			op_execute_wrp(&(*stack1)->lst, &(*stack2)->lst, OP_PA);
+			(*lst2)->content_size = group_cnt;
+			op_execute_wrp(lst1, lst2, OP_PA);
 		}
 		else
 		{
 			++rot_cnt;
-			op_execute_wrp(NULL, &(*stack2)->lst, OP_RB);
+			op_execute_wrp(NULL, lst2, OP_RB);
 		}
 	}
-	if (get_next_group((*stack2)->lst))
+	if (get_next_group(*lst2))
 		while (rot_cnt--)
-			op_execute_wrp(NULL, &(*stack2)->lst, OP_RRB);
+			op_execute_wrp(NULL, lst2, OP_RRB);
 }
