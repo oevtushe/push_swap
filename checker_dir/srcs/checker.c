@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 14:17:21 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/12 09:41:55 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_list	*get_a(char **arr, int size)
 	t_list *stack;
 
 	stack = NULL;
-	if (isvldarg(&arr[0], size))
+	if (arr && *arr && isvldarg(&arr[0], size))
 		stack = read_args_stack(&arr[0], size);
 	else
 		checker_error("Error\n");
