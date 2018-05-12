@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 17:05:26 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 17:07:15 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,14 @@ static void	op_execute_rot_opt(t_list **lst1, t_list **lst2, int *opt)
 ** @param	ngrp	separated group number.
 */
 
-void		split_nmedian_a(t_list **lst1, t_list **lst2, int grp_size, int group_cnt)
+void		split_nmedian_a(t_list **lst1, t_list **lst2, int median, int group_cnt)
 {
-	int		median;
 	int		rot_cnt;
 	int		ls;
 	int		opt;
 
 	opt = posofne(*lst2);
 	rot_cnt = 0;
-	median = find_nmedian(*lst1, grp_size);
 	ls = last_less_elem(*lst1, (int)(*lst1)->content_size, median);
 	while (ls--)
 	{
@@ -77,14 +75,12 @@ void		split_nmedian_a(t_list **lst1, t_list **lst2, int grp_size, int group_cnt)
 			op_execute_wrp(lst1, NULL, OP_RRA);
 }
 
-void		split_nmedian_b(t_list **lst1, t_list **lst2, int grp_size, int group_cnt)
+void		split_nmedian_b(t_list **lst1, t_list **lst2, int median, int group_cnt)
 {
-	int		median;
 	int		rot_cnt;
 	int		ls;
 
 	rot_cnt = 0;
-	median = find_nmedian(*lst2, grp_size);
 	ls = last_bigger_elem(*lst2, (int)(*lst2)->content_size, median);
 	while (ls--)
 	{
