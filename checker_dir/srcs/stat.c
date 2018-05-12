@@ -6,20 +6,11 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 09:16:58 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 14:39:53 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/12 10:12:00 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-static	void	init_zeroes(int *stat, const int size)
-{
-	int			i;
-
-	i = 0;
-	while (i < size)
-		stat[i++] = 0;
-}
 
 static void		count_op(t_operation op, int *stat)
 {
@@ -47,9 +38,13 @@ static void		count_op(t_operation op, int *stat)
 		stat[10]++;
 }
 
-static	void	init_stat_arr(t_list *lst, int *stat)
+static	void	init_stat_arr(t_list *lst, int *stat, int size)
 {
-	init_zeroes(stat, 11);
+	int			i;
+
+	i = 0;
+	while (i < size)
+		stat[i++] = 0;
 	while (lst)
 	{
 		count_op(((t_opc*)lst->content)->abbr, stat);
@@ -83,6 +78,21 @@ static int		cal_col(int *arr, int size)
 	return (lmax);
 }
 
+static int		cnt_total(int *stat, int size)
+{
+	int i;
+	int total;
+
+	i = 0;
+	total = 0;
+	while (i < size)
+	{
+		total += stat[i];
+		++i;
+	}
+	return (total);
+}
+
 void			stat(t_list *lst)
 {
 	const int	size = 11;
@@ -91,11 +101,12 @@ void			stat(t_list *lst)
 	int			col2;
 	int			col3;
 
-	init_stat_arr(lst, stat);
+	init_stat_arr(lst, stat, size);
 	col1 = cal_col(stat, 4);
 	col2 = cal_col(&stat[4], 3);
 	col3 = cal_col(&stat[7], 4);
-	ft_printf("\033[2J\033[;;H%s%sStatistics%s:\n", UNDERLINE, GREEN, RESET);
+	ft_printf("\033[2J\033[;;H%s%sStatistics%s: (%s%d%s)\n",
+			UNDERLINE, GREEN, RESET, BOLD, cnt_total(stat, size), RESET);
 	ft_printf("     pa  [%*d]     %*s     pb  [%*d]\n",
 			col1, stat[0], col2 + 6, "", col3, stat[7]);
 	ft_printf("     ra  [%*d]     rr  [%*d]     rb  [%*d]\n",
