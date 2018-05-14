@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:59:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/09 16:00:06 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/14 11:19:09 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static void	top_sort(t_list **lst1, t_list **lst2)
 			sort3optimized(lst1, lst2);
 		else
 			sort3(lst1, lst2);
+		if (ft_lstlen(*lst2) == 3)
+			sort3optim_b(lst1, lst2);
 	}
 	else if (t1 == 2)
 		sort2(lst1, lst2);
@@ -52,13 +54,15 @@ void		split_group_a(t_list **lst1, t_list **lst2, int *group_cnt)
 {
 	int		top_len;
 	int		cur_grp;
+	int		median;
 
 	cur_grp = (*lst1)->content_size;
 	while ((top_len = top_grp_len(*lst1)) > 3 
 			&& (int)(*lst1)->content_size == cur_grp)
 	{
+		median = find_nmedian(*lst1, top_len);
 		++(*group_cnt);
-		split_nmedian_a(lst1, lst2, top_len, *group_cnt);
+		split_nmedian_a(lst1, lst2, median, *group_cnt);
 	}
 	top_sort(lst1, lst2);
 	if ((top_len = top_grp_len(*lst2)) > 0)
@@ -72,12 +76,14 @@ void		split_group_b(t_list **lst1, t_list **lst2, int *group_cnt)
 {
 	int		top_len;
 	int		cur_grp;
+	int		median;
 
 	cur_grp = (*lst2)->content_size;
 	while ((top_len = top_grp_len(*lst2)) > 3 
 			&& (int)(*lst2)->content_size == cur_grp)
 	{
-		split_nmedian_b(lst1, lst2, top_len, ++(*group_cnt));
+		median = find_nmedian(*lst2, top_len);
+		split_nmedian_b(lst1, lst2, median, ++(*group_cnt));
 		if (top_grp_len(*lst1) > 3)
 			sort_group(lst1, lst2,
 					(int)(*lst2)->content_size, group_cnt);

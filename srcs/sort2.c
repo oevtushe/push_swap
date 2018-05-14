@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 17:26:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/07 17:24:05 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/14 11:27:55 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	sort2(t_list **lst1, t_list **lst2)
 	a = *(int*)(*lst1)->content;
 	b = *(int*)(*lst1)->next->content;
 	if (a > b)
-		op_execute_swap_opt(lst1, lst2);
+		op_execute_swap_opt(lst1, lst2, 'a');
 }
