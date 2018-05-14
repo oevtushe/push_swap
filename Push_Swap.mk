@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/07 14:12:46 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/14 11:19:55 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/14 12:20:49 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ PS_SRCF			:=  arr_quickselect.c \
 					op_execute_swap_opt.c \
 					lsttoari.c \
 					last_significant_elem.c \
+					sort3bitch.c \
 					get_next_group.c \
 					sort3.c \
 					sort2.c \
