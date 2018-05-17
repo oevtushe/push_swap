@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 10:55:01 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:12:12 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void		op_print(t_list **a, t_list **b, t_operation op, t_pformat *pfmt)
+static void		op_print(t_list_de **a, t_list_de **b, t_operation op, t_pformat *pfmt)
 {
 	if (pfmt->stat != ES_NONE)
 	{
@@ -57,7 +57,7 @@ char	*prompt(void)
 	return (cmd);
 }
 
-void	print_extra(t_list *a_stack, t_list *b_stack, t_pformat *pfmt, char *text)
+void	print_extra(t_list_de *a_stack, t_list_de *b_stack, t_pformat *pfmt, char *text)
 {
 	t_opc	*tmp;
 
@@ -68,7 +68,7 @@ void	print_extra(t_list *a_stack, t_list *b_stack, t_pformat *pfmt, char *text)
 	free(tmp);
 }
 
-void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
+void			print_info(t_list_de *a, t_list_de *b, t_opc *opc, t_pformat *pfmt)
 {
 	char		*header;
 
