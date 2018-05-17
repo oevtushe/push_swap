@@ -6,14 +6,14 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 10:14:56 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:11:54 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void				op_executor(t_list **a_stack, t_list **b_stack,
-		t_list *op_stack, void print(t_list *, t_list *, t_opc *, t_pformat*))
+void				op_executor(t_list_de **a_stack, t_list_de **b_stack,
+		t_list_de *op_stack, void print(t_list_de *, t_list_de *, t_opc *, t_pformat*))
 {
 	t_excstat	stat;
 	t_opc		*opc;
