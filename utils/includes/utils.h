@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/25 10:07:42 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:25:23 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ typedef	struct	s_opc
 	char		*op_name;
 }				t_opc;
 
-int			st_issorted(t_list *stack);
-t_excstat	op_execute(t_list **a, t_list **b, t_operation op);
+int			st_issorted(t_list_de *stack);
+t_excstat	op_execute(t_list_de **a, t_list_de **b, t_operation op);
 int			isvldarg(char **args, int size);
-t_list		*read_args_stack(char **data, int size);
-int			execute_swap(t_list *stack);
-t_excstat	execute_sswap(t_list *a, t_list *b);
-int			execute_push(t_list **fst, t_list **scd);
-int			execute_rev_rotate(t_list **stack);
-t_excstat	execute_rev_rrotate(t_list **a, t_list **b);
-int			execute_rotate(t_list **stack);
-t_excstat	execute_rrotate(t_list **a, t_list **b);
+t_list_de	*read_args_stack(char **data, int size);
+int			execute_swap(t_list_de *stack);
+t_excstat	execute_sswap(t_list_de *a, t_list_de *b);
+int			execute_push(t_list_de **fst, t_list_de **scd);
+int			execute_rev_rotate(t_list_de **stack);
+t_excstat	execute_rev_rrotate(t_list_de **a, t_list_de **b);
+int			execute_rotate(t_list_de **stack);
+t_excstat	execute_rrotate(t_list_de **a, t_list_de **b);
 char		**split_arr(char **arr, int size, int *new_size);
 void		free_str_arr(char ***arr, int size);
 

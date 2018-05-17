@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_exec_pr.c                                     :+:      :+:    :+:   */
+/*   new_opc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 09:43:53 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/03 09:43:56 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/01 11:30:01 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/01 11:30:27 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-void	push_exec_pr(t_stack **st1, t_stack **st2, t_opc opc)
+t_opc	*new_opc(t_operation op, char *op_name)
 {
-	ft_printf("%s\n", opc.op_name);
-	op_execute(&(*st1)->lst, &(*st2)->lst, opc.abbr);
+	t_opc	*opc;
+
+	opc = ft_memalloc(sizeof(t_opc));
+	opc->abbr = op;
+	opc->op_name = op_name;
+	return (opc);
 }

@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:03:46 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/31 11:03:55 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:24:07 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-t_excstat	op_execute(t_list **a, t_list **b, t_operation op)
+t_excstat	op_execute(t_list_de **a, t_list_de **b, t_operation op)
 {
 	if (op == OP_SA)
 		return (execute_swap(*a) ? ES_AM : ES_NONE);

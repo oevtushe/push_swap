@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 09:30:43 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/09 15:43:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/01 14:49:09 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static int	is_vldop(char *op)
+int			is_vldop(char *op)
 {
 	if (ft_strequ(op, "sa"))
 		return (1);

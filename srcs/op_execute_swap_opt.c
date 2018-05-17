@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_push.c                                        :+:      :+:    :+:   */
+/*   op_execute_swap_opt.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 09:39:51 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/03 09:39:55 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/02 13:48:50 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/02 14:08:59 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_push(t_stack **stack, t_opc *op)
+void	op_execute_swap_opt(t_list **a, t_list **b)
 {
-	if ((*stack)->name == 'a')
-	{
-		op->abbr = OP_PB;
-		op->op_name = "pb";
-	}
+	if (b && *b && (*b)->next && 
+			*(int*)(*b)->content < *(int*)(*b)->next->content)
+		op_execute_wrp(a, b, OP_SS);
 	else
-	{
-		op->abbr = OP_PA;
-		op->op_name = "pa";
-	}
+		op_execute_wrp(a, b, OP_SA);
 }

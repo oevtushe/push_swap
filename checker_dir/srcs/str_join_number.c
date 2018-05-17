@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dprint_stacks.c                                    :+:      :+:    :+:   */
+/*   str_join_number.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/24 09:49:17 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/24 09:49:51 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/04/26 13:23:41 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/04/26 13:23:43 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-static void	print_int(t_list *elem)
+char		*str_join_number(char *prefix, int num, char *suffix)
 {
-	ft_printf("elem: %d\ngroup: %zu\n\n", *(int*)elem->content, elem->content_size);
-}
+	char	*tmp;
+	char	*res;
 
-void		dprint_stacks(t_stack *a, t_stack *b)
-{
-	ft_lstiter(a->lst, print_int);
-	ft_printf("-----\n\n");
-	ft_lstiter(b->lst, print_int);
+	res = NULL;
+	if (prefix && suffix)
+	{
+		tmp = ft_itoa(num);
+		res = ft_strjoin(prefix, tmp);
+		free(tmp);
+		tmp = res;
+		res = ft_strjoin(res, suffix);
+		free(tmp);
+	}
+	return (res);
 }

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_stack.c                                        :+:      :+:    :+:   */
+/*   sort2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/02 11:56:21 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/02 11:56:27 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/02 17:26:56 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/07 17:24:05 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*new_stack(t_list *lst, char name)
+void	sort2(t_list **lst1, t_list **lst2)
 {
-	t_stack *stack;
+	int a;
+	int b;
 
-	stack = ft_memalloc(sizeof(t_stack));
-	if (stack)
-	{
-		stack->lst = lst;
-		stack->name = name;
-	}
-	return (stack);
+	a = *(int*)(*lst1)->content;
+	b = *(int*)(*lst1)->next->content;
+	if (a > b)
+		op_execute_swap_opt(lst1, lst2);
 }

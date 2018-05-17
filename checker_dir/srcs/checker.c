@@ -6,27 +6,19 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 10:12:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/12 09:41:55 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "checker.h"
 
-static void		verdict(t_list *a, t_list *b)
-{
-	if (!b && st_issorted(a))
-		ft_putstr("OK\n");
-	else
-		ft_putstr("KO\n");
-}
-
 static t_list	*get_a(char **arr, int size)
 {
 	t_list *stack;
 
 	stack = NULL;
-	if (isvldarg(&arr[0], size))
+	if (arr && *arr && isvldarg(&arr[0], size))
 		stack = read_args_stack(&arr[0], size);
 	else
 		checker_error("Error\n");
@@ -45,8 +37,7 @@ static t_list	*get_ops(int fd)
 	return (op_stack);
 }
 
-void			checker(char **arr, int size, \
-		void (*print) (t_list*, t_list*, t_opc*, t_excstat), int fd)
+static void		checker(char **arr, int size, t_odata *odata)
 {
 	t_list	*a_stack;
 	t_list	*b_stack;
@@ -55,38 +46,33 @@ void			checker(char **arr, int size, \
 	a_stack = NULL;
 	b_stack = NULL;
 	a_stack = get_a(arr, size);
-	op_stack = get_ops(fd);
-	op_executor(&a_stack, &b_stack, op_stack, print);
+	if (odata->debug)
+		op_read_and_exec(&a_stack, &b_stack, odata->fd);
+	else
+	{
+		op_stack = get_ops(odata->fd);
+		op_executor(&a_stack, &b_stack, op_stack, odata->print);
+	}
+	if (odata->stat)
+		stat(op_stack);
 	verdict(a_stack, b_stack);
 }
 
 int				main(int argc, char **argv)
 {
-	int		fd;
 	int		si;
-	void	(*print) (t_list*, t_list*, t_opc*, t_excstat);
 	char	**arr;
+	t_odata *odata;
 
-	fd = 0;
 	si = 1;
-	print = NULL;
 	if (argc < 2)
 		return (1);
-	if (ft_strequ(argv[si], "-c"))
-	{
-		print = print_info;
-		++si;
-	}
-	if (ft_strequ(argv[si], "-fd"))
-	{
-		if ((fd = open(argv[++si], O_RDONLY)) < 0)
-			checker_error("Something wrong with the file !\n");
-		++si;
-	}
+	odata = init_odata(argv, &si, argc);
 	arr = split_arr(&argv[si], argc - si, &si);
-	checker(arr, si, print, fd);
-	if (fd > 0)
-		close(fd);
+	checker(arr, si, odata);
+	if (odata->fd > 0)
+		close(odata->fd);
 	free_str_arr(&arr, si);
+	free(odata);
 	return (0);
 }
