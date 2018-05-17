@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 12:18:47 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/14 14:50:34 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 17:01:12 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	sort231(t_list **a, t_list **b)
 static void	sort132(t_list **a, t_list **b)
 {
     op_execute_wrp(a, b, OP_RR);
-	op_execute_wrp(a, b, OP_SB);
+	op_execute_wrp(a, b, OP_SS);
     op_execute_wrp(a, b, OP_RRR);
 }
 
@@ -86,5 +86,5 @@ void		sort3bitch(t_list **lst1, t_list **lst2)
 	else if (a < b && c < b && a > c)
 		sort231(lst1, lst2);
 	else if (a < c && b < c && a > b)
-		op_execute_swap_opt(lst1, lst2, 'b');
+		op_execute_swap_opt(lst1, lst2, 'a');
 }

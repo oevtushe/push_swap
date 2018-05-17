@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:59:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/14 12:48:36 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 17:41:59 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ static void	top_sort(t_list **lst1, t_list **lst2)
 				sort3optimized(lst1, lst2);
 		}
 		else if (*lst2 && top_grp_len(*lst2) == 3 && get_comb_a(lst1) == get_comb_b(lst2))
+		{
 			sort3bitch(lst1, lst2);
+		}
 		else
 			sort3(lst1, lst2);
 		if (ft_lstlen(*lst2) == 3)
@@ -105,19 +107,35 @@ static void	get_head_back(t_list **lst1, t_list **lst2, int *group_cnt)
 	}
 }
 
+/*
+void		print(t_list *elem)
+{
+	t_median *median;
+
+	median = elem->content;
+	ft_printf("median = %d\npush_cnt = %d\n\n", median->median, median->push_cnt);
+}
+*/
+
 void		split_group_a(t_list **lst1, t_list **lst2, int *group_cnt)
 {
 	int		top_len;
 	int		cur_grp;
-	int		median;
+	t_list	*medians;
 
 	cur_grp = (*lst1)->content_size;
-	while ((top_len = top_grp_len(*lst1)) > 3 
-			&& (int)(*lst1)->content_size == cur_grp)
+	top_len = top_grp_len(*lst1);
+	medians = find_all_nmedians(*lst1, top_len);
+	//ft_lstiter(medians, print);
+	++(*group_cnt);
+	while (medians && (int)(*lst1)->content_size == cur_grp)
 	{
-		median = find_nmedian(*lst1, top_len);
-		++(*group_cnt);
-		split_nmedian_a(lst1, lst2, median, *group_cnt);
+		split_nmedian_a(lst1, lst2, &medians, group_cnt);
+		if (!((t_median*)(medians->content))->push_cnt)
+		{
+			medians = medians->next;
+			++(*group_cnt);
+		}
 	}
 	top_sort(lst1, lst2);
 	if ((top_len = top_grp_len(*lst2)) > 0)

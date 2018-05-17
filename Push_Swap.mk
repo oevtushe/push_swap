@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/07 14:12:46 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/14 12:20:49 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/16 10:35:51 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ PS_SRCF			:=  arr_quickselect.c \
 					sort3.c \
 					sort2.c \
 					lstntoari.c \
+					find_all_nmedians.c \
 					rebase_lst_data.c \
 					split_group.c \
 					split_nmedian.c \

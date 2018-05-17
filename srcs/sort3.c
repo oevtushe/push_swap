@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:42:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/14 14:42:09 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/16 15:44:16 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 static void	sort321(t_list **a, t_list **b)
 {
 	op_execute_swap_opt(a, b, 'a');
-	//op_execute_wrp(a, b, OP_SA);
 	op_execute_wrp(a, b, OP_RA);
 	op_execute_wrp(a, b, OP_SA);
 	op_execute_wrp(a, b, OP_RRA);
@@ -37,7 +36,6 @@ static void	sort321(t_list **a, t_list **b)
 static void	sort312(t_list **a, t_list **b)
 {
 	op_execute_swap_opt(a, b, 'a');
-	//op_execute_wrp(a, b, OP_SA);
     op_execute_wrp(a, b, OP_RA);
     op_execute_wrp(a, b, OP_SA);
     op_execute_wrp(a, b, OP_RRA);
@@ -53,7 +51,6 @@ static void	sort231(t_list **a, t_list **b)
 {
     op_execute_wrp(a, b, OP_RA);
 	op_execute_swap_opt(a, b, 'a');
-	//op_execute_wrp(a, b, OP_SA);
     op_execute_wrp(a, b, OP_RRA);
     op_execute_wrp(a, b, OP_SA);
 }
@@ -67,7 +64,6 @@ static void	sort231(t_list **a, t_list **b)
 static void	sort132(t_list **a, t_list **b)
 {
     op_execute_wrp(a, b, OP_RA);
-	//op_execute_wrp(a, b, OP_SA);
 	op_execute_swap_opt(a, b, 'a');
     op_execute_wrp(a, b, OP_RRA);
 }

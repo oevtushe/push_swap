@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 14:25:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/14 14:37:19 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 16:26:55 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,17 @@ void	sort3optimized(t_list **lst1, t_list **lst2)
 	if (a > b && a > c && b > c)
 	{
 		op_execute_swap_opt(lst1, lst2, 'a');
-		//op_execute_wrp(lst1, lst2, OP_SA);
 		op_execute_wrp(lst1, lst2, OP_RRA);
 	}
 	else if (a > b && a > c && b < c)
 		op_execute_wrp(lst1, lst2, OP_RA);
 	else if (a < b && c < b && a < c)
 	{
-		//op_execute_wrp(lst1, lst2, OP_RRA);
+		op_execute_wrp(lst1, lst2, OP_RRA);
 		op_execute_swap_opt(lst1, lst2, 'a');
-		op_execute_wrp(lst1, lst2, OP_SA);
 	}
 	else if (a < b && c < b && a > c)
 		op_execute_wrp(lst1, lst2, OP_RRA);
 	else if (a < c && b < c && a > b)
 		op_execute_swap_opt(lst1, lst2, 'a');
-		//op_execute_wrp(lst1, lst2, OP_SA);
 }
