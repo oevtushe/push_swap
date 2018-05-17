@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:38:12 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 15:06:34 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,13 @@ static void		checker(char **arr, int size, t_odata *odata)
 
 	a_stack = NULL;
 	b_stack = NULL;
+	op_stack = NULL;
 	a_stack = get_a(arr, size);
 	if (odata->debug)
-		op_read_and_exec(&a_stack, &b_stack, odata->fd);
+	{
+		op_read_and_exec(&a_stack, &b_stack, &op_stack, odata->fd);
+		rebase_op_stack(&op_stack);
+	}
 	else
 	{
 		op_stack = get_ops(odata->fd);

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:16:15 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 15:07:41 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_opc			*new_opc(t_operation op, char *op_name);
 t_pformat		*new_pformat(t_list_de *a);
 t_opc			*get_opc(char *oper_nm);
 int				is_vldop(char *op);
-void			op_read_and_exec(t_list_de **a, t_list_de **b, int fd);
+void			op_read_and_exec(t_list_de **a, t_list_de **b, t_list_de **op_stack, int fd);
 void			init_format(t_pformat *pfmt, char *op_name, t_excstat stat);
 char			*prompt(void);
 void			print_extra(t_list_de *a_stack, t_list_de *b_stack, t_pformat *pfmt, char *text);
