@@ -6,11 +6,12 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 14:25:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/14 14:37:19 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 18:01:15 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 /*
 **
 ** a > b && a > c && b > c
@@ -41,20 +42,44 @@ void	sort3optimized(t_list **lst1, t_list **lst2)
 	if (a > b && a > c && b > c)
 	{
 		op_execute_swap_opt(lst1, lst2, 'a');
-		//op_execute_wrp(lst1, lst2, OP_SA);
 		op_execute_wrp(lst1, lst2, OP_RRA);
 	}
 	else if (a > b && a > c && b < c)
 		op_execute_wrp(lst1, lst2, OP_RA);
 	else if (a < b && c < b && a < c)
 	{
-		//op_execute_wrp(lst1, lst2, OP_RRA);
+		op_execute_wrp(lst1, lst2, OP_RRA);
 		op_execute_swap_opt(lst1, lst2, 'a');
-		op_execute_wrp(lst1, lst2, OP_SA);
 	}
 	else if (a < b && c < b && a > c)
 		op_execute_wrp(lst1, lst2, OP_RRA);
 	else if (a < c && b < c && a > b)
 		op_execute_swap_opt(lst1, lst2, 'a');
-		//op_execute_wrp(lst1, lst2, OP_SA);
+}
+
+void	sort3optim_both(t_list **lst1, t_list **lst2)
+{
+	int a;
+	int b;
+	int c;
+
+	a = *(int*)(*lst2)->content;
+	b = *(int*)(*lst2)->next->content;
+	c = *(int*)(*lst2)->next->next->content;
+	if (c > a && c > b && b > a)
+	{
+		op_execute_wrp(lst1, lst2, OP_SS);
+		op_execute_wrp(lst1, lst2, OP_RRR);
+	}
+	else if (b > a && b > c && c > a)
+		op_execute_wrp(lst1, lst2, OP_RR);
+	else if (a > b && a > c && c > a)
+	{
+		op_execute_wrp(lst1, lst2, OP_RRR);
+		op_execute_wrp(lst1, lst2, OP_SS);
+	}
+	else if (c > a && c > b && a > b)
+		op_execute_wrp(lst1, lst2, OP_RRR);
+	else if (b > a && b > c && a > c)
+		op_execute_wrp(lst1, lst2, OP_SS);
 }

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/14 12:29:07 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 18:02:32 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,20 @@
 
 # include "utils.h"
 
+typedef	struct	s_median
+{
+	int median;
+	int	push_cnt;
+}				t_median;
+
 /*
 ** Algorithm
 */
 
 int			arr_quickselect(int *arr, int p, int r, int i);
 int			find_nmedian(t_list *lst, int size);
-void		split_nmedian_a(t_list **lst1, t_list **lst2, int median, int group_cnt);
+t_list		*find_all_nmedians(t_list *lst, int size);
+void		split_nmedian_a(t_list **lst1, t_list **lst2, t_list **medians, int *group_cnt);
 void		split_nmedian_b(t_list **lst1, t_list **lst2, int median, int group_cnt);
 void		split_group_a(t_list **lst1, t_list **lst2, int *group_cnt);
 void		split_group_b(t_list **lst1, t_list **lst2, int *group_cnt);
@@ -29,9 +36,9 @@ int			last_bigger_elem(t_list *lst, int grp, int n);
 int			last_less_elem(t_list *lst, int grp, int n);
 
 void		sort3optim_b(t_list **lst1, t_list **lst2);
-void		sort3optim_bitch(t_list **lst1, t_list **lst2);
+void		sort3optim_both(t_list **lst1, t_list **lst2);
 void		sort3optimized(t_list **lst1, t_list **lst2);
-void		sort3bitch(t_list **lst1, t_list **lst2);
+void		sort3both(t_list **lst1, t_list **lst2);
 void		sort3(t_list **lst1, t_list **lst2);
 void		sort2(t_list **lst1, t_list **lst2);
 
