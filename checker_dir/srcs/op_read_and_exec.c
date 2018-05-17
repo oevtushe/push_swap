@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:14:25 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 10:23:16 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:12:04 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void				op_read_and_exec(t_list **a, t_list **b, int fd)
+void				op_read_and_exec(t_list_de **a, t_list_de **b, int fd)
 {
 	t_excstat	stat;
 	char		*line;

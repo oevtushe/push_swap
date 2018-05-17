@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:08:43 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/31 11:08:44 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:26:01 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int			execute_swap(t_list *stack)
+int			execute_swap(t_list_de *stack)
 {
 	int		st;
 	void	*tmp;
@@ -29,7 +29,7 @@ int			execute_swap(t_list *stack)
 	return (st);
 }
 
-t_excstat	execute_sswap(t_list *a, t_list *b)
+t_excstat	execute_sswap(t_list_de *a, t_list_de *b)
 {
 	t_excstat	stat1;
 	t_excstat	stat2;
@@ -46,7 +46,7 @@ t_excstat	execute_sswap(t_list *a, t_list *b)
 	return (stat);
 }
 
-int			execute_push(t_list **fst, t_list **scd)
+int			execute_push(t_list_de **fst, t_list_de **scd)
 {
 	int		st;
 	void	*tmp;
@@ -55,7 +55,7 @@ int			execute_push(t_list **fst, t_list **scd)
 	{
 		st = 1;
 		tmp = (*scd)->next;
-		ft_lstadd(fst, *scd);
+		ft_lstadd_de(fst, *scd);
 		*scd = tmp;
 	}
 	else

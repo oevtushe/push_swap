@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:54:51 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/31 11:11:18 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:24:24 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int		st_issorted(t_list *stack)
+int		st_issorted(t_list_de *stack)
 {
 	int cur;
 	int	prev;
