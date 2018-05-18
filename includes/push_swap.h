@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 11:50:37 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 18:02:32 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int			last_bigger_elem(t_list *lst, int grp, int n);
 int			last_less_elem(t_list *lst, int grp, int n);
 
 void		sort3optim_b(t_list **lst1, t_list **lst2);
-void		sort3optim_bitch(t_list **lst1, t_list **lst2);
+void		sort3optim_both(t_list **lst1, t_list **lst2);
 void		sort3optimized(t_list **lst1, t_list **lst2);
-void		sort3bitch(t_list **lst1, t_list **lst2);
+void		sort3both(t_list **lst1, t_list **lst2);
 void		sort3(t_list **lst1, t_list **lst2);
 void		sort2(t_list **lst1, t_list **lst2);
 

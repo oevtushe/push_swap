@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 16:21:32 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/18 10:17:52 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,30 @@ static void	print(t_list *elem)
 void		split_nmedian_a(t_list **lst1, t_list **lst2, t_list **medians, int *group_cnt)
 {
 	int			rot_cnt;
-	//int			ls;
-	int			tl;
+	int			ls;
+	//int			tl;
 	int			opt;
 	t_median	*cur_med;
 
 	opt = posofne(*lst2);
 	rot_cnt = 0;
-	//ls = last_less_elem(*lst1, (int)(*lst1)->content_size, ((t_median*)medians->content)->median);
-	tl = top_grp_len(*lst1);
+	//tl = top_grp_len(*lst1);
 	cur_med = (t_median*)(*medians)->content;
-	while (tl--)
+	ls = last_less_elem(*lst1, (int)(*lst1)->content_size, cur_med->median);
+	while (ls-- > 0)
 	{
 		if (*(int*)(*lst1)->content < cur_med->median)
 		{
 			(*lst1)->content_size = *group_cnt;
 			op_execute_wrp(lst1, lst2, OP_PB);
 			--cur_med->push_cnt;
+		}
+		else if (!cur_med->push_cnt && (*medians)->next)
+		{
+			*medians = (*medians)->next;
+			cur_med = (t_median*)(*medians)->content;
+			ls = last_less_elem(*lst1, (int)(*lst1)->content_size, cur_med->median);
+			++(*group_cnt);
 		}
 		else
 		{
@@ -86,9 +93,12 @@ void		split_nmedian_a(t_list **lst1, t_list **lst2, t_list **medians, int *group
 	{
 		if (rot_cnt > 6)
 		{
-			*medians = (*medians)->next;
-			cur_med = (t_median*)(*medians)->content;
-			++(*group_cnt);
+			if (!cur_med->push_cnt)
+			{
+				*medians = (*medians)->next;
+				++(*group_cnt);
+				cur_med = (t_median*)(*medians)->content;
+			}
 			while (rot_cnt--)
 			{
 				op_execute_wrp(lst1, NULL, OP_RRA);
