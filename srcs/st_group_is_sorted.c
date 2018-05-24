@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort2.c                                            :+:      :+:    :+:   */
+/*   st_group_is_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/02 17:26:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 14:10:25 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/23 11:12:11 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/23 11:40:35 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort2(t_stacks *stacks)
+int		st_group_is_sorted(t_list *lst)
 {
-	int a;
-	int b;
+	int prev;
+	int	cg;
 
-	a = *(int*)stacks->a->content;
-	b = *(int*)stacks->a->next->content;
-	if (a > b)
-		op_execute_swap_opt(stacks, 'a');
+	if (lst)
+	{
+		cg = (int)lst->content_size;
+		prev = *(int*)lst->content;
+		while (lst && prev <= *(int*)lst->content && (int)lst->content_size == cg)
+		{
+			prev = *(int*)lst->content;
+			lst = lst->next;
+		}
+		if (!lst)
+			return (1);
+		return ((int)lst->content_size != cg ? 1 : 0);
+	}
+	return (0);
 }

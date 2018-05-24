@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:57:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 17:58:18 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/22 14:48:44 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 ** 1
 */
 
-static void	sort321(t_list **a, t_list **b)
+static void	sort321(t_stacks *stacks)
 {
-	op_execute_wrp(a, b, OP_SS);
-	op_execute_wrp(a, b, OP_RR);
-	op_execute_wrp(a, b, OP_SS);
-	op_execute_wrp(a, b, OP_RRR);
-	op_execute_wrp(a, b, OP_SS);
+	op_execute_wrp(stacks, OP_SS);
+	op_execute_wrp(stacks, OP_RR);
+	op_execute_wrp(stacks, OP_SS);
+	op_execute_wrp(stacks, OP_RRR);
+	op_execute_wrp(stacks, OP_SS);
 }
 
 /*
@@ -33,12 +33,12 @@ static void	sort321(t_list **a, t_list **b)
 ** 2
 */
 
-static void	sort312(t_list **a, t_list **b)
+static void	sort312(t_stacks *stacks)
 {
-    op_execute_wrp(a, b, OP_SS);
-    op_execute_wrp(a, b, OP_RR);
-    op_execute_wrp(a, b, OP_SS);
-    op_execute_wrp(a, b, OP_RRR);
+    op_execute_wrp(stacks, OP_SS);
+    op_execute_wrp(stacks, OP_RR);
+    op_execute_wrp(stacks, OP_SS);
+    op_execute_wrp(stacks, OP_RRR);
 }
 
 /*
@@ -47,12 +47,12 @@ static void	sort312(t_list **a, t_list **b)
 ** 1
 */
 
-static void	sort231(t_list **a, t_list **b)
+static void	sort231(t_stacks *stacks)
 {
-    op_execute_wrp(a, b, OP_RR);
-    op_execute_wrp(a, b, OP_SS);
-    op_execute_wrp(a, b, OP_RRR);
-    op_execute_wrp(a, b, OP_SS);
+    op_execute_wrp(stacks, OP_RR);
+    op_execute_wrp(stacks, OP_SS);
+    op_execute_wrp(stacks, OP_RRR);
+    op_execute_wrp(stacks, OP_SS);
 }
 
 /*
@@ -61,30 +61,30 @@ static void	sort231(t_list **a, t_list **b)
 ** 2
 */
 
-static void	sort132(t_list **a, t_list **b)
+static void	sort132(t_stacks *stacks)
 {
-    op_execute_wrp(a, b, OP_RR);
-	op_execute_wrp(a, b, OP_SS);
-    op_execute_wrp(a, b, OP_RRR);
+    op_execute_wrp(stacks, OP_RR);
+	op_execute_wrp(stacks, OP_SS);
+    op_execute_wrp(stacks, OP_RRR);
 }
 
-void		sort3both(t_list **lst1, t_list **lst2)
+void		sort3both(t_stacks *stacks)
 {
 	int a;
 	int b;
 	int c;
 
-	a = *(int*)(*lst1)->content;
-	b = *(int*)(*lst1)->next->content;
-	c = *(int*)(*lst1)->next->next->content;
+	a = *(int*)stacks->a->content;
+	b = *(int*)stacks->a->next->content;
+	c = *(int*)stacks->a->next->next->content;
 	if (a > b && a > c && b > c)
-		sort321(lst1, lst2);
+		sort321(stacks);
 	else if (a > b && a > c && b < c)
-		sort312(lst1, lst2);
+		sort312(stacks);
 	else if (a < b && c < b && a < c)
-		sort132(lst1, lst2);
+		sort132(stacks);
 	else if (a < b && c < b && a > c)
-		sort231(lst1, lst2);
+		sort231(stacks);
 	else if (a < c && b < c && a > b)
-		op_execute_swap_opt(lst1, lst2, 'a');
+		op_execute_swap_opt(stacks, 'a');
 }

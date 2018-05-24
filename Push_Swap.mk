@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/07 14:12:46 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/17 18:03:51 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/23 11:19:09 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,13 +27,16 @@ PS_SRCF			:=  arr_quickselect.c \
 					top_grp_len.c \
 					sort3optim_b.c \
 					sort3optimized.c \
+					new_stacks.c \
 					op_execute_swap_opt.c \
+					st_group_is_sorted.c \
 					lsttoari.c \
 					last_significant_elem.c \
 					sort3both.c \
 					get_next_group.c \
 					sort3.c \
 					sort2.c \
+					is_eq_combs.c \
 					lstntoari.c \
 					find_all_nmedians.c \
 					rebase_lst_data.c \

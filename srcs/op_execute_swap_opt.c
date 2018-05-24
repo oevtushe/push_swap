@@ -6,37 +6,35 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 13:48:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 16:45:52 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/22 14:10:33 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_execute_swap_opt(t_list **a, t_list **b, char stack)
+void	op_execute_swap_opt(t_stacks *stacks, char stack)
 {
 	int done;
 
 	done = 0;
-	if (b && *b)
+	if (stacks->b)
 	{
-		if (top_grp_len(*b) == 2 && *(int*)(*b)->content < *(int*)(*b)->next->content)
+		if (top_grp_len(stacks->b) == 2 && *(int*)stacks->b->content < *(int*)stacks->b->next->content)
 		{
-			op_execute_wrp(a, b, OP_SS);
+			op_execute_wrp(stacks, OP_SS);
 			done = 1;
 		}
-		else if (stack != 'b' && top_grp_len(*b) == 3 && *(int*)(*b)->content < *(int*)(*b)->next->content && 
-				*(int*)(*b)->next->content > *(int*)(*b)->next->next->content &&
-					*(int*)(*b)->content > *(int*)(*b)->next->next->content)
+		else if (stack != 'b' && top_grp_len(stacks->b) == 3 && *(int*)stacks->b->content < *(int*)stacks->b->next->content)
 		{
-			op_execute_wrp(a, b, OP_SS);
+			op_execute_wrp(stacks, OP_SS);
 			done = 1;
 		}
 	}
 	if (!done)
 	{
 		if (stack == 'a')
-			op_execute_wrp(a, b, OP_SA);
+			op_execute_wrp(stacks, OP_SA);
 		else
-			op_execute_wrp(a, b, OP_SB);
+			op_execute_wrp(stacks, OP_SB);
 	}
 }
