@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 11:56:54 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 11:54:04 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/21 13:11:42 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ static void		print(t_list *elem)
 	ft_printf("elem = %d\n", *(int*)elem->content);
 }
 */
+
+// Dont copy all list
 
 t_list		*find_all_nmedians(t_list *lst, int size)
 {
