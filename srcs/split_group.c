@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:59:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/23 14:21:36 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 18:25:17 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,53 @@
 static void	top_sort(t_stacks *stacks)
 {
 	int		t1;
+	size_t	b_len;
 
 	t1 = top_grp_len(stacks->a);
+	b_len = ft_lstlen(stacks->b);
 	if (t1 == 3)
 	{
-		if (!get_next_group(stacks->a) && !(is_eq_combs(stacks) && get_next_group(stacks->b)))
+		if (!get_next_group(stacks->a))
 		{
-			if (stacks->b && !get_next_group(stacks->b) && is_eq_combs(stacks))
+#ifdef DEBUG
+			ft_printf("One group in \'a\'\n");
+#endif
+			if (b_len == 3 && is_eq_combs(stacks))
+			{
+#ifdef DEBUG
+				ft_printf("Optimized both sorting\n");
+#endif
 				sort3optim_both(stacks);
+			}
 			else
+			{
+#ifdef DEBUG
+				ft_printf("Optimized \'a\' sorting\n");
+#endif
 				sort3optimized(stacks);
+			}
 		}
-		else if (stacks->b && is_eq_combs(stacks))
-			sort3both(stacks);
-		else
-			sort3(stacks);
-		if (ft_lstlen(stacks->b) == 3)
+		else if (top_grp_len(stacks->b) == 3)
+		{
+#ifdef DEBUG
+			ft_printf("Both stacks are size of 3\n");
+#endif
+			sort3_new(stacks);
+		}
+		else if (b_len == 3)
+		{
+#ifdef DEBUG
+			ft_printf("Optimized b sorting\n");
+#endif
 			sort3optim_b(stacks);
+		}
+		else
+		{
+#ifdef DEBUG
+			ft_printf("Simple \'a\' sorting\n");
+#endif
+			sort3(stacks);
+		}
 	}
 	else if (t1 == 2)
 	{
@@ -93,8 +123,6 @@ void		split_group_b(t_stacks *stacks, int *group_cnt)
 	top_sort(stacks);
 	if ((top_len = top_grp_len(stacks->b)) > 0)
 	{
-		if (top_len > 3)
-			exit(1);
 		get_head_back(stacks, group_cnt);
 		top_sort(stacks);
 	}

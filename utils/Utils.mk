@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 11:40:42 by oevtushe          #+#    #+#              #
-#    Updated: 2018/04/19 10:11:50 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/30 11:11:21 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ UT_SRCF		:= executors1.c \
 				get_simple_args.c \
 				free_str_arr.c \
 				op_execute.c \
+				rebase_op_stack.c \
+				new_opc.c \
 				read_args_stack.c \
 				st_issorted.c
 UT_DEPF		:= utils.h

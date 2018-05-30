@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/23 14:03:55 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 18:17:38 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,6 @@ void	sort_stacks(t_stacks *stacks)
 	while (stacks->b)
 		split_group_b(stacks, &group_cnt);
 }
-
-/*
-static void	print(t_list *elem)
-{
-	ft_printf("%d| %zu\n", *(int*)elem->content, elem->content_size);
-}
-*/
 
 int		main(int argc, char **argv)
 {

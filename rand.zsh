@@ -45,7 +45,7 @@ function run_test() {
 		if [[ $cur == "KO" ]]
 		then
 			echo $cur
-			echo "Failed combination is written at fail.txt"
+			echo "Failed combination is written in fail.txt"
 			echo "${nums} [$cur]" >> fail.txt
 			exit 5
 		fi

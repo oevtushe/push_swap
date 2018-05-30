@@ -6,11 +6,11 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 11:30:01 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 11:30:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 11:12:45 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "utils.h"
 
 t_opc	*new_opc(t_operation op, char *op_name)
 {
