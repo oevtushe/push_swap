@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:44:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 14:44:21 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 15:32:23 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int get_comb_a(t_list *lst)
+t_comb get_comb_a(t_list *lst)
 {
 	int a;
 	int b;
@@ -24,43 +24,50 @@ static int get_comb_a(t_list *lst)
 	b = *(int*)lst->next->content;
 	c = *(int*)lst->next->next->content;
 	if ((a > b && a > c && b > c))
-		comb = 1;
+		comb = CBA;
 	else if (a > b && a > c && b < c)
-		comb = 2;
+		comb = CAB;
 	else if (a < b && c < b && a < c)
-		comb = 3;
+		comb = ACB;
 	else if (a < b && c < b && a > c)
-		comb = 4;
+		comb = BCA;
 	else if (a < c && b < c && a > b)
-		comb = 5;
+		comb = BAC;
 	return (comb);
 }
 
-static int get_comb_b(t_list *lst)
+t_comb get_comb_b(t_list *lst)
 {
-	int a;
-	int b;
-	int c;
-	int comb;
+	int		a;
+	int		b;
+	int		c;
+	t_comb	comb;
 
 	comb = 0;
 	a = *(int*)lst->content;
 	b = *(int*)lst->next->content;
 	c = *(int*)lst->next->next->content;
 	if (c > a && c > b && b > a)
-		comb = 1;
+		comb = ABC;
 	else if (b > a && b > c && c > a)
-		comb = 2;
-	else if (a > b && a > c && c > a)
-		comb = 3;
+		comb = ACB;
+	else if (a > b && a > c && c > b)
+		comb = CAB;
 	else if (c > a && c > b && a > b)
-		comb = 4;
+		comb = BAC;
 	else if (b > a && b > c && a > c)
-		comb = 5;
+		comb = BCA;
 	return (comb);
 }
 
 int	is_eq_combs(t_stacks *stacks)
 {
-	return (top_grp_len(stacks->b) == 3 && get_comb_a(stacks->a) == get_comb_b(stacks->b));
+	t_comb ac;
+	t_comb bc;
+
+	ac = get_comb_a(stacks->a);
+	bc = get_comb_b(stacks->b);
+	if (ac + bc == 0)
+		return (1);
+	return (0);
 }

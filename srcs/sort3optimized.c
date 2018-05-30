@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/24 14:25:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 14:47:59 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 16:01:49 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	sort3optim_both(t_stacks *stacks)
 	}
 	else if (b > a && b > c && c > a)
 		op_execute_wrp(stacks, OP_RR);
-	else if (a > b && a > c && c > a)
+	else if (a > b && a > c && c > b)
 	{
 		op_execute_wrp(stacks, OP_RRR);
 		op_execute_wrp(stacks, OP_SS);

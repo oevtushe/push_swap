@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:41:35 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 17:10:04 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 17:10:36 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		comb_up(t_stacks *stacks, t_median *cur_med, int group_cnt, int *rot_cnt)
 {
 	if (get_next_group(stacks->a))
 	{
-		while ((*rot_cnt)--)
+		while ((*rot_cnt)-- && cur_med->push_cnt)
 		{
 			op_execute_wrp(stacks, OP_RRA);
 			if (*(int*)stacks->a->content < cur_med->median)

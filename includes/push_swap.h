@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/23 11:18:48 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/31 10:22:04 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,27 @@ typedef	struct	s_median
 	int	push_cnt;
 }				t_median;
 
+typedef struct	s_pair
+{
+	int first;
+	int second;
+}				t_pair;
+
 typedef struct	s_stacks
 {
 	t_list *a;
 	t_list *b;
 }				t_stacks;
+
+typedef enum	e_comb
+{
+	ABC = 1,
+	ACB = 2,
+	BAC = 3,
+	BCA = -3,
+	CAB = -2,
+	CBA = -1
+}				t_comb;
 
 /*
 ** Algorithm
@@ -41,7 +57,13 @@ void		split_group_b(t_stacks *stacks, int *group_cnt);
 int			last_bigger_elem(t_list *lst, int grp, int n);
 int			last_less_elem(t_list *lst, int grp, int n);
 int			is_eq_combs(t_stacks *stacks);
+t_list		*create_opt_op_lst(int **map, t_pair *map_size, t_list *ops_a, t_list *ops_b);
 
+int			**gen_map(t_list *ops_a, t_list *ops_b, t_pair *map_size);
+t_list		*gen_op_sort3(t_comb comb, int order);
+void		sort3_new(t_stacks *stacks);
+int			get_comb_a(t_list *lst);
+int			get_comb_b(t_list *lst);
 void		sort3optim_b(t_stacks *stacks);
 void		sort3optim_both(t_stacks *stacks);
 void		sort3optimized(t_stacks *stacks);

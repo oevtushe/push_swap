@@ -6,19 +6,19 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:42:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 14:49:51 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 15:44:13 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-** 3
-** 2
-** 1
+** C
+** B
+** A
 */
 
-static void	sort321(t_stacks *stacks)
+static void	sort_CBA(t_stacks *stacks)
 {
 	op_execute_swap_opt(stacks, 'a');
 	op_execute_wrp(stacks, OP_RA);
@@ -28,12 +28,12 @@ static void	sort321(t_stacks *stacks)
 }
 
 /*
-** 3
-** 1
-** 2
+** C
+** A
+** B
 */
 
-static void	sort312(t_stacks *stacks)
+static void	sort_CAB(t_stacks *stacks)
 {
 	op_execute_swap_opt(stacks, 'a');
     op_execute_wrp(stacks, OP_RA);
@@ -42,12 +42,12 @@ static void	sort312(t_stacks *stacks)
 }
 
 /*
-** 2
-** 3
-** 1
+** B
+** C
+** A
 */
 
-static void	sort231(t_stacks *stacks)
+static void	sort_BCA(t_stacks *stacks)
 {
     op_execute_wrp(stacks, OP_RA);
 	op_execute_swap_opt(stacks, 'a');
@@ -56,12 +56,12 @@ static void	sort231(t_stacks *stacks)
 }
 
 /*
-** 1
-** 3
-** 2
+** A
+** C
+** B
 */
 
-static void	sort132(t_stacks *stacks)
+static void	sort_ACB(t_stacks *stacks)
 {
     op_execute_wrp(stacks, OP_RA);
 	op_execute_swap_opt(stacks, 'a');
@@ -78,13 +78,13 @@ void		sort3(t_stacks *stacks)
 	b = *(int*)stacks->a->next->content;
 	c = *(int*)stacks->a->next->next->content;
 	if (a > b && a > c && b > c)
-		sort321(stacks);
+		sort_CBA(stacks);
 	else if (a > b && a > c && b < c)
-		sort312(stacks);
+		sort_CAB(stacks);
 	else if (a < b && c < b && a < c)
-		sort132(stacks);
+		sort_ACB(stacks);
 	else if (a < b && c < b && a > c)
-		sort231(stacks);
+		sort_BCA(stacks);
 	else if (a < c && b < c && a > b)
 		op_execute_swap_opt(stacks, 'a');
 }

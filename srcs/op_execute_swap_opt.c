@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 13:48:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 14:10:33 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 15:44:09 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ void	op_execute_swap_opt(t_stacks *stacks, char stack)
 	done = 0;
 	if (stacks->b)
 	{
-		if (top_grp_len(stacks->b) == 2 && *(int*)stacks->b->content < *(int*)stacks->b->next->content)
-		{
-			op_execute_wrp(stacks, OP_SS);
-			done = 1;
-		}
-		else if (stack != 'b' && top_grp_len(stacks->b) == 3 && *(int*)stacks->b->content < *(int*)stacks->b->next->content)
+		if (top_grp_len(stacks->b) == 2 &&
+				*(int*)stacks->b->content < *(int*)stacks->b->next->content)
 		{
 			op_execute_wrp(stacks, OP_SS);
 			done = 1;

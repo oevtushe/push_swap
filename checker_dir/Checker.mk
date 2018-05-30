@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/04 13:27:07 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/07 15:34:35 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/30 11:11:10 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,6 @@ CH_DEPF			:= checker.h
 CH_SRCF			:= checker.c \
 				isvldops.c \
 				print_row.c \
-				new_opc.c \
 				op_executor.c \
 				new_pformat.c \
 				init_format.c \
@@ -41,7 +40,6 @@ CH_SRCF			:= checker.c \
 				read_operations.c \
 				str_join_number.c \
 				print_info.c \
-				rebase_op_stack.c \
 				checker_error.c
 
 CH_SRCS			:= $(addprefix $(CH_SRCS_DIR)/,$(CH_SRCF))

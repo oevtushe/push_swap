@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 14:20:15 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/30 11:07:46 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef	struct	s_odata
 	void	(*print) (t_list*, t_list*, t_opc*, t_pformat*);
 }				t_odata;
 
-void			rebase_op_stack(t_list **op_stack);
 int				isvldops(t_list *op_stack);
 void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat*);
 void			print_row(t_list **a, t_list **b, t_pformat *fmt);
@@ -56,7 +55,6 @@ void			free_str_arr(char ***arr, int size);
 char			*str_join_number(char *prefix, int num, char *suffix);
 t_opc			*new_opc(t_operation op, char *op_name);
 t_pformat		*new_pformat(t_list *a);
-t_opc			*get_opc(char *oper_nm);
 int				is_vldop(char *op);
 void			op_read_and_exec(t_list **a, t_list **b, int fd);
 void			init_format(t_pformat *pfmt, char *op_name, t_excstat stat);
