@@ -6,16 +6,16 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/12 09:41:55 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 15:06:34 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "checker.h"
 
-static t_list	*get_a(char **arr, int size)
+static t_list_de	*get_a(char **arr, int size)
 {
-	t_list *stack;
+	t_list_de *stack;
 
 	stack = NULL;
 	if (arr && *arr && isvldarg(&arr[0], size))
@@ -25,9 +25,9 @@ static t_list	*get_a(char **arr, int size)
 	return (stack);
 }
 
-static t_list	*get_ops(int fd)
+static t_list_de	*get_ops(int fd)
 {
-	t_list *op_stack;
+	t_list_de *op_stack;
 
 	op_stack = read_operations(fd);
 	if (isvldops(op_stack))
@@ -39,15 +39,19 @@ static t_list	*get_ops(int fd)
 
 static void		checker(char **arr, int size, t_odata *odata)
 {
-	t_list	*a_stack;
-	t_list	*b_stack;
-	t_list	*op_stack;
+	t_list_de	*a_stack;
+	t_list_de	*b_stack;
+	t_list_de	*op_stack;
 
 	a_stack = NULL;
 	b_stack = NULL;
+	op_stack = NULL;
 	a_stack = get_a(arr, size);
 	if (odata->debug)
-		op_read_and_exec(&a_stack, &b_stack, odata->fd);
+	{
+		op_read_and_exec(&a_stack, &b_stack, &op_stack, odata->fd);
+		rebase_op_stack(&op_stack);
+	}
 	else
 	{
 		op_stack = get_ops(odata->fd);

@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 12:08:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 16:58:52 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:11:47 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static int			stack_lil(t_list *a)
+static int			stack_lil(t_list_de *a)
 {
 	int		max;
 	int		min;
@@ -36,7 +36,7 @@ static int			stack_lil(t_list *a)
 	return (lmax);
 }
 
-t_pformat			*new_pformat(t_list *a)
+t_pformat			*new_pformat(t_list_de *a)
 {
 	t_pformat	*pfmt;
 

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 10:08:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 14:48:47 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/17 12:34:28 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ t_opc				*get_opc(char *oper_nm)
 ** string representation the last one. Changes elements order.
 */
 
-void				rebase_op_stack(t_list **op_stack)
+void				rebase_op_stack(t_list_de **op_stack)
 {
-	t_list		*rn;
+	t_list_de		*rn;
 	char		*oper_nm;
 
 	rn = *op_stack;
@@ -60,6 +60,6 @@ void				rebase_op_stack(t_list **op_stack)
 			rn->content_size = sizeof(t_opc);
 			rn = rn->next;
 		}
-		ft_lstcorder(op_stack);
+		ft_lstcorder_de(op_stack);
 	}
 }
