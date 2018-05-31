@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:25:23 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/31 11:02:58 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,8 @@ int			execute_rotate(t_list_de **stack);
 t_excstat	execute_rrotate(t_list_de **a, t_list_de **b);
 char		**split_arr(char **arr, int size, int *new_size);
 void		free_str_arr(char ***arr, int size);
+void		rebase_op_stack(t_list **op_stack);
+t_opc		*new_opc(t_operation op, char *op_name);
+t_opc		*get_opc(char *oper_nm);
 
 #endif

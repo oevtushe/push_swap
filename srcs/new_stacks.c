@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_opc.c                                          :+:      :+:    :+:   */
+/*   new_stacks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/01 11:30:01 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 11:30:27 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/22 12:49:26 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/22 12:51:52 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-t_opc	*new_opc(t_operation op, char *op_name)
+t_stacks	*new_stacks(t_list *a, t_list *b)
 {
-	t_opc	*opc;
+	t_stacks *stacks;
 
-	opc = ft_memalloc(sizeof(t_opc));
-	opc->abbr = op;
-	opc->op_name = op_name;
-	return (opc);
+	stacks = ft_memalloc(sizeof(t_stacks));
+	stacks->a = a;
+	stacks->b = b;
+	return (stacks);
 }

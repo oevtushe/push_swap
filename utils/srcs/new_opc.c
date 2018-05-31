@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_execute_swap_opt.c                              :+:      :+:    :+:   */
+/*   new_opc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/02 13:48:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/30 15:44:09 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/01 11:30:01 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/30 11:12:45 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "utils.h"
 
-void	op_execute_swap_opt(t_stacks *stacks, char stack)
+t_opc	*new_opc(t_operation op, char *op_name)
 {
-	int done;
+	t_opc	*opc;
 
-	done = 0;
-	if (stacks->b)
-	{
-		if (top_grp_len(stacks->b) == 2 &&
-				*(int*)stacks->b->content < *(int*)stacks->b->next->content)
-		{
-			op_execute_wrp(stacks, OP_SS);
-			done = 1;
-		}
-	}
-	if (!done)
-	{
-		if (stack == 'a')
-			op_execute_wrp(stacks, OP_SA);
-		else
-			op_execute_wrp(stacks, OP_SB);
-	}
+	opc = ft_memalloc(sizeof(t_opc));
+	opc->abbr = op;
+	opc->op_name = op_name;
+	return (opc);
 }

@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_execute_swap_opt.c                              :+:      :+:    :+:   */
+/*   st_group_is_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/02 13:48:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/30 15:44:09 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/23 11:12:11 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/23 11:40:35 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	op_execute_swap_opt(t_stacks *stacks, char stack)
+int		st_group_is_sorted(t_list *lst)
 {
-	int done;
+	int prev;
+	int	cg;
 
-	done = 0;
-	if (stacks->b)
+	if (lst)
 	{
-		if (top_grp_len(stacks->b) == 2 &&
-				*(int*)stacks->b->content < *(int*)stacks->b->next->content)
+		cg = (int)lst->content_size;
+		prev = *(int*)lst->content;
+		while (lst && prev <= *(int*)lst->content && (int)lst->content_size == cg)
 		{
-			op_execute_wrp(stacks, OP_SS);
-			done = 1;
+			prev = *(int*)lst->content;
+			lst = lst->next;
 		}
+		if (!lst)
+			return (1);
+		return ((int)lst->content_size != cg ? 1 : 0);
 	}
-	if (!done)
-	{
-		if (stack == 'a')
-			op_execute_wrp(stacks, OP_SA);
-		else
-			op_execute_wrp(stacks, OP_SB);
-	}
+	return (0);
 }
