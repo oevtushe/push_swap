@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:57:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 14:48:44 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 11:30:45 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 ** 1
 */
 
-static void	sort321(t_stacks *stacks)
+static void	sort321(t_stacks *stacks, int fd)
 {
-	op_execute_wrp(stacks, OP_SS);
-	op_execute_wrp(stacks, OP_RR);
-	op_execute_wrp(stacks, OP_SS);
-	op_execute_wrp(stacks, OP_RRR);
-	op_execute_wrp(stacks, OP_SS);
+	op_execute_wrp(stacks, OP_SS, fd);
+	op_execute_wrp(stacks, OP_RR, fd);
+	op_execute_wrp(stacks, OP_SS, fd);
+	op_execute_wrp(stacks, OP_RRR, fd);
+	op_execute_wrp(stacks, OP_SS, fd);
 }
 
 /*
@@ -33,12 +33,12 @@ static void	sort321(t_stacks *stacks)
 ** 2
 */
 
-static void	sort312(t_stacks *stacks)
+static void	sort312(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_SS);
-    op_execute_wrp(stacks, OP_RR);
-    op_execute_wrp(stacks, OP_SS);
-    op_execute_wrp(stacks, OP_RRR);
+    op_execute_wrp(stacks, OP_SS, fd);
+    op_execute_wrp(stacks, OP_RR, fd);
+    op_execute_wrp(stacks, OP_SS, fd);
+    op_execute_wrp(stacks, OP_RRR, fd);
 }
 
 /*
@@ -47,12 +47,12 @@ static void	sort312(t_stacks *stacks)
 ** 1
 */
 
-static void	sort231(t_stacks *stacks)
+static void	sort231(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_RR);
-    op_execute_wrp(stacks, OP_SS);
-    op_execute_wrp(stacks, OP_RRR);
-    op_execute_wrp(stacks, OP_SS);
+    op_execute_wrp(stacks, OP_RR, fd);
+    op_execute_wrp(stacks, OP_SS, fd);
+    op_execute_wrp(stacks, OP_RRR, fd);
+    op_execute_wrp(stacks, OP_SS, fd);
 }
 
 /*
@@ -61,14 +61,14 @@ static void	sort231(t_stacks *stacks)
 ** 2
 */
 
-static void	sort132(t_stacks *stacks)
+static void	sort132(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_RR);
-	op_execute_wrp(stacks, OP_SS);
-    op_execute_wrp(stacks, OP_RRR);
+    op_execute_wrp(stacks, OP_RR, fd);
+	op_execute_wrp(stacks, OP_SS, fd);
+    op_execute_wrp(stacks, OP_RRR, fd);
 }
 
-void		sort3both(t_stacks *stacks)
+void		sort3both(t_stacks *stacks, int fd)
 {
 	int a;
 	int b;
@@ -78,13 +78,13 @@ void		sort3both(t_stacks *stacks)
 	b = *(int*)stacks->a->next->content;
 	c = *(int*)stacks->a->next->next->content;
 	if (a > b && a > c && b > c)
-		sort321(stacks);
+		sort321(stacks, fd);
 	else if (a > b && a > c && b < c)
-		sort312(stacks);
+		sort312(stacks, fd);
 	else if (a < b && c < b && a < c)
-		sort132(stacks);
+		sort132(stacks, fd);
 	else if (a < b && c < b && a > c)
-		sort231(stacks);
+		sort231(stacks, fd);
 	else if (a < c && b < c && a > b)
-		op_execute_swap_opt(stacks, 'a');
+		op_execute_swap_opt(stacks, 'a', fd);
 }

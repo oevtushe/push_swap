@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/14 17:42:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/30 15:44:13 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 11:12:16 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 ** A
 */
 
-static void	sort_CBA(t_stacks *stacks)
+static void	sort_CBA(t_stacks *stacks, int fd)
 {
-	op_execute_swap_opt(stacks, 'a');
-	op_execute_wrp(stacks, OP_RA);
-	op_execute_wrp(stacks, OP_SA);
-	op_execute_wrp(stacks, OP_RRA);
-	op_execute_wrp(stacks, OP_SA);
+	op_execute_swap_opt(stacks, 'a', fd);
+	op_execute_wrp(stacks, OP_RA, fd);
+	op_execute_wrp(stacks, OP_SA, fd);
+	op_execute_wrp(stacks, OP_RRA, fd);
+	op_execute_wrp(stacks, OP_SA, fd);
 }
 
 /*
@@ -33,12 +33,12 @@ static void	sort_CBA(t_stacks *stacks)
 ** B
 */
 
-static void	sort_CAB(t_stacks *stacks)
+static void	sort_CAB(t_stacks *stacks, int fd)
 {
-	op_execute_swap_opt(stacks, 'a');
-    op_execute_wrp(stacks, OP_RA);
-    op_execute_wrp(stacks, OP_SA);
-    op_execute_wrp(stacks, OP_RRA);
+	op_execute_swap_opt(stacks, 'a', fd);
+    op_execute_wrp(stacks, OP_RA, fd);
+    op_execute_wrp(stacks, OP_SA, fd);
+    op_execute_wrp(stacks, OP_RRA, fd);
 }
 
 /*
@@ -47,12 +47,12 @@ static void	sort_CAB(t_stacks *stacks)
 ** A
 */
 
-static void	sort_BCA(t_stacks *stacks)
+static void	sort_BCA(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_RA);
-	op_execute_swap_opt(stacks, 'a');
-    op_execute_wrp(stacks, OP_RRA);
-    op_execute_wrp(stacks, OP_SA);
+    op_execute_wrp(stacks, OP_RA, fd);
+	op_execute_swap_opt(stacks, 'a', fd);
+    op_execute_wrp(stacks, OP_RRA, fd);
+    op_execute_wrp(stacks, OP_SA, fd);
 }
 
 /*
@@ -61,14 +61,14 @@ static void	sort_BCA(t_stacks *stacks)
 ** B
 */
 
-static void	sort_ACB(t_stacks *stacks)
+static void	sort_ACB(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_RA);
-	op_execute_swap_opt(stacks, 'a');
-    op_execute_wrp(stacks, OP_RRA);
+    op_execute_wrp(stacks, OP_RA, fd);
+	op_execute_swap_opt(stacks, 'a', fd);
+    op_execute_wrp(stacks, OP_RRA, fd);
 }
 
-void		sort3(t_stacks *stacks)
+void		sort3(t_stacks *stacks, int fd)
 {
 	int a;
 	int b;
@@ -78,13 +78,13 @@ void		sort3(t_stacks *stacks)
 	b = *(int*)stacks->a->next->content;
 	c = *(int*)stacks->a->next->next->content;
 	if (a > b && a > c && b > c)
-		sort_CBA(stacks);
+		sort_CBA(stacks, fd);
 	else if (a > b && a > c && b < c)
-		sort_CAB(stacks);
+		sort_CAB(stacks, fd);
 	else if (a < b && c < b && a < c)
-		sort_ACB(stacks);
+		sort_ACB(stacks, fd);
 	else if (a < b && c < b && a > c)
-		sort_BCA(stacks);
+		sort_BCA(stacks, fd);
 	else if (a < c && b < c && a > b)
-		op_execute_swap_opt(stacks, 'a');
+		op_execute_swap_opt(stacks, 'a', fd);
 }

@@ -6,40 +6,40 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:42:12 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 16:58:17 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 11:08:54 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_op(t_operation op)
+static void	print_op(t_operation op, int fd)
 {
 	if (op == OP_SA)
-		ft_putstr("sa\n");
+		ft_putendl_fd("sa", fd);
 	else if (op == OP_SB)
-		ft_putstr("sb\n");
+		ft_putendl_fd("sb", fd);
 	else if (op == OP_SS)
-		ft_putstr("ss\n");
+		ft_putendl_fd("ss", fd);
 	else if (op == OP_PA)
-		ft_putstr("pa\n");
+		ft_putendl_fd("pa", fd);
 	else if (op == OP_PB)
-		ft_putstr("pb\n");
+		ft_putendl_fd("pb", fd);
 	else if (op == OP_RA)
-		ft_putstr("ra\n");
+		ft_putendl_fd("ra", fd);
 	else if (op == OP_RB)
-		ft_putstr("rb\n");
+		ft_putendl_fd("rb", fd);
 	else if (op == OP_RR)
-		ft_putstr("rr\n");
+		ft_putendl_fd("rr", fd);
 	else if (op == OP_RRA)
-		ft_putstr("rra\n");
+		ft_putendl_fd("rra", fd);
 	else if (op == OP_RRB)
-		ft_putstr("rrb\n");
+		ft_putendl_fd("rrb", fd);
 	else if (op == OP_RRR)
-		ft_putstr("rrr\n");
+		ft_putendl_fd("rrr", fd);
 }
 
-void		op_execute_wrp(t_stacks *stacks, t_operation op)
+void		op_execute_wrp(t_stacks *stacks, t_operation op, int fd)
 {
-	print_op(op);
+	print_op(op, fd);
 	op_execute(stacks, op);
 }
