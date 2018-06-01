@@ -6,18 +6,18 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:08:38 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:23:33 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/31 12:55:08 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int		execute_rev_rotate(t_list_de **stack)
+int		execute_rev_rotate(t_list **stack)
 {
 	int		st;
-	t_list_de	*prev;
-	t_list_de	*cur;
-	t_list_de	*next;
+	t_list	*prev;
+	t_list	*cur;
+	t_list	*next;
 
 	prev = NULL;
 	cur = NULL;
@@ -40,7 +40,7 @@ int		execute_rev_rotate(t_list_de **stack)
 	return (st);
 }
 
-t_excstat	execute_rev_rrotate(t_list_de **a, t_list_de **b)
+t_excstat	execute_rev_rrotate(t_list **a, t_list **b)
 {
 	t_excstat	stat1;
 	t_excstat	stat2;
@@ -57,11 +57,11 @@ t_excstat	execute_rev_rrotate(t_list_de **a, t_list_de **b)
 	return (stat);
 }
 
-int		execute_rotate(t_list_de **stack)
+int		execute_rotate(t_list **stack)
 {
 	int		st;
-	t_list_de	*fst;
-	t_list_de	*cur;
+	t_list	*fst;
+	t_list	*cur;
 
 	if (stack && *stack && (*stack)->next)
 	{
@@ -79,7 +79,7 @@ int		execute_rotate(t_list_de **stack)
 	return (st);
 }
 
-t_excstat	execute_rrotate(t_list_de **a, t_list_de **b)
+t_excstat	execute_rrotate(t_list **a, t_list **b)
 {
 	t_excstat	stat1;
 	t_excstat	stat2;

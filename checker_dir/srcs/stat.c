@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 09:16:58 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:13:41 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 10:17:51 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void		count_op(t_operation op, int *stat)
 		stat[10]++;
 }
 
-static	void	init_stat_arr(t_list_de *lst, int *stat, int size)
+static	void	init_stat_arr(t_list *lst, int *stat, int size)
 {
 	int			i;
 
@@ -93,7 +93,7 @@ static int		cnt_total(int *stat, int size)
 	return (total);
 }
 
-void			stat(t_list_de *lst)
+void			stat(t_list *lst)
 {
 	const int	size = 11;
 	int			stat[size];

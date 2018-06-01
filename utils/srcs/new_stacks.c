@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   st_issorted.c                                      :+:      :+:    :+:   */
+/*   new_stacks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/09 15:54:51 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 12:55:59 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/22 12:49:26 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/06/01 10:45:13 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int		st_issorted(t_list *stack)
+t_stacks	*new_stacks(t_list *a, t_list *b)
 {
-	int cur;
-	int	prev;
-	int	srt;
+	t_stacks *stacks;
 
-	srt = 0;
-	if (stack)
-	{
-		prev = *(int *)stack->content;
-		while (stack)
-		{
-			cur = *(int *)stack->content;
-			if (cur < prev)
-				break ;
-			++srt;
-			stack = stack->next;
-			prev = cur;
-		}
-		srt = srt > 0 && !stack ? 1 : 0;
-	}
-	return (srt);
+	stacks = ft_memalloc(sizeof(t_stacks));
+	stacks->a = a;
+	stacks->b = b;
+	return (stacks);
 }

@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/07 14:12:46 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/31 10:22:52 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/05/31 15:31:17 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,6 @@ PS_SRCF			:=  arr_quickselect.c \
 					top_grp_len.c \
 					sort3optim_b.c \
 					sort3optimized.c \
-					new_stacks.c \
 					op_execute_swap_opt.c \
 					st_group_is_sorted.c \
 					create_opt_op_lst.c \

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 14:32:48 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 10:31:30 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 10:42:02 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void			sort3_new(t_stacks *stacks)
 	ops_a = gen_op_sort3(get_comb_a(stacks->a), 1);
 	ops_b = gen_op_sort3(get_comb_b(stacks->b), -1);
 	res = combine_opts(ops_a, ops_b);
-	rebase_op_stack(&res);
+	ft_lstiter(res, nm_to_opc);
+	ft_lstcorder(&res);
 	while (res)
 	{
 		opc = (t_opc*)res->content;

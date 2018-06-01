@@ -6,27 +6,27 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:12:12 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/31 17:53:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void		op_print(t_list_de **a, t_list_de **b, t_operation op, t_pformat *pfmt)
+static void		op_print(t_stacks *stacks, t_operation op, t_pformat *pfmt)
 {
 	if (pfmt->stat != ES_NONE)
 	{
 		if (op == OP_SA || op == OP_SB || op == OP_SS)
 		{
-			print_row(a, b, pfmt);
-			print_row(a, b, pfmt);
+			print_row(stacks, pfmt);
+			print_row(stacks, pfmt);
 		}
 		else if (op == OP_PA || op == OP_PB)
-			print_row(a, b, pfmt);
+			print_row(stacks, pfmt);
 		else if (op == OP_RA || op == OP_RB || op == OP_RR ||
 					op == OP_RRA || op == OP_RRB || op == OP_RRR)
-			while (*a || *b)
-				print_row(a, b, pfmt);
+			while (stacks->a || stacks->b)
+				print_row(stacks, pfmt);
 	}
 }
 
@@ -57,26 +57,29 @@ char	*prompt(void)
 	return (cmd);
 }
 
-void	print_extra(t_list_de *a_stack, t_list_de *b_stack, t_pformat *pfmt, char *text)
+void	print_extra(t_stacks *stacks, t_pformat *pfmt, char *text)
 {
 	t_opc	*tmp;
 
 	tmp = new_opc(OP_NONE, text);
 	init_format(pfmt, tmp->op_name, ES_NONE);
-	print_info(a_stack, b_stack, tmp, pfmt);
+	print_info(stacks, tmp, pfmt);
 	free(prompt());
 	free(tmp);
 }
 
-void			print_info(t_list_de *a, t_list_de *b, t_opc *opc, t_pformat *pfmt)
+void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)
 {
 	char		*header;
+	t_stacks	*cpy;
 
+	cpy = new_stacks(stacks->a, stacks->b);
 	header = make_header(pfmt);
 	ft_printf(header, opc->op_name);
-	op_print(&a, &b, opc->abbr, pfmt);
+	op_print(cpy, opc->abbr, pfmt);
 	pfmt->stat = ES_NONE;
-	while (a || b || !pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
-		print_row(&a, &b, pfmt);
+	while (cpy->a || cpy->b ||
+			!pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
+		print_row(cpy, pfmt);
 	free(header);
 }

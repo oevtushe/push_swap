@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 10:08:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 11:02:28 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/31 14:22:19 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,16 @@ t_opc				*get_opc(char *oper_nm)
 /*
 ** Changes content from operation names in strings
 ** to container with int abbreaviature for operation and
-** string representation the last one. Changes elements order.
+** string representation the last one.
 */
 
-void				rebase_op_stack(t_list_de **op_stack)
+void				nm_to_opc(t_list *elem)
 {
-	t_list_de		*rn;
 	char		*oper_nm;
 
-	rn = *op_stack;
-	if (rn)
-	{
-		while (rn)
-		{
-			oper_nm = (char *)rn->content;
-			rn->content = get_opc(oper_nm);
-			rn->content_size = sizeof(t_opc);
-			rn = rn->next;
-		}
-		ft_lstcorder_de(op_stack);
-	}
+	oper_nm = (char *)elem->content;
+	elem->content = get_opc(oper_nm);
+	elem->content_size = sizeof(t_opc);
+	elem = elem->next;
+	free(oper_nm);
 }

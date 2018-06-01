@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_stacks.c                                       :+:      :+:    :+:   */
+/*   del_opc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/22 12:49:26 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 12:51:52 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/05/31 15:23:01 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/05/31 15:25:36 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "utils.h"
 
-t_stacks	*new_stacks(t_list *a, t_list *b)
+void	del_opc(t_list *elem)
 {
-	t_stacks *stacks;
-
-	stacks = ft_memalloc(sizeof(t_stacks));
-	stacks->a = a;
-	stacks->b = b;
-	return (stacks);
+	free(((t_opc*)(elem->content))->op_name);
 }

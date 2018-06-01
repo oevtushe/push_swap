@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:32:13 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:12:32 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/31 17:11:28 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	empty_b(t_pformat *pfmt)
 	ft_putchar('\n');
 }
 
-static void	print_elem_a(t_list_de **a, t_pformat *pfmt)
+static void	print_elem_a(t_list **a, t_pformat *pfmt)
 {
 	if (a && *a)
 	{
@@ -58,7 +58,7 @@ static void	print_elem_a(t_list_de **a, t_pformat *pfmt)
 		empty_a(pfmt);
 }
 
-static void	print_elem_b(t_list_de **b, t_pformat *pfmt)
+static void	print_elem_b(t_list **b, t_pformat *pfmt)
 {
 	if (b && *b)
 	{
@@ -74,8 +74,8 @@ static void	print_elem_b(t_list_de **b, t_pformat *pfmt)
 		empty_b(pfmt);
 }
 
-void		print_row(t_list_de **a, t_list_de **b, t_pformat *pfmt)
+void		print_row(t_stacks *stacks, t_pformat *pfmt)
 {
-	print_elem_a(a, pfmt);
-	print_elem_b(b, pfmt);
+	print_elem_a(&stacks->a, pfmt);
+	print_elem_b(&stacks->b, pfmt);
 }

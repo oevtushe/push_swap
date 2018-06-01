@@ -6,16 +6,16 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 15:06:34 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 10:54:12 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "checker.h"
 
-static t_list_de	*get_a(char **arr, int size)
+static t_list	*get_a(char **arr, int size)
 {
-	t_list_de *stack;
+	t_list *stack;
 
 	stack = NULL;
 	if (arr && *arr && isvldarg(&arr[0], size))
@@ -25,13 +25,16 @@ static t_list_de	*get_a(char **arr, int size)
 	return (stack);
 }
 
-static t_list_de	*get_ops(int fd)
+static t_list	*get_ops(int fd)
 {
-	t_list_de *op_stack;
+	t_list *op_stack;
 
 	op_stack = read_operations(fd);
 	if (isvldops(op_stack))
-		rebase_op_stack(&op_stack);
+	{
+		ft_lstiter(op_stack, nm_to_opc);
+		ft_lstcorder(&op_stack);
+	}
 	else
 		checker_error("Error\n");
 	return (op_stack);
@@ -39,27 +42,27 @@ static t_list_de	*get_ops(int fd)
 
 static void		checker(char **arr, int size, t_odata *odata)
 {
-	t_list_de	*a_stack;
-	t_list_de	*b_stack;
-	t_list_de	*op_stack;
+	t_list		*a_stack;
+	t_stacks 	*stacks;
+	t_list		*op_stack;
 
 	a_stack = NULL;
-	b_stack = NULL;
 	op_stack = NULL;
 	a_stack = get_a(arr, size);
+	stacks = new_stacks(a_stack, NULL);
 	if (odata->debug)
 	{
-		op_read_and_exec(&a_stack, &b_stack, &op_stack, odata->fd);
-		rebase_op_stack(&op_stack);
+		op_read_and_exec(stacks, &op_stack, odata->fd);
+		ft_lstcorder(&op_stack);
 	}
 	else
 	{
 		op_stack = get_ops(odata->fd);
-		op_executor(&a_stack, &b_stack, op_stack, odata->print);
+		op_executor(stacks, op_stack, odata->print);
 	}
 	if (odata->stat)
 		stat(op_stack);
-	verdict(a_stack, b_stack);
+	verdict(stacks);
 }
 
 int				main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 09:30:43 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/17 12:10:08 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/05/31 17:47:56 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			is_vldop(char *op)
 	return (0);
 }
 
-int			isvldops(t_list_de *op_stack)
+int			isvldops(t_list *op_stack)
 {
 	int		vld;
 	char	*op;
