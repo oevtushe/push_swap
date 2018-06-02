@@ -82,10 +82,8 @@ static void	get_head_back(t_stacks *stacks, int *group_cnt, int fd)
 void		split_group_a(t_stacks *stacks, int *group_cnt, int fd)
 {
 	int		top_len;
-	int		cur_grp;
 	t_list	*medians;
 
-	cur_grp = stacks->a->content_size;
 	top_len = top_grp_len(stacks->a);
 	medians = find_all_nmedians(stacks->a, top_len);
 	split_nmedian_a(stacks, medians, group_cnt, fd);
@@ -95,6 +93,7 @@ void		split_group_a(t_stacks *stacks, int *group_cnt, int fd)
 		get_head_back(stacks, group_cnt, fd);
 		top_sort(stacks, fd);
 	}
+	ft_lstdel(&medians, del_median);
 }
 
 void		split_group_b(t_stacks *stacks, int *group_cnt, int fd)

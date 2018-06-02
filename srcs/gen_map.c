@@ -23,12 +23,11 @@ static int	**create_map(t_list *ops_a, t_list *ops_b, t_pair *map_size)
 	i = 0;
 	cols = ft_lstlen(ops_a);
 	rows = ft_lstlen(ops_b);
-	map_size->first = rows;
-	map_size->second = cols;
-	map = (int**)malloc((rows + 1) * sizeof(int*));
-	while (i < rows)
-		map[i++] = (int*)malloc(cols * sizeof(int));
-	map[i] = NULL;
+	map_size->first = cols;
+	map_size->second = rows;
+	map = (int**)malloc(cols * sizeof(int*));
+	while (i < cols)
+		map[i++] = (int*)malloc(rows * sizeof(int));
 	i = 0;
 	while (i < rows)
 	{

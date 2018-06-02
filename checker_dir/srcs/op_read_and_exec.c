@@ -12,13 +12,6 @@
 
 #include "checker.h"
 
-static void			del_op(t_opc **opc)
-{
-	free((*opc)->op_name);
-	free(*opc);
-	*opc = NULL;
-}
-
 static void			extra_print(t_stacks *stacks, t_pformat *pfmt, char *msg)
 {
 	t_opc		*tmp;
@@ -27,7 +20,8 @@ static void			extra_print(t_stacks *stacks, t_pformat *pfmt, char *msg)
 	init_format(pfmt, tmp->op_name, ES_NONE);
 	print_info(stacks, tmp, pfmt);
 	PRINT_PROMPT;
-	free(tmp);
+	free_opc(&tmp);
+	pfmt_prep_to_next(pfmt);
 }
 
 static t_opc		*exec_and_init(t_stacks *stacks, t_list **op_stack, t_excstat *stat, char *line)
@@ -58,13 +52,16 @@ void				op_read_and_exec(t_stacks *stacks, t_list **op_stack, int fd)
 			opc = exec_and_init(stacks, op_stack, &stat, line);
 			init_format(pfmt, opc->op_name, stat);
 			print_info(stacks, opc, pfmt);
-			free(line);
-			del_op(&opc);
+			// pointer to char* is still reachable by elem in struct.
+			free(opc);
+			pfmt_prep_to_next(pfmt);
 		}
 		else
 			ft_printf("Available commands: pa, pb, sa, sb, ss, \
 					ra, rb, rr, rra, rrb, rrr.\nTry again !");
 		PRINT_PROMPT;
+		free(line);
 	}
 	print_extra(stacks, pfmt, "finish");
+	free_pfmt(&pfmt);
 }

@@ -40,6 +40,9 @@ CH_SRCF			:= checker.c \
 				read_operations.c \
 				str_join_number.c \
 				print_info.c \
+				pfmt_prep_to_next.c \
+				free_pfmt.c \
+				free_bottom.c \
 				checker_error.c
 
 CH_SRCS			:= $(addprefix $(CH_SRCS_DIR)/,$(CH_SRCF))

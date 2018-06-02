@@ -37,6 +37,7 @@ static t_list	*combine_opts(t_list *ops_a, t_list *ops_b)
 		ft_lstiter(ops_a, append_a);
 		ft_lstiter(ops_b, append_b);
 		res = create_opt_op_lst(map, &map_size, ops_a, ops_b);
+		free_int_map(&map, map_size.second);
 	}
 	else if (ops_a)
 	{
@@ -57,6 +58,7 @@ void			sort3_new(t_stacks *stacks, int fd)
 	t_list	*ops_b;
 	t_list	*res;
 	t_opc	*opc;
+	t_list	*rn;
 
 	res = NULL;
 	ops_a = NULL;
@@ -66,10 +68,14 @@ void			sort3_new(t_stacks *stacks, int fd)
 	res = combine_opts(ops_a, ops_b);
 	ft_lstiter(res, nm_to_opc);
 	ft_lstcorder(&res);
-	while (res)
+	rn = res;
+	while (rn)
 	{
-		opc = (t_opc*)res->content;
+		opc = (t_opc*)rn->content;
 		op_execute_wrp(stacks, opc->abbr, fd);
-		res = res->next;
+		rn = rn->next;
 	}
+	ft_lstdel(&ops_a, del_std_content);
+	ft_lstdel(&ops_b, del_std_content);
+	ft_lstdel(&res, del_opc);
 }

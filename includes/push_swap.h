@@ -78,5 +78,6 @@ void		op_execute_swap_opt(t_stacks *stacks, char stack, int fd);
 t_list		*get_next_group(t_list *lst);
 int			top_grp_len(t_list *lst);
 int			st_group_is_sorted(t_list *lst);
+void		del_median(void *content, size_t content_size);
 
 #endif

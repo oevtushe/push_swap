@@ -40,12 +40,6 @@ static t_list	*get_ops(int fd)
 	return (op_stack);
 }
 
-static void		del_stack(void *content, size_t content_size)
-{
-	++content_size;
-	free(content);
-}
-
 static void		checker(char **arr, int size, t_odata *odata)
 {
 	t_list		*a_stack;
@@ -91,6 +85,5 @@ int				main(int argc, char **argv)
 		close(odata->fd);
 	free_str_arr(&arr, si);
 	free(odata);
-	system("leaks checker");
 	return (0);
 }

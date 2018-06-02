@@ -45,9 +45,9 @@ int			main(int argc, char **argv)
 	si = 1;
 	fd = 1;
 	size = 0;
-	stacks = new_stacks(NULL, NULL);
 	if (argc < 2)
 		return (1);
+	stacks = new_stacks(NULL, NULL);
 	handle_options(argv, argc, &si, &fd);
 	arr = split_arr(&argv[si], argc - si, &size);
 	if (isvldarg(arr, size))
@@ -58,6 +58,7 @@ int			main(int argc, char **argv)
 	if (!st_issorted(stacks->a))
 		sort_stacks(stacks, fd);
 	free_str_arr(&arr, size);
+	free_stacks(&stacks);
 	if (fd > 2)
 		close(fd);
 	return (0);

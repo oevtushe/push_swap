@@ -12,33 +12,15 @@
 
 #include "checker.h"
 
-void				free_bottom(t_bottom **b)
-{
-	if ((*b)->separator)
-		free((*b)->separator);
-	if ((*b)->name)
-		free((*b)->name);
-	free(*b);
-	*b = NULL;
-}
-
-void				free_pfmt(t_pformat **pfmt)
-{
-	free_bottom(&(*pfmt)->ba);
-	free_bottom(&(*pfmt)->bb);
-	free((*pfmt)->color);
-}
-
 void				op_executor(t_stacks *stacks, t_list *op_stack,\
 		void print(t_stacks *, t_opc *, t_pformat*))
 {
 	t_excstat	stat;
 	t_opc		*opc;
 	t_pformat	*pfmt;
-	t_opc		*dft;
+	char		*cmd;
 
 	pfmt = new_pformat(stacks->a);
-	dft = new_opc(OP_NONE, "finish");
 	if (print)
 		print_extra(stacks, pfmt, "init");
 	while (op_stack)
@@ -49,14 +31,14 @@ void				op_executor(t_stacks *stacks, t_list *op_stack,\
 		{
 			init_format(pfmt, opc->op_name, stat);
 			print(stacks, opc, pfmt);
-			free(prompt());
-			free_bottom(&pfmt->ba);
-			free_bottom(&pfmt->bb);
+			cmd = prompt();
+			if (cmd)
+				free(cmd);
+			pfmt_prep_to_next(pfmt);
 		}
 		op_stack = op_stack->next;
 	}
 	if (print)
 		print_extra(stacks, pfmt, "finish");
 	free_pfmt(&pfmt);
-	free_opc(&dft);
 }

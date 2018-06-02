@@ -48,6 +48,7 @@ PS_SRCF			:=  arr_quickselect.c \
 					op_execute_wrp.c \
 					ps_error.c \
 					push_swap.c \
+					del_median.c \
 					find_nmedian.c
 
 PS_DEPS			:= $(addprefix $(PS_DEPS_DIR)/,$(PS_DEPF))

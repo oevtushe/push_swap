@@ -74,6 +74,10 @@ t_opc		*new_opc(t_operation op, char *op_name);
 t_stacks	*new_stacks(t_list *a, t_list *b);
 t_opc		*get_opc(char *oper_nm);
 void		del_opc(void *content, size_t content_size);
+void		del_stack(void *content, size_t content_size);
 void		free_opc(t_opc **opc);
+void		free_stacks(t_stacks **stacks);
+void		del_std_content(void *content, size_t content_size);
+void		free_int_map(int ***map, int size);
 
 #endif

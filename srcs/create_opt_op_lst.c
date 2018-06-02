@@ -63,6 +63,7 @@ static void	init_middle(t_list **lst, t_list **common, int cmn_len)
 		ft_lstadd(common, tmp);
 		*lst = (*lst)->next;
 		--cmn_len;
+		free(cmop);
 	}
 }
 
@@ -74,15 +75,15 @@ static void	read_map(int **map, t_pair *map_size, t_pair *start, t_pair *finish)
 
 	i = 0;
 	max = 0;
-	while (i < map_size->first)
+	while (i < map_size->second)
 	{
 		j = 0;
-		while (j < map_size->second)
+		while (j < map_size->first)
 		{
 			if (map[i][j] > max)
 			{
-				finish->second = i;
 				finish->first = j;
+				finish->second = i;
 				max = map[i][j];
 			}
 			++j;
@@ -93,6 +94,9 @@ static void	read_map(int **map, t_pair *map_size, t_pair *start, t_pair *finish)
 	start->second = finish->second - (max - 1);
 }
 
+/*
+** pair.first -> 
+*/
 
 t_list		*create_opt_op_lst(int **map, t_pair *map_size, t_list *ops_a, t_list *ops_b)
 {
@@ -105,7 +109,7 @@ t_list		*create_opt_op_lst(int **map, t_pair *map_size, t_list *ops_a, t_list *o
 	common = NULL;
 	read_map(map, map_size, &start, &finish);
 	init_tail(&ops_a, &ops_b, &start, &common);
-	if (finish.first + 1 != map_size->second)
+	if (finish.first + 1 != map_size->first)
 		lst3 = ops_a;
 	else 
 		lst3 = ops_b;

@@ -40,10 +40,14 @@ UT_SRCF		:= executors1.c \
 				free_opc.c \
 				op_execute.c \
 				del_opc.c \
+				del_stack.c \
 				opc_convert.c \
 				new_stacks.c \
 				new_opc.c \
 				read_args_stack.c \
+				free_stacks.c \
+				del_std_content.c \
+				free_int_map.c \
 				st_issorted.c
 UT_DEPF		:= utils.h
 

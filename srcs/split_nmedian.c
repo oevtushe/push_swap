@@ -52,9 +52,7 @@ int		comb_down(t_stacks *stacks, t_median *cur_med, int group_cnt, int ls, int f
 {
 	int			opt;
 	int			rot_cnt;
-	int			is_one_group;
 
-	is_one_group = !get_next_group(stacks->a);
 	opt = pos_of_first_to_push(stacks->b);
 	rot_cnt = 0;
 	while (ls-- > 0)

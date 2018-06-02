@@ -52,6 +52,7 @@ char	*prompt(void)
 {
 	char	*cmd;
 
+	cmd = NULL;
 	PRINT_PROMPT;
 	get_next_line(1, &cmd);
 	return (cmd);
@@ -59,13 +60,17 @@ char	*prompt(void)
 
 void	print_extra(t_stacks *stacks, t_pformat *pfmt, char *text)
 {
+	char	*cmd;
 	t_opc	*tmp;
 
 	tmp = new_opc(OP_NONE, text);
 	init_format(pfmt, tmp->op_name, ES_NONE);
 	print_info(stacks, tmp, pfmt);
-	free(prompt());
-	free(tmp);
+	cmd = prompt();
+	if (cmd)
+		free(cmd);
+	free_opc(&tmp);
+	pfmt_prep_to_next(pfmt);
 }
 
 void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)

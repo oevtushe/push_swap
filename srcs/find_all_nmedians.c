@@ -53,7 +53,7 @@ static t_list	*f(t_list *elem)
 {
 	t_list *new;
 
-	new = ft_lstnew(elem->content, sizeof(size_t));
+	new = ft_lstnew(elem->content, sizeof(int));
 	return (new);
 }
 
@@ -66,6 +66,7 @@ static void		median_del(t_list **lst, int median)
 	while (*lst && *(int*)(*lst)->content < median)
 	{
 		runner = (*lst)->next;
+		free((*lst)->content);
 		free(*lst);
 		*lst = runner;
 	}
@@ -74,6 +75,7 @@ static void		median_del(t_list **lst, int median)
 		if (*(int*)runner->content < median)
 		{
 			prev->next = runner->next;
+			free(runner->content);
 			free(runner);
 			runner = prev->next;
 		}
@@ -109,6 +111,7 @@ t_list		*find_all_nmedians(t_list *lst, int size)
 	int			cur_med;
 	t_list		*node;
 	t_list		*cpy;
+	t_median	*nm;
 
 	medians = NULL;
 	elems_cnt = size;
@@ -116,11 +119,14 @@ t_list		*find_all_nmedians(t_list *lst, int size)
 	while (elems_cnt > 3)
 	{
 		cur_med = find_nmedian(cpy, elems_cnt);
-		node = ft_lstnew(new_median(cur_med, elems_cnt / 2), sizeof(t_median));
+		nm = new_median(cur_med, elems_cnt / 2);
+		node = ft_lstnew(nm, sizeof(t_median));
 		ft_lstadd(&medians, node);
 		median_del(&cpy, cur_med);
 		elems_cnt = elems_cnt & 1 ? (elems_cnt / 2) + 1 : (elems_cnt / 2);
+		free(nm);
 	}
 	ft_lstcorder(&medians);
+	ft_lstdel(&cpy, del_stack);
 	return (medians);
 }
