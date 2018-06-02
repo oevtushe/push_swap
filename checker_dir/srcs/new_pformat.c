@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 12:08:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 17:49:03 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/02 10:14:01 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,9 @@ t_pformat			*new_pformat(t_list *a)
 	pfmt = (t_pformat*)ft_memalloc(sizeof(t_pformat));
 	pfmt->ba = (t_bottom*)ft_memalloc(sizeof(t_bottom));
 	pfmt->bb = (t_bottom*)ft_memalloc(sizeof(t_bottom));
-	pfmt->color = RED;
+	pfmt->color = ft_strdup(RED);
 	pfmt->bi_ln = stack_lil(a);
 	if (!(pfmt->bi_ln % 2))
 		++pfmt->bi_ln;
 	return (pfmt);
 }
-

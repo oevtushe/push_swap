@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:03:46 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 16:47:28 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 15:20:49 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_excstat	op_execute(t_stacks *stacks, t_operation op)
 	if (op == OP_SA)
 		return (execute_swap(stacks->a) ? ES_AM : ES_NONE);
 	else if (op == OP_SB)
-		return (execute_swap(stacks->a) ? ES_BM : ES_NONE);
+		return (execute_swap(stacks->b) ? ES_BM : ES_NONE);
 	else if (op == OP_SS)
 		return (execute_sswap(stacks->a, stacks->b));
 	else if (op == OP_PA)

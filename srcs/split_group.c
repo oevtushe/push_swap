@@ -6,11 +6,34 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:59:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/01 11:38:41 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 17:07:19 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void		db_stacks(t_stacks *stacks)
+{
+	t_list	*a;
+	t_list	*b;
+
+	a = stacks->a;
+	b = stacks->b;
+	ft_printf("Stacks:\n");
+	while (a || b)
+	{
+		if (a && b)
+			ft_printf("%d[%d]%*s%d[%d]\n", *(int*)a->content,
+					(int)a->content_size, 6, "",
+					*(int*)b->content, (int)b->content_size);
+		else if (a)
+			ft_printf("%d[%d]\n", *(int*)a->content, (int)a->content_size);
+		else if (b)
+			ft_printf("%d[%d]\n", *(int*)b->content, (int)b->content_size);
+		a = a->next;
+		b = b->next;
+	}
+}
 
 static void	top_sort(t_stacks *stacks, int fd)
 {

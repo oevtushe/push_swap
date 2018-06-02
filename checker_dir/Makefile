@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 08:03:18 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/07 15:05:17 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/01 18:48:21 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CH_ENAME		?= $(CH_NAME)
 
 CC				:= gcc
 RM				:= rm -rf
-CFLAGS			:= -Wall -Werror -Wextra
+CFLAGS			:= -Wall -Werror -Wextra -g
 MFLAGS			:= --no-print-directory -C
 IFLAGS			:= -I$(CH_DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR) -I$(UT_DEPS_DIR)
 

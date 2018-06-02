@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 11:40:42 by oevtushe          #+#    #+#              #
-#    Updated: 2018/06/01 10:24:21 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/02 10:05:46 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ UT_SRCF		:= executors1.c \
 				isvldarg.c \
 				get_simple_args.c \
 				free_str_arr.c \
+				free_opc.c \
 				op_execute.c \
 				del_opc.c \
 				opc_convert.c \

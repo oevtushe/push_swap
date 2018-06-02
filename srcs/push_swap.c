@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/01 14:39:00 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/01 18:32:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			main(int argc, char **argv)
 	int			si;
 
 	si = 1;
-	fd = 0;
+	fd = 1;
 	size = 0;
 	stacks = new_stacks(NULL, NULL);
 	if (argc < 2)
@@ -58,7 +58,7 @@ int			main(int argc, char **argv)
 	if (!st_issorted(stacks->a))
 		sort_stacks(stacks, fd);
 	free_str_arr(&arr, size);
-	if (fd)
+	if (fd > 2)
 		close(fd);
 	return (0);
 }

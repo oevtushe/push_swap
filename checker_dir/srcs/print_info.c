@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 17:53:39 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/02 10:35:32 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,5 @@ void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)
 			!pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
 		print_row(cpy, pfmt);
 	free(header);
+	free(cpy);
 }

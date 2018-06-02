@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/01 10:26:47 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/02 10:22:51 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void		nm_to_opc(t_list *elem);
 t_opc		*new_opc(t_operation op, char *op_name);
 t_stacks	*new_stacks(t_list *a, t_list *b);
 t_opc		*get_opc(char *oper_nm);
-void		del_opc(t_list *elem);
+void		del_opc(void *content, size_t content_size);
+void		free_opc(t_opc **opc);
 
 #endif
