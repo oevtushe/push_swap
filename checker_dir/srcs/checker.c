@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/12 09:41:55 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:15:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,22 @@ static t_list	*get_ops(int fd)
 
 static void		checker(char **arr, int size, t_odata *odata)
 {
-	t_list	*a_stack;
-	t_list	*b_stack;
-	t_list	*op_stack;
+	t_stacks	*stacks;
+	t_list		*op_stack;
 
-	a_stack = NULL;
-	b_stack = NULL;
-	a_stack = get_a(arr, size);
+	stacks = new_stacks(NULL, NULL);
+	stacks->a = get_a(arr, size);
 	if (odata->debug)
-		op_read_and_exec(&a_stack, &b_stack, odata->fd);
+		op_read_and_exec(stacks, odata->fd);
 	else
 	{
 		op_stack = get_ops(odata->fd);
-		op_executor(&a_stack, &b_stack, op_stack, odata->print);
+		op_executor(stacks, op_stack, odata->print);
 	}
 	if (odata->stat)
 		stat(op_stack);
-	verdict(a_stack, b_stack);
+	verdict(stacks);
+	free_stacks(&stacks);
 }
 
 int				main(int argc, char **argv)

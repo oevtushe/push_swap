@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:32:13 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 15:58:47 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:11:06 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ static void	print_elem_b(t_list **b, t_pformat *pfmt)
 		empty_b(pfmt);
 }
 
-void		print_row(t_list **a, t_list **b, t_pformat *pfmt)
+void		print_row(t_stacks *stacks, t_pformat *pfmt)
 {
-	print_elem_a(a, pfmt);
-	print_elem_b(b, pfmt);
+	print_elem_a(&stacks->a, pfmt);
+	print_elem_b(&stacks->b, pfmt);
 }

@@ -6,27 +6,27 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/02 10:55:01 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:20:14 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void		op_print(t_list **a, t_list **b, t_operation op, t_pformat *pfmt)
+static void		op_print(t_stacks *stacks, t_operation op, t_pformat *pfmt)
 {
 	if (pfmt->stat != ES_NONE)
 	{
 		if (op == OP_SA || op == OP_SB || op == OP_SS)
 		{
-			print_row(a, b, pfmt);
-			print_row(a, b, pfmt);
+			print_row(stacks, pfmt);
+			print_row(stacks, pfmt);
 		}
 		else if (op == OP_PA || op == OP_PB)
-			print_row(a, b, pfmt);
+			print_row(stacks, pfmt);
 		else if (op == OP_RA || op == OP_RB || op == OP_RR ||
 					op == OP_RRA || op == OP_RRB || op == OP_RRR)
-			while (*a || *b)
-				print_row(a, b, pfmt);
+			while (stacks->a || stacks->b)
+				print_row(stacks, pfmt);
 	}
 }
 
@@ -57,26 +57,27 @@ char	*prompt(void)
 	return (cmd);
 }
 
-void	print_extra(t_list *a_stack, t_list *b_stack, t_pformat *pfmt, char *text)
+void	print_extra(t_stacks *stacks, t_pformat *pfmt, char *text)
 {
 	t_opc	*tmp;
 
 	tmp = new_opc(OP_NONE, text);
 	init_format(pfmt, tmp->op_name, ES_NONE);
-	print_info(a_stack, b_stack, tmp, pfmt);
+	print_info(stacks, tmp, pfmt);
 	free(prompt());
 	free(tmp);
 }
 
-void			print_info(t_list *a, t_list *b, t_opc *opc, t_pformat *pfmt)
+void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)
 {
 	char		*header;
 
 	header = make_header(pfmt);
 	ft_printf(header, opc->op_name);
-	op_print(&a, &b, opc->abbr, pfmt);
+	op_print(stacks, opc->abbr, pfmt);
 	pfmt->stat = ES_NONE;
-	while (a || b || !pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
-		print_row(&a, &b, pfmt);
+	while (stacks->a || stacks->b ||
+			!pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
+		print_row(stacks, pfmt);
 	free(header);
 }
