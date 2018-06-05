@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/30 11:11:31 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 17:35:52 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ typedef	enum	e_excstat
 	ES_BOTH
 }				t_excstat;
 
+typedef struct	s_stacks
+{
+	t_list *a;
+	t_list *b;
+}				t_stacks;
+
 /*
 ** Operation container
 */
@@ -66,5 +72,7 @@ void		free_str_arr(char ***arr, int size);
 void		rebase_op_stack(t_list **op_stack);
 t_opc		*new_opc(t_operation op, char *op_name);
 t_opc		*get_opc(char *oper_nm);
+t_stacks	*new_stacks(t_list *a, t_list *b);
+void		del_simple(void *content, size_t content_size);
 
 #endif
