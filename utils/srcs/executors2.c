@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:08:38 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/31 11:08:57 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:33:18 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int		execute_rev_rotate(t_list **stack)
 	return (st);
 }
 
-t_excstat	execute_rev_rrotate(t_list **a, t_list **b)
+t_excstat	execute_rev_rrotate(t_stacks *stacks)
 {
 	t_excstat	stat1;
 	t_excstat	stat2;
 	t_excstat	stat;
 
-	stat1 = execute_rev_rotate(a) ? ES_AM : ES_NONE;
-	stat2 = execute_rev_rotate(b) ? ES_BM : ES_NONE;
+	stat1 = execute_rev_rotate(&stacks->a) ? ES_AM : ES_NONE;
+	stat2 = execute_rev_rotate(&stacks->b) ? ES_BM : ES_NONE;
 	if (stat1 == ES_AM && stat2 == ES_BM)
 		stat = ES_BOTH;
 	else if (stat1 == ES_AM)
@@ -79,14 +79,14 @@ int		execute_rotate(t_list **stack)
 	return (st);
 }
 
-t_excstat	execute_rrotate(t_list **a, t_list **b)
+t_excstat	execute_rrotate(t_stacks *stacks)
 {
 	t_excstat	stat1;
 	t_excstat	stat2;
 	t_excstat	stat;
 
-	stat1 = execute_rotate(a) ? ES_AM : ES_NONE;
-	stat2 = execute_rotate(b) ? ES_BM : ES_NONE;
+	stat1 = execute_rotate(&stacks->a) ? ES_AM : ES_NONE;
+	stat2 = execute_rotate(&stacks->b) ? ES_BM : ES_NONE;
 	if (stat1 == ES_AM && stat2 == ES_BM)
 		stat = ES_BOTH;
 	else if (stat1 == ES_AM)

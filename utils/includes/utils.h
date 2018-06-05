@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:01:34 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:32:43 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ t_excstat	op_execute(t_stacks *stacks, t_operation op);
 int			isvldarg(char **args, int size);
 t_list		*read_args_stack(char **data, int size);
 int			execute_swap(t_list *stack);
-t_excstat	execute_sswap(t_list *a, t_list *b);
-int			execute_push(t_list **fst, t_list **scd);
+t_excstat	execute_sswap(t_stacks *stacks);
+int			execute_push(t_stacks *stacks);
 int			execute_rev_rotate(t_list **stack);
-t_excstat	execute_rev_rrotate(t_list **a, t_list **b);
+t_excstat	execute_rev_rrotate(t_stacks *stacks);
 int			execute_rotate(t_list **stack);
-t_excstat	execute_rrotate(t_list **a, t_list **b);
+t_excstat	execute_rrotate(t_stacks *stacks);
 char		**split_arr(char **arr, int size, int *new_size);
 void		free_str_arr(char ***arr, int size);
 void		rebase_op_stack(t_list **op_stack);
