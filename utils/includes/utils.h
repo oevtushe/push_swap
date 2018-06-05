@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 17:46:28 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:01:34 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ typedef	struct	s_opc
 }				t_opc;
 
 int			st_issorted(t_list *stack);
-t_excstat	op_execute(t_list **a, t_list **b, t_operation op);
+t_excstat	op_execute(t_stacks *stacks, t_operation op);
 int			isvldarg(char **args, int size);
 t_list		*read_args_stack(char **data, int size);
 int			execute_swap(t_list *stack);
