@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 17:35:52 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 17:46:28 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ t_opc		*new_opc(t_operation op, char *op_name);
 t_opc		*get_opc(char *oper_nm);
 t_stacks	*new_stacks(t_list *a, t_list *b);
 void		del_simple(void *content, size_t content_size);
+void		free_stacks(t_stacks **stacks);
 
 #endif
