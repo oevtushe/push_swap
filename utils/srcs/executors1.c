@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:08:43 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/31 11:08:44 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 18:33:37 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ int			execute_swap(t_list *stack)
 	return (st);
 }
 
-t_excstat	execute_sswap(t_list *a, t_list *b)
+t_excstat	execute_sswap(t_stacks *stacks)
 {
 	t_excstat	stat1;
 	t_excstat	stat2;
 	t_excstat	stat;
 
-	stat1 = execute_swap(a) ? ES_AM : ES_NONE;
-	stat2 = execute_swap(b) ? ES_BM : ES_NONE;
+	stat1 = execute_swap(stacks->a) ? ES_AM : ES_NONE;
+	stat2 = execute_swap(stacks->b) ? ES_BM : ES_NONE;
 	if (stat1 == ES_AM && stat2 == ES_BM)
 		stat = ES_BOTH;
 	else if (stat1 == ES_AM)
@@ -46,17 +46,17 @@ t_excstat	execute_sswap(t_list *a, t_list *b)
 	return (stat);
 }
 
-int			execute_push(t_list **fst, t_list **scd)
+int			execute_push(t_stacks *stacks)
 {
 	int		st;
 	void	*tmp;
 
-	if (scd && *scd)
+	if (stacks->b)
 	{
 		st = 1;
-		tmp = (*scd)->next;
-		ft_lstadd(fst, *scd);
-		*scd = tmp;
+		tmp = stacks->b->next;
+		ft_lstadd(&stacks->a, stacks->b);
+		stacks->b = tmp;
 	}
 	else
 		st = 0;
