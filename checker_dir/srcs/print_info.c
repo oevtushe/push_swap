@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 09:56:06 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 11:46:35 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,8 @@ void	print_extra(t_stacks *stacks, t_pformat *pfmt, char *text)
 	init_format(pfmt, tmp->op_name, ES_NONE);
 	print_info(stacks, tmp, pfmt);
 	cmd = prompt();
-	if (cmd)
-		free(cmd);
-	free(tmp);
+	ft_strdel(&cmd);
+	pfmt_prep_to_next(pfmt);
 }
 
 void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)
@@ -85,6 +84,6 @@ void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)
 	while (cpy->a || cpy->b ||
 			!pfmt->ba->is_nm_printed || !pfmt->bb->is_nm_printed)
 		print_row(cpy, pfmt);
-	free(header);
+	ft_strdel(&header);
 	free_stacks(&cpy);
 }

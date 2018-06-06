@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 09:39:13 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 11:46:59 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,13 @@ void				op_executor(t_stacks *stacks, t_list *op_stack,\
 			init_format(pfmt, opc->op_name, stat);
 			print(stacks, opc, pfmt);
 			cmd = prompt();
-			if (cmd)
-				free(cmd);
+			ft_strdel(&cmd);
+			pfmt_prep_to_next(pfmt);
 		}
 		op_stack = op_stack->next;
 	}
 	if (print)
 		print_extra(stacks, pfmt, "finish");
-	free(dft);
+	free_pfmt(&pfmt);
+	// free opc, dft
 }

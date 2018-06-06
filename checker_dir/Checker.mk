@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/04 13:27:07 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/30 11:11:10 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/06 11:19:50 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,19 +27,20 @@ include			$(UT_DIR)/Utils.mk
 include			$(FT_DIR)/Pretty.mk
 
 CH_DEPF			:= checker.h
-CH_SRCF			:= checker.c \
-				isvldops.c \
-				print_row.c \
-				op_executor.c \
-				new_pformat.c \
-				init_format.c \
-				op_read_and_exec.c \
-				verdict.c \
-				init_odata.c \
-				stat.c \
-				read_operations.c \
-				str_join_number.c \
-				print_info.c \
+CH_SRCF			:= checker.c		\
+				isvldops.c			\
+				print_row.c			\
+				op_executor.c		\
+				new_pformat.c		\
+				init_format.c		\
+				op_read_and_exec.c	\
+				verdict.c			\
+				pfmt_utils.c		\
+				init_odata.c		\
+				stat.c				\
+				read_operations.c	\
+				str_join_number.c	\
+				print_info.c		\
 				checker_error.c
 
 CH_SRCS			:= $(addprefix $(CH_SRCS_DIR)/,$(CH_SRCF))

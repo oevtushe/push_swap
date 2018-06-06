@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:15:39 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 11:28:51 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static void		checker(char **arr, int size, t_odata *odata)
 	if (odata->stat)
 		stat(op_stack);
 	verdict(stacks);
+	ft_lstdel(&op_stack, del_simple);
 	free_stacks(&stacks);
 }
 
@@ -72,6 +73,6 @@ int				main(int argc, char **argv)
 	if (odata->fd > 0)
 		close(odata->fd);
 	free_str_arr(&arr, si);
-	free(odata);
+	ft_memdel((void**)&odata);
 	return (0);
 }
