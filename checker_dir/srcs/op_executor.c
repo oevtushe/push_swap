@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:46:59 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 12:18:03 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void				op_executor(t_stacks *stacks, t_list *op_stack,\
 	t_excstat	stat;
 	t_opc		*opc;
 	t_pformat	*pfmt;
-	t_opc		*dft;
 	char		*cmd;
 
 	pfmt = new_pformat(stacks->a);
-	dft = new_opc(OP_NONE, "finish");
 	if (print)
 		print_extra(stacks, pfmt, "init");
 	while (op_stack)
@@ -42,5 +40,4 @@ void				op_executor(t_stacks *stacks, t_list *op_stack,\
 	if (print)
 		print_extra(stacks, pfmt, "finish");
 	free_pfmt(&pfmt);
-	// free opc, dft
 }

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 13:42:12 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/22 14:53:55 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 10:57:14 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ static void	print_op(t_operation op)
 void		op_execute_wrp(t_stacks *stacks, t_operation op)
 {
 	print_op(op);
-	op_execute(&stacks->a, &stacks->b, op);
+	op_execute(stacks, op);
 }

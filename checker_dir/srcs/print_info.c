@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:46:35 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 14:39:16 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	print_extra(t_stacks *stacks, t_pformat *pfmt, char *text)
 	cmd = prompt();
 	ft_strdel(&cmd);
 	pfmt_prep_to_next(pfmt);
+	free_opc(&tmp);
 }
 
 void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)

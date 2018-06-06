@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:14:25 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:38:34 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 14:55:58 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void				op_read_and_exec(t_stacks *stacks, int fd)
 	tmp = new_opc(OP_NONE, "init");
 	init_format(pfmt, tmp->op_name, ES_NONE);
 	print_info(stacks, tmp, pfmt);
+	pfmt_prep_to_next(pfmt);
 	PRINT_PROMPT;
-	// free tmp
+	free_opc(&tmp);
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (is_vldop(line))
@@ -35,6 +36,7 @@ void				op_read_and_exec(t_stacks *stacks, int fd)
 			init_format(pfmt, opc->op_name, stat);
 			print_info(stacks, opc, pfmt);
 			pfmt_prep_to_next(pfmt);
+			free_opc(&opc);
 		}
 		else
 			ft_printf("Try something better.");

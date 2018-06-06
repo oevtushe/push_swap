@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:18:51 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 14:05:58 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int				isvldops(t_list *op_stack);
 void			print_info(t_stacks *stacks, t_opc *opc, t_pformat*);
 void			print_row(t_stacks *stacks, t_pformat *fmt);
 t_list			*read_operations(int fd);
-void			checker_error(const char *message);
 int				st_issorted(t_list *stack);
 void			op_executor(t_stacks *stacks, t_list *op_stack,
 		void print(t_stacks*, t_opc *, t_pformat*));
