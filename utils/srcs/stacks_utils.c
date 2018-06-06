@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_stacks.c                                       :+:      :+:    :+:   */
+/*   stacks_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/05 17:32:15 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 17:34:53 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/06/06 11:57:47 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/06/06 11:59:29 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+void	free_stacks(t_stacks **stacks)
+{
+	ft_lstdel(&(*stacks)->a, del_simple);
+	ft_lstdel(&(*stacks)->b, del_simple);
+	ft_memdel((void**)stacks);
+	*stacks = NULL;
+}
 
 t_stacks	*new_stacks(t_list *a, t_list *b)
 {
