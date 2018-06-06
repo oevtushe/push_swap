@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 14:51:54 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 15:26:36 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ static void		checker(char **arr, int size, t_odata *odata)
 	stacks->a = get_a(arr, size);
 	op_stack = NULL;
 	if (odata->debug)
-		op_read_and_exec(stacks, odata->fd);
+	{
+		op_read_and_exec(stacks, &op_stack, odata->fd);
+		ft_lstcorder(&op_stack);
+	}
 	else
 	{
 		op_stack = get_ops(odata->fd);
