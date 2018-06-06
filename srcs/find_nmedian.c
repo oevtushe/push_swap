@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:42:34 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/15 14:19:14 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:29:53 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		find_nmedian(t_list *lst, int size)
         {
 			middle = (size / 2) + 1;
             median = arr_quickselect(arr, 0, size - 1, middle);
-            free(arr);
+            ft_memdel((void**)&arr);
         }
     }
 	return (median);
