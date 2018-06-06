@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 11:40:42 by oevtushe          #+#    #+#              #
-#    Updated: 2018/06/06 11:58:00 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/06 14:01:01 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ UT_SRCF		:=  executors1.c		\
 				opc_utils.c			\
 				stacks_utils.c		\
 				read_args_stack.c	\
+				ps_error.c			\
 				del_simple.c		\
 				st_issorted.c
 UT_DEPF		:= utils.h
