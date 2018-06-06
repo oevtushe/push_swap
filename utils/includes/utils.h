@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:32:43 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 10:15:45 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int			isvldarg(char **args, int size);
 t_list		*read_args_stack(char **data, int size);
 int			execute_swap(t_list *stack);
 t_excstat	execute_sswap(t_stacks *stacks);
-int			execute_push(t_stacks *stacks);
+int			execute_push(t_list **fst, t_list **scd);
 int			execute_rev_rotate(t_list **stack);
 t_excstat	execute_rev_rrotate(t_stacks *stacks);
 int			execute_rotate(t_list **stack);
