@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 15:03:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/19 10:21:54 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 12:05:02 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void		resize_arr(char ***arr, int old_size, int new_size)
 		{
 			while (++i < old_size)
 				buff[i] = (*arr)[i];
-			free(*arr);
+			ft_memdel((void**)arr);
 			*arr = buff;
 		}
 	}
@@ -58,7 +58,7 @@ static int		split_and_put(char ***arr, char *to_split, int *j, int size)
 	resize_arr(arr, size, new_size);
 	while (sa[i])
 		(*arr)[++(*j)] = sa[i++];
-	free(sa);
+	ft_memdel((void**)sa);
 	return (new_size);
 }
 
