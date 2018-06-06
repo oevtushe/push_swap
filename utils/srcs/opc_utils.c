@@ -6,11 +6,20 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:50:26 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 12:00:38 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 13:00:02 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+void	opc_lst_rebase(t_list *elem)
+{
+	char *cur;
+
+	cur = elem->content;
+	elem->content = get_opc(cur);
+	ft_strdel(&cur);
+}
 
 void	del_opc(void *content, size_t content_size)
 {
@@ -36,7 +45,7 @@ t_opc	*new_opc(t_operation op, char *op_name)
 
 	opc = ft_memalloc(sizeof(t_opc));
 	opc->abbr = op;
-	opc->op_name = op_name;
+	opc->op_name = ft_strdup(op_name);
 	return (opc);
 }
 
