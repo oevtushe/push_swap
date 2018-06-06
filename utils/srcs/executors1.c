@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:08:43 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:33:37 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 10:15:32 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,17 @@ t_excstat	execute_sswap(t_stacks *stacks)
 	return (stat);
 }
 
-int			execute_push(t_stacks *stacks)
+int			execute_push(t_list **fst, t_list **scd)
 {
 	int		st;
 	void	*tmp;
 
-	if (stacks->b)
+	if (scd && *scd)
 	{
 		st = 1;
-		tmp = stacks->b->next;
-		ft_lstadd(&stacks->a, stacks->b);
-		stacks->b = tmp;
+		tmp = (*scd)->next;
+		ft_lstadd(fst, *scd);
+		*scd = tmp;
 	}
 	else
 		st = 0;
