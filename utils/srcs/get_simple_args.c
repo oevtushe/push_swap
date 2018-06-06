@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 15:03:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 12:05:02 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 12:57:24 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int		split_and_put(char ***arr, char *to_split, int *j, int size)
 	resize_arr(arr, size, new_size);
 	while (sa[i])
 		(*arr)[++(*j)] = sa[i++];
-	ft_memdel((void**)sa);
+	ft_memdel((void**)&sa);
 	return (new_size);
 }
 

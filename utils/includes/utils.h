@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:12:08 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:56:44 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 12:56:53 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void		del_simple(void *content, size_t content_size);
 void		del_opc(void *content, size_t content_size);
 void		free_opc(t_opc **opc);
 void		free_stacks(t_stacks **stacks);
+void		ps_error(char *message);
 
 #endif
