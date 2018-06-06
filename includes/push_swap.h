@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 10:22:04 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/05 17:41:05 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ typedef struct	s_pair
 	int first;
 	int second;
 }				t_pair;
-
-typedef struct	s_stacks
-{
-	t_list *a;
-	t_list *b;
-}				t_stacks;
 
 typedef enum	e_comb
 {
@@ -83,7 +77,6 @@ void		op_execute_wrp(t_stacks *stacks, t_operation op);
 void		op_execute_swap_opt(t_stacks *stacks, char stack);
 t_list		*get_next_group(t_list *lst);
 int			top_grp_len(t_list *lst);
-t_stacks	*new_stacks(t_list *a, t_list *b);
 int			st_group_is_sorted(t_list *lst);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:03:46 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:34:57 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 10:14:02 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_excstat	op_execute(t_stacks *stacks, t_operation op)
 	else if (op == OP_SS)
 		return (execute_sswap(stacks));
 	else if (op == OP_PA)
-		return (execute_push(stacks) ? ES_AM : ES_NONE);
+		return (execute_push(&stacks->a, &stacks->b) ? ES_AM : ES_NONE);
 	else if (op == OP_PB)
-		return (execute_push(stacks) ? ES_BM : ES_NONE);
+		return (execute_push(&stacks->b, &stacks->a) ? ES_BM : ES_NONE);
 	else if (op == OP_RA)
 		return (execute_rotate(&stacks->a) ? ES_AM : ES_NONE);
 	else if (op == OP_RB)
