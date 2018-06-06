@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:20:14 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 09:42:17 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ char	*prompt(void)
 {
 	char	*cmd;
 
+	cmd = NULL;
 	PRINT_PROMPT;
 	get_next_line(1, &cmd);
 	return (cmd);
@@ -60,11 +61,14 @@ char	*prompt(void)
 void	print_extra(t_stacks *stacks, t_pformat *pfmt, char *text)
 {
 	t_opc	*tmp;
+	char	*cmd;
 
 	tmp = new_opc(OP_NONE, text);
 	init_format(pfmt, tmp->op_name, ES_NONE);
 	print_info(stacks, tmp, pfmt);
-	free(prompt());
+	cmd = prompt();
+	if (cmd)
+		free(cmd);
 	free(tmp);
 }
 
