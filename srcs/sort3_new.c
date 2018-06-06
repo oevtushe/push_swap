@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 14:32:48 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 10:31:30 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:11:20 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,41 @@ static void		append_b(t_list *elem)
 	elem->content_size++;
 }
 
+static void		free_int_map(int ***map, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_memdel((void**)&(*map)[i]);
+		++i;
+	}
+	ft_memdel((void**)map);
+}
+
+static t_list	*cpy_b(t_list *elem)
+{
+	t_list	*new;
+	char	*str;
+
+	str = ft_strjoin((char*)elem->content, "b");
+	new = ft_lstnew(str, ft_strlen(str) + 1);
+	ft_strdel(&str);
+	return (new);
+}
+
+static t_list	*cpy_a(t_list *elem)
+{
+	t_list	*new;
+	char	*str;
+
+	str = ft_strjoin((char*)elem->content, "a");
+	new = ft_lstnew(str, ft_strlen(str) + 1);
+	ft_strdel(&str);
+	return (new);
+}
+
 static t_list	*combine_opts(t_list *ops_a, t_list *ops_b)
 {
 	int		**map;
@@ -37,17 +72,12 @@ static t_list	*combine_opts(t_list *ops_a, t_list *ops_b)
 		ft_lstiter(ops_a, append_a);
 		ft_lstiter(ops_b, append_b);
 		res = create_opt_op_lst(map, &map_size, ops_a, ops_b);
+		free_int_map(&map, map_size.first);
 	}
 	else if (ops_a)
-	{
-		ft_lstiter(ops_a, append_a);
-		res = ops_a;
-	}
+		res = ft_lstmap(ops_a, cpy_a);
 	else if (ops_b)
-	{
-		ft_lstiter(ops_b, append_b);
-		res = ops_b;
-	}
+		res = ft_lstmap(ops_b, cpy_b);
 	return (res);
 }
 
@@ -57,16 +87,22 @@ void			sort3_new(t_stacks *stacks)
 	t_list	*ops_b;
 	t_list	*res;
 	t_opc	*opc;
+	t_list	*rn;
 
 	res = NULL;
 	ops_a = gen_op_sort3(get_comb_a(stacks->a), 1);
 	ops_b = gen_op_sort3(get_comb_b(stacks->b), -1);
 	res = combine_opts(ops_a, ops_b);
-	rebase_op_stack(&res);
-	while (res)
+	ft_lstiter(res, opc_lst_rebase);
+	ft_lstcorder(&res);
+	rn = res;
+	while (rn)
 	{
-		opc = (t_opc*)res->content;
+		opc = (t_opc*)rn->content;
 		op_execute_wrp(stacks, opc->abbr);
-		res = res->next;
+		rn = rn->next;
 	}
+	ft_lstdel(&ops_a, del_simple);
+	ft_lstdel(&ops_b, del_simple);
+	ft_lstdel(&res, del_opc);
 }

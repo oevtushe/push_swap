@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/31 10:07:31 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 10:22:42 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 15:56:37 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static int	**create_map(t_list *ops_a, t_list *ops_b, t_pair *map_size)
 {
 	int i;
-	int j;
 	int	cols;
 	int	rows;
 	int **map;
@@ -25,18 +24,9 @@ static int	**create_map(t_list *ops_a, t_list *ops_b, t_pair *map_size)
 	rows = ft_lstlen(ops_b);
 	map_size->first = rows;
 	map_size->second = cols;
-	map = (int**)malloc((rows + 1) * sizeof(int*));
+	map = (int**)ft_memalloc(rows * sizeof(int*));
 	while (i < rows)
-		map[i++] = (int*)malloc(cols * sizeof(int));
-	map[i] = NULL;
-	i = 0;
-	while (i < rows)
-	{
-		j = 0;
-		while (j < cols)
-			map[i][j++] = 0;
-		++i;
-	}
+		map[i++] = (int*)ft_memalloc(cols * sizeof(int));
 	return (map);
 }
 

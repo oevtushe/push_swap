@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 18:56:46 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/31 09:46:01 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 16:40:12 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	init_middle(t_list **lst, t_list **common, int cmn_len)
 		ft_lstadd(common, tmp);
 		*lst = (*lst)->next;
 		--cmn_len;
+		ft_strdel(&cmop);
 	}
 }
 

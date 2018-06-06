@@ -6,17 +6,11 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 15:30:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/30 18:17:38 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 17:22:47 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	del_int(void *content, size_t content_size)
-{
-	++content_size;
-	free(content);
-}
 
 void	sort_stacks(t_stacks *stacks)
 {
@@ -48,5 +42,7 @@ int		main(int argc, char **argv)
 	if (!st_issorted(a))
 		sort_stacks(stacks);
 	free_str_arr(&arr, size);
+	free_stacks(&stacks);
+	system("leaks push_swap");
 	return (0);
 }

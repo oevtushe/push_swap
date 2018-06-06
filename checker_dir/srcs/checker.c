@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 15:26:36 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 15:39:03 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,5 @@ int				main(int argc, char **argv)
 		close(odata->fd);
 	free_str_arr(&arr, si);
 	ft_memdel((void**)&odata);
-	system("leaks checker");
 	return (0);
 }

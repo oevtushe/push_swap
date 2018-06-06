@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/14 16:23:33 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/30 18:21:26 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/06 14:44:18 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CH_NAME			:= checker
 
 CC				:= gcc
 RM				:= rm -rf
-CFLAGS			:= -Wall -Werror -Wextra #-DDEBUG
+CFLAGS			:= -Wall -Werror -Wextra -g
 MFLAGS			:= --no-print-directory -C
 IFLAGS			:= -I$(PS_DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR) -I$(UT_DEPS_DIR)
 
