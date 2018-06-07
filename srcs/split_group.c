@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 13:59:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 16:00:15 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 18:10:17 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	top_sort(t_stacks *stacks)
+static void	top_sort(t_stacks *stacks, int fd)
 {
 	int		t1;
 	size_t	b_len;
@@ -24,26 +24,26 @@ static void	top_sort(t_stacks *stacks)
 		if (!get_next_group(stacks->a))
 		{
 			if (b_len == 3 && is_eq_combs(stacks))
-				sort3optim_both(stacks);
+				sort3optim_both(stacks, fd);
 			else
-				sort3optimized(stacks);
+				sort3optimized(stacks, fd);
 		}
 		else if (top_grp_len(stacks->b) == 3)
-			sort3_new(stacks);
+			sort3_new(stacks, fd);
 		else if (b_len == 3)
-			sort3optim_b(stacks);
+			sort3optim_b(stacks, fd);
 		else
-			sort3(stacks);
+			sort3(stacks, fd);
 	}
 	else if (t1 == 2)
 	{
-		sort2(stacks);
+		sort2(stacks, fd);
 		if (ft_lstlen(stacks->b) == 3)
-			sort3optim_b(stacks);
+			sort3optim_b(stacks, fd);
 	}
 }
 
-static void	get_head_back(t_stacks *stacks, int *group_cnt)
+static void	get_head_back(t_stacks *stacks, int *group_cnt, int fd)
 {
 	int		cur_grp;
 
@@ -52,11 +52,11 @@ static void	get_head_back(t_stacks *stacks, int *group_cnt)
 	while (stacks->b && (int)stacks->b->content_size == cur_grp)
 	{
 		stacks->b->content_size = *group_cnt;
-		op_execute_wrp(stacks, OP_PA);
+		op_execute_wrp(stacks, OP_PA, fd);
 	}
 }
 
-void		split_group_a(t_stacks *stacks, int *group_cnt)
+void		split_group_a(t_stacks *stacks, int *group_cnt, int fd)
 {
 	int		top_len;
 	int		cur_grp;
@@ -65,17 +65,17 @@ void		split_group_a(t_stacks *stacks, int *group_cnt)
 	cur_grp = stacks->a->content_size;
 	top_len = top_grp_len(stacks->a);
 	medians = find_all_nmedians(stacks->a, top_len);
-	split_nmedian_a(stacks, medians, group_cnt);
-	top_sort(stacks);
+	split_nmedian_a(stacks, medians, group_cnt, fd);
+	top_sort(stacks, fd);
 	if ((top_len = top_grp_len(stacks->b)) > 0)
 	{
-		get_head_back(stacks, group_cnt);
-		top_sort(stacks);
+		get_head_back(stacks, group_cnt, fd);
+		top_sort(stacks, fd);
 	}
 	ft_lstdel(&medians, del_simple);
 }
 
-void		split_group_b(t_stacks *stacks, int *group_cnt)
+void		split_group_b(t_stacks *stacks, int *group_cnt, int fd)
 {
 	int		top_len;
 	int		cur_grp;
@@ -86,17 +86,17 @@ void		split_group_b(t_stacks *stacks, int *group_cnt)
 			&& (int)stacks->b->content_size == cur_grp)
 	{
 		median = find_nmedian(stacks->b, top_len);
-		split_nmedian_b(stacks, median, ++(*group_cnt));
+		split_nmedian_b(stacks, median, ++(*group_cnt), fd);
 		if (top_grp_len(stacks->a) > 3)
 		{
-			split_group_a(stacks, group_cnt);
+			split_group_a(stacks, group_cnt, fd);
 			cur_grp = stacks->b->content_size;
 		}
 	}
-	top_sort(stacks);
+	top_sort(stacks, fd);
 	if ((top_len = top_grp_len(stacks->b)) > 0)
 	{
-		get_head_back(stacks, group_cnt);
-		top_sort(stacks);
+		get_head_back(stacks, group_cnt, fd);
+		top_sort(stacks, fd);
 	}
 }

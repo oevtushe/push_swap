@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 15:39:03 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:29:54 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int				main(int argc, char **argv)
 	odata = init_odata(argv, &si, argc);
 	arr = split_arr(&argv[si], argc - si, &si);
 	checker(arr, si, odata);
-	if (odata->fd > 0)
+	if (odata->fd > 2)
 		close(odata->fd);
 	free_str_arr(&arr, si);
 	ft_memdel((void**)&odata);
