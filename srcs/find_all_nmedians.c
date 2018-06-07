@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 11:56:54 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 16:09:49 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:53:07 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,11 @@ static void		median_del(t_list **lst, int median)
 	}
 }
 
-/*
-static void		print2(t_list *elem)
-{
-	ft_printf("median = %d\n", ((t_median*)(elem->content))->median);
-	ft_printf("push_cnt = %d\n\n", ((t_median*)(elem->content))->push_cnt);
-}
-*/
-
-/*
-static void		print(t_list *elem)
-{
-	ft_printf("elem = %d\n", *(int*)elem->content);
-}
-*/
-
-// Dont copy all list
-
-t_list		*find_all_nmedians(t_list *lst, int size)
+t_list			*find_all_nmedians(t_list *lst, int size)
 {
 	t_list		*medians;
 	int			elems_cnt;
 	int			cur_med;
-	t_list		*node;
 	t_list		*cpy;
 	t_median	*cur;
 
@@ -91,10 +73,9 @@ t_list		*find_all_nmedians(t_list *lst, int size)
 	{
 		cur_med = find_nmedian(cpy, elems_cnt);
 		cur = new_median(cur_med, elems_cnt / 2);
-		node = ft_lstnew(cur, sizeof(t_median));
-		ft_lstadd(&medians, node);
-		median_del(&cpy, cur_med);
+		ft_lstadd(&medians, ft_lstnew(cur, sizeof(t_median)));
 		elems_cnt = elems_cnt & 1 ? (elems_cnt / 2) + 1 : (elems_cnt / 2);
+		median_del(&cpy, cur_med);
 		ft_memdel((void**)&cur);
 	}
 	ft_lstdel(&cpy, del_simple);

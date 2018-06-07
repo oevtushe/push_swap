@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/13 11:42:34 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 17:29:53 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:54:46 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		find_nmedian(t_list *lst, int size)
 {
-	int *arr;
+	int	*arr;
 	int median;
 	int	middle;
 
@@ -26,12 +26,12 @@ int		find_nmedian(t_list *lst, int size)
 	if (lst)
 	{
 		arr = lstntoari(lst, size);
-        if (arr)
-        {
+		if (arr)
+		{
 			middle = (size / 2) + 1;
-            median = arr_quickselect(arr, 0, size - 1, middle);
-            ft_memdel((void**)&arr);
-        }
-    }
+			median = arr_quickselect(arr, 0, size - 1, middle);
+			ft_memdel((void**)&arr);
+		}
+	}
 	return (median);
 }

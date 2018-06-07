@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 18:56:46 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 16:40:12 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:46:48 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static char	*get_cmn(char *str)
 	return (NULL);
 }
 
-static void	init_tail(t_list **ops_a, t_list **ops_b, t_pair *start, t_list **common)
+static void	init_tail(t_list **ops_a, t_list **ops_b,
+		t_pair *start, t_list **common)
 {
 	int		i;
 	t_list	*tmp;
@@ -69,9 +70,9 @@ static void	init_middle(t_list **lst, t_list **common, int cmn_len)
 
 static void	read_map(int **map, t_pair *map_size, t_pair *start, t_pair *finish)
 {
-	int		max;
-	int		i;
-	int		j;
+	int	max;
+	int	i;
+	int	j;
 
 	i = 0;
 	max = 0;
@@ -94,8 +95,8 @@ static void	read_map(int **map, t_pair *map_size, t_pair *start, t_pair *finish)
 	start->second = finish->second - (max - 1);
 }
 
-
-t_list		*create_opt_op_lst(int **map, t_pair *map_size, t_list *ops_a, t_list *ops_b)
+t_list		*create_opt_op_lst(int **map, t_pair *map_size,
+		t_list *ops_a, t_list *ops_b)
 {
 	t_pair	start;
 	t_pair	finish;
@@ -108,7 +109,7 @@ t_list		*create_opt_op_lst(int **map, t_pair *map_size, t_list *ops_a, t_list *o
 	init_tail(&ops_a, &ops_b, &start, &common);
 	if (finish.first + 1 != map_size->second)
 		lst3 = ops_a;
-	else 
+	else
 		lst3 = ops_b;
 	init_middle(&lst3, &common, finish.first - start.first + 1);
 	while (lst3)

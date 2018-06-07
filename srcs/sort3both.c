@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/17 17:57:09 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 18:09:23 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 14:11:27 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ static void	sort321(t_stacks *stacks, int fd)
 
 static void	sort312(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_SS, fd);
-    op_execute_wrp(stacks, OP_RR, fd);
-    op_execute_wrp(stacks, OP_SS, fd);
-    op_execute_wrp(stacks, OP_RRR, fd);
+	op_execute_wrp(stacks, OP_SS, fd);
+	op_execute_wrp(stacks, OP_RR, fd);
+	op_execute_wrp(stacks, OP_SS, fd);
+	op_execute_wrp(stacks, OP_RRR, fd);
 }
 
 /*
@@ -49,10 +49,10 @@ static void	sort312(t_stacks *stacks, int fd)
 
 static void	sort231(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_RR, fd);
-    op_execute_wrp(stacks, OP_SS, fd);
-    op_execute_wrp(stacks, OP_RRR, fd);
-    op_execute_wrp(stacks, OP_SS, fd);
+	op_execute_wrp(stacks, OP_RR, fd);
+	op_execute_wrp(stacks, OP_SS, fd);
+	op_execute_wrp(stacks, OP_RRR, fd);
+	op_execute_wrp(stacks, OP_SS, fd);
 }
 
 /*
@@ -63,9 +63,9 @@ static void	sort231(t_stacks *stacks, int fd)
 
 static void	sort132(t_stacks *stacks, int fd)
 {
-    op_execute_wrp(stacks, OP_RR, fd);
+	op_execute_wrp(stacks, OP_RR, fd);
 	op_execute_wrp(stacks, OP_SS, fd);
-    op_execute_wrp(stacks, OP_RRR, fd);
+	op_execute_wrp(stacks, OP_RRR, fd);
 }
 
 void		sort3both(t_stacks *stacks, int fd)

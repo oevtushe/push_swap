@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:57:47 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 12:10:19 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 14:30:29 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_stacks	*new_stacks(t_list *a, t_list *b)
 	{
 		stacks->a = a;
 		stacks->b = b;
+		stacks->grp_cnt = 0;
 	}
 	return (stacks);
 }

@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/22 14:44:20 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/30 15:32:23 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:57:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_comb get_comb_a(t_list *lst)
+t_comb	get_comb_a(t_list *lst)
 {
 	int a;
 	int b;
@@ -36,7 +36,7 @@ t_comb get_comb_a(t_list *lst)
 	return (comb);
 }
 
-t_comb get_comb_b(t_list *lst)
+t_comb	get_comb_b(t_list *lst)
 {
 	int		a;
 	int		b;
@@ -60,7 +60,7 @@ t_comb get_comb_b(t_list *lst)
 	return (comb);
 }
 
-int	is_eq_combs(t_stacks *stacks)
+int		is_eq_combs(t_stacks *stacks)
 {
 	t_comb ac;
 	t_comb bc;

@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/07 14:12:46 by oevtushe          #+#    #+#              #
-#    Updated: 2018/06/06 15:46:12 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/07 14:41:09 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ PS_SRCF			:=  arr_quickselect.c		\
 					top_grp_len.c			\
 					sort3optim_b.c			\
 					sort3optimized.c		\
-					op_execute_swap_opt.c	\
+					optimized_ops.c			\
 					st_group_is_sorted.c	\
 					create_opt_op_lst.c		\
 					lsttoari.c				\
@@ -42,11 +42,11 @@ PS_SRCF			:=  arr_quickselect.c		\
 					is_eq_combs.c			\
 					lstntoari.c				\
 					find_all_nmedians.c		\
-					rebase_lst_data.c		\
 					split_group.c			\
 					split_nmedian.c			\
 					op_execute_wrp.c		\
 					push_swap.c				\
+					sort3_new_utils.c		\
 					find_nmedian.c
 
 PS_DEPS			:= $(addprefix $(PS_DEPS_DIR)/,$(PS_DEPF))

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/23 11:12:11 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/23 11:40:35 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 14:44:18 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		st_group_is_sorted(t_list *lst)
 	{
 		cg = (int)lst->content_size;
 		prev = *(int*)lst->content;
-		while (lst && prev <= *(int*)lst->content && (int)lst->content_size == cg)
+		while (lst && prev <= *(int*)lst->content\
+				&& (int)lst->content_size == cg)
 		{
 			prev = *(int*)lst->content;
 			lst = lst->next;

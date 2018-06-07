@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_execute_swap_opt.c                              :+:      :+:    :+:   */
+/*   optimized_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/02 13:48:50 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 18:04:53 by oevtushe         ###   ########.fr       */
+/*   Created: 2018/06/07 14:41:38 by oevtushe          #+#    #+#             */
+/*   Updated: 2018/06/07 14:41:39 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,15 @@ void	op_execute_swap_opt(t_stacks *stacks, char stack, int fd)
 		else
 			op_execute_wrp(stacks, OP_SB, fd);
 	}
+}
+
+void	op_execute_rot_opt(t_stacks *stacks, int *opt, int fd)
+{
+	if (stacks->b && *opt && !get_next_group(stacks->b))
+	{
+		op_execute_wrp(stacks, OP_RR, fd);
+		--(*opt);
+	}
+	else
+		op_execute_wrp(stacks, OP_RA, fd);
 }

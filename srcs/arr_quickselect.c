@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/04 12:38:36 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/04 12:38:39 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:44:11 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 static void	swap(int *v1, int *v2)
 {
-    int c;
+	int c;
 
-    c = *v1;
-    *v1 = *v2;
-    *v2 = c;
+	c = *v1;
+	*v1 = *v2;
+	*v2 = c;
 }
 
 static int	partition(int *arr, int p, int r)
 {
-	int		i;
-	int		j;
-	int		pivot;
+	int	i;
+	int	j;
+	int	pivot;
 
 	pivot = arr[r];
 	i = p - 1;
@@ -47,14 +47,14 @@ static int	partition(int *arr, int p, int r)
 ** @param	r	last arr index.
 */
 
-int		arr_quickselect(int *arr, int p, int r, int i)
+int			arr_quickselect(int *arr, int p, int r, int i)
 {
 	int q;
 	int k;
 
 	if (p == r)
 		return (arr[p]);
-	q = partition(arr, p, r);	
+	q = partition(arr, p, r);
 	k = q - p + 1;
 	if (i == k)
 		return (arr[q]);
