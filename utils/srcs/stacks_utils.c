@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:57:47 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:59:29 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:10:19 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	free_stacks(t_stacks **stacks)
+void		free_stacks(t_stacks **stacks)
 {
 	ft_lstdel(&(*stacks)->a, del_simple);
 	ft_lstdel(&(*stacks)->b, del_simple);

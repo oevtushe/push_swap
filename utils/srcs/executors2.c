@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 11:08:38 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:33:18 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:08:04 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-int		execute_rev_rotate(t_list **stack)
+int			execute_rev_rotate(t_list **stack)
 {
 	int		st;
 	t_list	*prev;
@@ -57,7 +57,7 @@ t_excstat	execute_rev_rrotate(t_stacks *stacks)
 	return (stat);
 }
 
-int		execute_rotate(t_list **stack)
+int			execute_rotate(t_list **stack)
 {
 	int		st;
 	t_list	*fst;

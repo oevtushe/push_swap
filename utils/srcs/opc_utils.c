@@ -6,13 +6,13 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:50:26 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 13:00:02 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 12:09:31 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	opc_lst_rebase(t_list *elem)
+void			opc_lst_rebase(t_list *elem)
 {
 	char *cur;
 
@@ -21,7 +21,7 @@ void	opc_lst_rebase(t_list *elem)
 	ft_strdel(&cur);
 }
 
-void	del_opc(void *content, size_t content_size)
+void			del_opc(void *content, size_t content_size)
 {
 	t_opc *opc;
 
@@ -30,7 +30,7 @@ void	del_opc(void *content, size_t content_size)
 	++content_size;
 }
 
-void	free_opc(t_opc **opc)
+void			free_opc(t_opc **opc)
 {
 	if (opc && *opc)
 	{
@@ -39,7 +39,7 @@ void	free_opc(t_opc **opc)
 	}
 }
 
-t_opc	*new_opc(t_operation op, char *op_name)
+t_opc			*new_opc(t_operation op, char *op_name)
 {
 	t_opc	*opc;
 
@@ -49,7 +49,7 @@ t_opc	*new_opc(t_operation op, char *op_name)
 	return (opc);
 }
 
-t_opc				*get_opc(char *oper_nm)
+t_opc			*get_opc(char *oper_nm)
 {
 	if (ft_strequ(oper_nm, "sa"))
 		return (new_opc(OP_SA, oper_nm));
