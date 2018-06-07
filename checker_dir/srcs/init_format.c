@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:19:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 17:21:02 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:43:28 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void			init_format(t_pformat *pfmt, char *op_name, t_excstat stat)
 	pfmt->stat = stat;
 	init_bottom(pfmt->ba, "a", pfmt->bi_ln);
 	init_bottom(pfmt->bb, "b", pfmt->bi_ln);
-	ft_strcntllr(&pfmt->bb->separator, ft_strlen(pfmt->bb->separator) + pfmt->spcs, ' ', -1);
-	ft_strcntllr(&pfmt->bb->name, ft_strlen(pfmt->bb->name) + pfmt->spcs, ' ', -1);
+	ft_strcntllr(&pfmt->bb->separator,
+			ft_strlen(pfmt->bb->separator) + pfmt->spcs, ' ', -1);
+	ft_strcntllr(&pfmt->bb->name,
+			ft_strlen(pfmt->bb->name) + pfmt->spcs, ' ', -1);
 }

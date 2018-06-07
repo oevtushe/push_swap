@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:17:57 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:42:17 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:45:53 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	free_bottom(t_bottom **bottom)
 	}
 }
 
-void	free_pfmt(t_pformat **pfmt)
+void		free_pfmt(t_pformat **pfmt)
 {
 	if (pfmt && *pfmt)
 	{
@@ -35,7 +35,7 @@ void	free_pfmt(t_pformat **pfmt)
 	}
 }
 
-void	pfmt_prep_to_next(t_pformat *pfmt)
+void		pfmt_prep_to_next(t_pformat *pfmt)
 {
 	if (pfmt)
 	{

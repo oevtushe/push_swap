@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 12:08:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 11:10:31 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:45:25 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,3 @@ t_pformat			*new_pformat(t_list *a)
 		++pfmt->bi_ln;
 	return (pfmt);
 }
-

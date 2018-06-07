@@ -6,14 +6,14 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 15:18:33 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:56:21 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
 
-#include "utils.h"
+# include "utils.h"
 
 # define PRINT_PROMPT ft_printf("\n%s%s->%s ", BOLD, GREEN, RESET)
 
@@ -44,7 +44,7 @@ typedef	struct	s_odata
 }				t_odata;
 
 int				isvldops(t_list *op_stack);
-void			print_info(t_stacks *stacks, t_opc *opc, t_pformat*);
+void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt);
 void			print_row(t_stacks *stacks, t_pformat *fmt);
 t_list			*read_operations(int fd);
 int				st_issorted(t_list *stack);
@@ -60,7 +60,7 @@ void			init_format(t_pformat *pfmt, char *op_name, t_excstat stat);
 char			*prompt(void);
 void			print_extra(t_stacks *stacks, t_pformat *pfmt, char *text);
 void			stat(t_list *lst);
-void 			verdict(t_stacks *stacks);
+void			verdict(t_stacks *stacks);
 t_odata			*init_odata(char **args, int *si, int size);
 void			pfmt_prep_to_next(t_pformat *pfmt);
 void			free_pfmt(t_pformat **pfmt);

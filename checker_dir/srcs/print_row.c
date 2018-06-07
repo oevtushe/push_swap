@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:32:13 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:11:06 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:52:51 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	print_elem_a(t_list **a, t_pformat *pfmt)
 	if (a && *a)
 	{
 		if (pfmt->stat == ES_AM || pfmt->stat == ES_BOTH)
-			ft_printf("|%s%-*d%s|", pfmt->color, 
+			ft_printf("|%s%-*d%s|", pfmt->color,
 					pfmt->bi_ln, *(int*)(*a)->content, RESET);
 		else
 			ft_printf("|%-*d|", pfmt->bi_ln, *(int*)(*a)->content);
@@ -63,10 +63,10 @@ static void	print_elem_b(t_list **b, t_pformat *pfmt)
 	if (b && *b)
 	{
 		if (pfmt->stat == ES_BM || pfmt->stat == ES_BOTH)
-			ft_printf("%*s|%s%*d%s|\n", pfmt->spcs, " ", 
+			ft_printf("%*s|%s%*d%s|\n", pfmt->spcs, " ",
 					pfmt->color, pfmt->bi_ln, *(int*)(*b)->content, RESET);
 		else
-			ft_printf("%*s|%*d|\n", pfmt->spcs, " ", 
+			ft_printf("%*s|%*d|\n", pfmt->spcs, " ",
 					pfmt->bi_ln, *(int*)(*b)->content);
 		*b = (*b)->next;
 	}
