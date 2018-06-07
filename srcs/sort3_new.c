@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 14:32:48 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 17:11:20 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 18:02:17 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_list	*combine_opts(t_list *ops_a, t_list *ops_b)
 	return (res);
 }
 
-void			sort3_new(t_stacks *stacks)
+void			sort3_new(t_stacks *stacks, int fd)
 {
 	t_list	*ops_a;
 	t_list	*ops_b;
@@ -99,7 +99,7 @@ void			sort3_new(t_stacks *stacks)
 	while (rn)
 	{
 		opc = (t_opc*)rn->content;
-		op_execute_wrp(stacks, opc->abbr);
+		op_execute_wrp(stacks, opc->abbr, fd);
 		rn = rn->next;
 	}
 	ft_lstdel(&ops_a, del_simple);
