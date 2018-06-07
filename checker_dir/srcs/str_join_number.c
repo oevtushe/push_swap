@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/26 13:23:41 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/04/26 13:23:43 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 11:47:48 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ char		*str_join_number(char *prefix, int num, char *suffix)
 	{
 		tmp = ft_itoa(num);
 		res = ft_strjoin(prefix, tmp);
-		free(tmp);
+		ft_strdel(&tmp);
 		tmp = res;
 		res = ft_strjoin(res, suffix);
-		free(tmp);
+		ft_strdel(&tmp);
 	}
 	return (res);
 }

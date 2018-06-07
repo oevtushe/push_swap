@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/31 12:34:24 by oevtushe          #+#    #+#              #
-#    Updated: 2018/05/04 16:28:16 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/06 12:42:51 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ include		Utils.mk
 include 	$(FT_DIR)/Pretty.mk
 
 CC			:= gcc
-CFLAGS		:= -Wall -Werror -Wextra
+CFLAGS		:= -Wall -Werror -Wextra -g
 MFLAGS		:= --no-print-directory -C
 RM			:= rm -rf
 AR			:= ar

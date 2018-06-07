@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/14 16:21:40 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 17:41:05 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 18:07:37 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ typedef enum	e_comb
 int			arr_quickselect(int *arr, int p, int r, int i);
 int			find_nmedian(t_list *lst, int size);
 t_list		*find_all_nmedians(t_list *lst, int size);
-void		split_nmedian_a(t_stacks *stacks, t_list *medians, int *group_cnt);
-void		split_nmedian_b(t_stacks *stacks, int median, int group_cnt);
-void		split_group_a(t_stacks *stacks, int *group_cnt);
-void		split_group_b(t_stacks *stacks, int *group_cnt);
+void		split_nmedian_a(t_stacks *stacks, t_list *medians, int *group_cnt, int fd);
+void		split_nmedian_b(t_stacks *stacks, int median, int group_cnt, int fd);
+void		split_group_a(t_stacks *stacks, int *group_cnt, int fd);
+void		split_group_b(t_stacks *stacks, int *group_cnt, int fd);
 int			last_bigger_elem(t_list *lst, int grp, int n);
 int			last_less_elem(t_list *lst, int grp, int n);
 int			is_eq_combs(t_stacks *stacks);
@@ -55,15 +55,15 @@ t_list		*create_opt_op_lst(int **map, t_pair *map_size, t_list *ops_a, t_list *o
 
 int			**gen_map(t_list *ops_a, t_list *ops_b, t_pair *map_size);
 t_list		*gen_op_sort3(t_comb comb, int order);
-void		sort3_new(t_stacks *stacks);
+void		sort3_new(t_stacks *stacks, int fd);
 int			get_comb_a(t_list *lst);
 int			get_comb_b(t_list *lst);
-void		sort3optim_b(t_stacks *stacks);
-void		sort3optim_both(t_stacks *stacks);
-void		sort3optimized(t_stacks *stacks);
-void		sort3both(t_stacks *stacks);
-void		sort3(t_stacks *stacks);
-void		sort2(t_stacks *stacks);
+void		sort3optim_b(t_stacks *stacks, int fd);
+void		sort3optim_both(t_stacks *stacks, int fd);
+void		sort3optimized(t_stacks *stacks, int fd);
+void		sort3both(t_stacks *stacks, int fd);
+void		sort3(t_stacks *stacks, int fd);
+void		sort2(t_stacks *stacks, int fd);
 
 /*
 ** Tools
@@ -72,9 +72,8 @@ void		sort2(t_stacks *stacks);
 int     	*lsttoari(t_list *lst);
 void		rebase_lst_data(t_list *lst);
 int     	*lstntoari(t_list *lst, int size);
-void		ps_error(char *message);
-void		op_execute_wrp(t_stacks *stacks, t_operation op);
-void		op_execute_swap_opt(t_stacks *stacks, char stack);
+void		op_execute_wrp(t_stacks *stacks, t_operation op, int fd);
+void		op_execute_swap_opt(t_stacks *stacks, char stack, int fd);
 t_list		*get_next_group(t_list *lst);
 int			top_grp_len(t_list *lst);
 int			st_group_is_sorted(t_list *lst);

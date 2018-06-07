@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/05 18:15:39 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:29:54 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static t_list	*get_a(char **arr, int size)
 	if (arr && *arr && isvldarg(&arr[0], size))
 		stack = read_args_stack(&arr[0], size);
 	else
-		checker_error("Error\n");
+		ps_error("Error\n");
 	return (stack);
 }
 
@@ -31,9 +31,12 @@ static t_list	*get_ops(int fd)
 
 	op_stack = read_operations(fd);
 	if (isvldops(op_stack))
-		rebase_op_stack(&op_stack);
+	{
+		ft_lstiter(op_stack, opc_lst_rebase);
+		ft_lstcorder(&op_stack);
+	}
 	else
-		checker_error("Error\n");
+		ps_error("Error\n");
 	return (op_stack);
 }
 
@@ -44,8 +47,12 @@ static void		checker(char **arr, int size, t_odata *odata)
 
 	stacks = new_stacks(NULL, NULL);
 	stacks->a = get_a(arr, size);
+	op_stack = NULL;
 	if (odata->debug)
-		op_read_and_exec(stacks, odata->fd);
+	{
+		op_read_and_exec(stacks, &op_stack, odata->fd);
+		ft_lstcorder(&op_stack);
+	}
 	else
 	{
 		op_stack = get_ops(odata->fd);
@@ -54,6 +61,7 @@ static void		checker(char **arr, int size, t_odata *odata)
 	if (odata->stat)
 		stat(op_stack);
 	verdict(stacks);
+	ft_lstdel(&op_stack, del_opc);
 	free_stacks(&stacks);
 }
 
@@ -69,9 +77,9 @@ int				main(int argc, char **argv)
 	odata = init_odata(argv, &si, argc);
 	arr = split_arr(&argv[si], argc - si, &si);
 	checker(arr, si, odata);
-	if (odata->fd > 0)
+	if (odata->fd > 2)
 		close(odata->fd);
 	free_str_arr(&arr, si);
-	free(odata);
+	ft_memdel((void**)&odata);
 	return (0);
 }

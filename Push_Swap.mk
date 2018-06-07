@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/07 14:12:46 by oevtushe          #+#    #+#              #
-#    Updated: 2018/06/05 17:42:31 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/06 15:46:12 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ PS_SRCF			:=  arr_quickselect.c		\
 					split_group.c			\
 					split_nmedian.c			\
 					op_execute_wrp.c		\
-					ps_error.c				\
 					push_swap.c				\
 					find_nmedian.c
 

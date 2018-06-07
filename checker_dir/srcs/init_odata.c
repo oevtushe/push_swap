@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 14:17:51 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/03 14:19:32 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 14:08:56 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_odata		*init_odata(char **args, int *si, int size)
 		opt_identify(args[*si], odata);
 		if (ft_strequ(args[*si], "-fd"))
 			if ((odata->fd = open(args[++(*si)], O_RDONLY)) < 0)
-				checker_error("Something wrong with the file !\n");
+				ps_error("Something wrong with the file !\n");
 		++(*si);
 	}
 	return (odata);

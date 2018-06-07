@@ -6,38 +6,11 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/15 11:56:54 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/21 13:11:42 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/06 16:09:49 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-void		safe_del(t_list **begin, t_list *to_del)
-{
-	t_list *cur;
-	t_list *next;
-	t_list *prev;
-	
-	next = *begin;
-	if (*begin == to_del)
-	{
-		next = (*begin)->next;
-		free(*begin);
-		*begin = next;
-	}
-	else
-	{
-		while (next != to_del)
-		{
-			prev = next;
-			next = next->next;
-		}
-		prev->next = next->next;
-		free(next);
-	}
-}
-*/
 
 static t_median	*new_median(int median, int elem_cnt)
 {
@@ -53,7 +26,7 @@ static t_list	*f(t_list *elem)
 {
 	t_list *new;
 
-	new = ft_lstnew(elem->content, sizeof(size_t));
+	new = ft_lstnew(elem->content, sizeof(int));
 	return (new);
 }
 
@@ -66,7 +39,7 @@ static void		median_del(t_list **lst, int median)
 	while (*lst && *(int*)(*lst)->content < median)
 	{
 		runner = (*lst)->next;
-		free(*lst);
+		ft_lstdelone(lst, del_simple);
 		*lst = runner;
 	}
 	while (runner)
@@ -74,7 +47,7 @@ static void		median_del(t_list **lst, int median)
 		if (*(int*)runner->content < median)
 		{
 			prev->next = runner->next;
-			free(runner);
+			ft_lstdelone(&runner, del_simple);
 			runner = prev->next;
 		}
 		else
@@ -109,6 +82,7 @@ t_list		*find_all_nmedians(t_list *lst, int size)
 	int			cur_med;
 	t_list		*node;
 	t_list		*cpy;
+	t_median	*cur;
 
 	medians = NULL;
 	elems_cnt = size;
@@ -116,11 +90,14 @@ t_list		*find_all_nmedians(t_list *lst, int size)
 	while (elems_cnt > 3)
 	{
 		cur_med = find_nmedian(cpy, elems_cnt);
-		node = ft_lstnew(new_median(cur_med, elems_cnt / 2), sizeof(t_median));
+		cur = new_median(cur_med, elems_cnt / 2);
+		node = ft_lstnew(cur, sizeof(t_median));
 		ft_lstadd(&medians, node);
 		median_del(&cpy, cur_med);
 		elems_cnt = elems_cnt & 1 ? (elems_cnt / 2) + 1 : (elems_cnt / 2);
+		ft_memdel((void**)&cur);
 	}
+	ft_lstdel(&cpy, del_simple);
 	ft_lstcorder(&medians);
 	return (medians);
 }

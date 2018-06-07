@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 09:16:58 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/12 10:12:00 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 11:54:53 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ static	void	init_stat_arr(t_list *lst, int *stat, int size)
 
 static int		cal_col(int *arr, int size)
 {
-	int 	i;
-	int		min;
-	int		max;
-	int		lmin;
-	int		lmax;
+	int	i;
+	int	min;
+	int	max;
+	int	lmin;
+	int	lmax;
 
 	i = 0;
 	min = arr[0];
