@@ -6,11 +6,15 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/31 10:57:46 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/03/31 11:16:33 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 15:05:59 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+/*
+** Function saves values from array into stack in reverse order
+*/
 
 t_list	*read_args_stack(char **data, int size)
 {

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:14:25 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 11:51:48 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 15:33:34 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ static void		exec_and_print(t_stacks *stacks, t_list **op_stack,\
 	pfmt_prep_to_next(pfmt);
 	ft_memdel((void**)&opc);
 }
+
+/*
+** Function prints prompt and executes every command user entered in real time.
+** Has place only when option '-d' is passed
+*/
 
 void			op_read_and_exec(t_stacks *stacks, t_list **op_stack, int fd)
 {

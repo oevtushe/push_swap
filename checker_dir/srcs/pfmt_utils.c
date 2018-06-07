@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:17:57 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 11:45:53 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 15:46:52 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ void		free_pfmt(t_pformat **pfmt)
 		ft_memdel((void**)pfmt);
 	}
 }
+
+/*
+** Function removes bottom separator and stack name
+*/
 
 void		pfmt_prep_to_next(t_pformat *pfmt)
 {

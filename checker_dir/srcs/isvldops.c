@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 09:30:43 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/05/01 14:49:09 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 15:23:34 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int			is_vldop(char *op)
 		return (1);
 	return (0);
 }
+
+/*
+** Function validates stack with options
+*/
 
 int			isvldops(t_list *op_stack)
 {

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/03 14:17:51 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/06 14:08:56 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 15:22:28 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ static void	opt_identify(char *key, t_odata *odata)
 	if (ft_strequ(key, "-s"))
 		odata->stat = 1;
 }
+
+/*
+** Function initializes structure holdings option-based data
+*/
 
 t_odata		*init_odata(char **args, int *si, int size)
 {

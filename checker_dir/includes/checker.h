@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 12:00:45 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 11:56:21 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 16:31:04 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ typedef	struct	s_pformat
 	int			bi_ln;
 	int			spcs;
 	char		*color;
+	char		tl_ch;
+	char		tr_ch;
+	char		tmiddle_ch;
+	char		bl_ch;
+	char		br_ch;
+	char		btm_middle_ch;
+	char		btm_l_ch;
+	char		btm_r_ch;
 	t_excstat	stat;
 	t_bottom	*ba;
 	t_bottom	*bb;

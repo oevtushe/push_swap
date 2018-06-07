@@ -6,12 +6,16 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 11:29:54 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 17:26:23 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include "checker.h"
+
+/*
+** Function puts numbers from argv into stack
+*/
 
 static t_list	*get_a(char **arr, int size)
 {
@@ -24,6 +28,10 @@ static t_list	*get_a(char **arr, int size)
 		ps_error("Error\n");
 	return (stack);
 }
+
+/*
+** Function reads operations from fd
+*/
 
 static t_list	*get_ops(int fd)
 {
