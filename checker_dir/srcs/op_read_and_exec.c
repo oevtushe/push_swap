@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:14:25 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 15:33:34 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/08 10:18:20 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,21 @@ static void		exec_and_print(t_stacks *stacks, t_list **op_stack,\
 ** Has place only when option '-d' is passed
 */
 
-void			op_read_and_exec(t_stacks *stacks, t_list **op_stack, int fd)
+void			op_read_and_exec(t_stacks *stacks,\
+					t_list **op_stack, t_odata *odata)
 {
 	char		*line;
 	t_pformat	*pfmt;
 
-	pfmt = new_pformat(stacks->a);
+	pfmt = new_pformat(stacks->a, odata->ufmt);
 	print_start(stacks, pfmt);
-	while (get_next_line(fd, &line) > 0)
+	while (get_next_line(odata->fd, &line) > 0)
 	{
 		if (is_vldop(line))
 			exec_and_print(stacks, op_stack, pfmt, line);
 		else
-			ft_printf("Try something better.");
+			ft_printf("Available commands: [pa, pb, sa, sb, ss, \
+ra, rb, rr, rra, rrb, rrr]");
 		PRINT_PROMPT;
 		ft_strdel(&line);
 	}

@@ -6,13 +6,14 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:19:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 16:04:58 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/08 10:22:17 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void		init_bottom(t_pformat *pfmt, t_bottom *bottom, char *st_name, int bi_ln)
+static void		init_bottom(t_pformat *pfmt, t_bottom *bottom,\
+		char *st_name, int bi_ln)
 {
 	int		b_spaces;
 
@@ -21,9 +22,9 @@ static void		init_bottom(t_pformat *pfmt, t_bottom *bottom, char *st_name, int b
 	ft_strcntllr(&bottom->name, ft_strlen(bottom->name) + b_spaces, ' ', -1);
 	ft_strcntllr(&bottom->name, ft_strlen(bottom->name) + b_spaces, ' ', 1);
 	bottom->separator = ft_strnew(bi_ln + 2);
-	ft_memset(bottom->separator, pfmt->btm_middle_ch, bi_ln + 2);
-	bottom->separator[0] = pfmt->btm_l_ch;
-	bottom->separator[bi_ln + 1] = pfmt->btm_r_ch;
+	ft_memset(bottom->separator, pfmt->ufmt.btmm, bi_ln + 2);
+	bottom->separator[0] = pfmt->ufmt.btml;
+	bottom->separator[bi_ln + 1] = pfmt->ufmt.btmr;
 	bottom->is_sp_printed = 0;
 	bottom->is_nm_printed = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 12:08:05 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 17:46:09 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/08 10:23:02 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ static int			stack_lil(t_list *a)
 ** with parameters such as color of output and length of the
 ** longest int present in stack (used for adjusting with spaces).
 **
-** After every operation executed 
+** After every operation executed
 */
 
-t_pformat			*new_pformat(t_list *a)
+t_pformat			*new_pformat(t_list *a, t_uformat ufmt)
 {
 	t_pformat	*pfmt;
 
@@ -60,15 +60,8 @@ t_pformat			*new_pformat(t_list *a)
 	pfmt->bb = (t_bottom*)ft_memalloc(sizeof(t_bottom));
 	pfmt->color = ft_strdup(RED);
 	pfmt->bi_ln = stack_lil(a);
+	pfmt->ufmt = ufmt;
 	if (!(pfmt->bi_ln % 2))
 		++pfmt->bi_ln;
-	pfmt->tl_ch = ' ';
-	pfmt->tr_ch = ' ';
-	pfmt->tmiddle_ch = '_';
-	pfmt->bl_ch = '|';
-	pfmt->br_ch = '|';
-	pfmt->btm_middle_ch = '_';
-	pfmt->btm_l_ch = '|';
-	pfmt->btm_r_ch = '|';
 	return (pfmt);
 }

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/15 11:02:27 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 17:44:27 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 18:39:23 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)
 	t_stacks	*cpy;
 
 	cpy = new_stacks(stacks->a, stacks->b);
-	ft_printf("\033[2J\033[;;H%c%*&%c Operation: %s %c%*&%c\n", pfmt->tl_ch,
-			pfmt->bi_ln, pfmt->tmiddle_ch, pfmt->tr_ch, opc->op_name,
-			pfmt->tl_ch, pfmt->bi_ln, pfmt->tmiddle_ch, pfmt->tr_ch);
+	ft_printf("\033[2J\033[;;H%c%*&%c Operation: %s %c%*&%c\n", pfmt->ufmt.tl,
+			pfmt->bi_ln, pfmt->ufmt.tm, pfmt->ufmt.tr, opc->op_name,
+			pfmt->ufmt.tl, pfmt->bi_ln, pfmt->ufmt.tm, pfmt->ufmt.tr);
 	op_print(cpy, opc->abbr, pfmt);
 	pfmt->stat = ES_NONE;
 	while (cpy->a || cpy->b ||

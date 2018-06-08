@@ -6,7 +6,7 @@
 #    By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/04 13:27:07 by oevtushe          #+#    #+#              #
-#    Updated: 2018/06/06 14:06:11 by oevtushe         ###   ########.fr        #
+#    Updated: 2018/06/08 10:10:59 by oevtushe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ CH_SRCF			:= checker.c		\
 				stat.c				\
 				read_operations.c	\
 				str_join_number.c	\
+				pretty_error.c		\
 				print_info.c
 
 CH_SRCS			:= $(addprefix $(CH_SRCS_DIR)/,$(CH_SRCF))

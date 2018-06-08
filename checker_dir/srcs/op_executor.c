@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 14:48:56 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 15:42:50 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 18:33:56 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,30 @@ static void			handle_cmd(void **print)
 ** every operation.
 */
 
-void				op_executor(t_stacks *stacks, t_list *op_stack,\
-		void print(t_stacks *, t_opc *, t_pformat*))
+void				op_executor(t_stacks *stacks,\
+		t_list *op_stack, t_odata *odata)
 {
 	t_excstat	stat;
 	t_opc		*opc;
 	t_pformat	*pfmt;
 
-	pfmt = new_pformat(stacks->a);
-	if (print)
+	pfmt = new_pformat(stacks->a, odata->ufmt);
+	if (odata->print)
 		print_extra(stacks, pfmt, "init");
 	while (op_stack)
 	{
 		opc = (t_opc *)op_stack->content;
 		stat = op_execute(stacks, opc->abbr);
-		if (print)
+		if (odata->print)
 		{
 			init_format(pfmt, opc->op_name, stat);
-			print(stacks, opc, pfmt);
-			handle_cmd((void**)&print);
+			odata->print(stacks, opc, pfmt);
+			handle_cmd((void**)&odata->print);
 			pfmt_prep_to_next(pfmt);
 		}
 		op_stack = op_stack->next;
 	}
-	if (print)
+	if (odata->print)
 		print_extra(stacks, pfmt, "finish");
 	free_pfmt(&pfmt);
 }

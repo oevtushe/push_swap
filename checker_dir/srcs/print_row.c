@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 15:32:13 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 16:06:49 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/08 10:22:04 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,11 @@ static void	print_elem_a(t_list **a, t_pformat *pfmt)
 	if (a && *a)
 	{
 		if (pfmt->stat == ES_AM || pfmt->stat == ES_BOTH)
-			ft_printf("%c%s%-*d%s%c", pfmt->bl_ch, pfmt->color,
-					pfmt->bi_ln, *(int*)(*a)->content, RESET, pfmt->br_ch);
+			ft_printf("%c%s%-*d%s%c", pfmt->ufmt.bnl, pfmt->color,
+					pfmt->bi_ln, *(int*)(*a)->content, RESET, pfmt->ufmt.bnr);
 		else
-			ft_printf("%c%-*d%c", pfmt->bl_ch, pfmt->bi_ln, *(int*)(*a)->content, pfmt->br_ch);
+			ft_printf("%c%-*d%c", pfmt->ufmt.bnl,\
+					pfmt->bi_ln, *(int*)(*a)->content, pfmt->ufmt.bnr);
 		*a = (*a)->next;
 	}
 	else
@@ -64,10 +65,12 @@ static void	print_elem_b(t_list **b, t_pformat *pfmt)
 	{
 		if (pfmt->stat == ES_BM || pfmt->stat == ES_BOTH)
 			ft_printf("%*s%c%s%*d%s%c\n", pfmt->spcs, " ",
-					pfmt->bl_ch, pfmt->color, pfmt->bi_ln, *(int*)(*b)->content, RESET, pfmt->br_ch);
+					pfmt->ufmt.bnl, pfmt->color, pfmt->bi_ln,\
+					*(int*)(*b)->content, RESET, pfmt->ufmt.bnr);
 		else
 			ft_printf("%*s%c%*d%c\n", pfmt->spcs, " ",
-					pfmt->bl_ch, pfmt->bi_ln, *(int*)(*b)->content, pfmt->br_ch);
+					pfmt->ufmt.bnl, pfmt->bi_ln,\
+					*(int*)(*b)->content, pfmt->ufmt.bnr);
 		*b = (*b)->next;
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: oevtushe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/05 13:37:28 by oevtushe          #+#    #+#             */
-/*   Updated: 2018/06/07 17:26:23 by oevtushe         ###   ########.fr       */
+/*   Updated: 2018/06/07 18:37:52 by oevtushe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ static void		checker(char **arr, int size, t_odata *odata)
 	op_stack = NULL;
 	if (odata->debug)
 	{
-		op_read_and_exec(stacks, &op_stack, odata->fd);
+		op_read_and_exec(stacks, &op_stack, odata);
 		ft_lstcorder(&op_stack);
 	}
 	else
 	{
 		op_stack = get_ops(odata->fd);
-		op_executor(stacks, op_stack, odata->print);
+		op_executor(stacks, op_stack, odata);
 	}
 	if (odata->stat)
 		stat(op_stack);
