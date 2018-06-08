@@ -1,19 +1,17 @@
-Push swap project in 42 School.
+<h1>Push swap project in 42 School.</h1>
 
 
 There are 2 programs named push_swap and checker, push_swap takes
 integer numbers as arguments and prints commands to sort this numbers
-using 2 stacks.
+using 2 stacks. Checker takes this commands and checks if they will sort
+this numbers.
 
-Checker also takes numbers as arguments but after that he expect
-from you commands to sort this numbers.
-
-push_swap operates 2 stacks:
+Push_swap operates 2 stacks:
 1) stack named 'a' which is initialized by the values passed
     as arguments
-2) stack named 'b' which is additional placeholder for numbers
+2) stack named 'b' which is an additional placeholder for numbers.
 
-And generates such commands:
+<h2>Commands to operate stacks</h2>
   -> 'pa' - push from 'a' to 'b'
   -> 'pb' - push from 'b' to 'a'
   -> sa - swap top 2 elements in 'a'
@@ -26,7 +24,7 @@ And generates such commands:
   -> rrb - reverse rotates stack 'b'
   -> rrr - reverse rotates both stacks
  
- Checker options:
+ <h3>Checker options</h3>
     -c - colored printing both stacks, you can see
           what is going on with stacks after every
           command executed.
@@ -39,7 +37,8 @@ And generates such commands:
                                    printing, run ./checker --pretty='' to see format.
     -s - prints statistics of operations executed (sum of all operations executed,
            and number of executions for each operation)
- Push_swap options:
+           
+ <h3>Push_swap options</h3>
     -fd <filename> - writes commands into specified file.
     
  Some ways to run:
