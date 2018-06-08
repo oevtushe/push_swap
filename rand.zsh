@@ -5,17 +5,15 @@
 # $2 -> Size of array to generate
 
 function gen_rand_numbers() {
-	dublicate=()
 	cur_rand=0
 	for ((j = 0; j < ${2}; j++))
 	do
 		cur_rand="$(( ${RANDOM} % ${1} ))"
-		while [[ ${dublicate[(ie)${cur_rand}]} -le ${#dublicate} ]]
+		while [[ ${nums[(ie)${cur_rand}]} -le ${#nums} ]]
 		do
 			cur_rand="$(( ${RANDOM} % ${1} ))"
 		done
 		nums+="$cur_rand"
-		dublicate+="$cur_rand"
 	done
 }
 
@@ -81,17 +79,6 @@ do
 	fi
 done
 
-## Bad input handling
-#if ! [[ -n $v1 ]] || ! [[ -n $v2 ]] || ! [[ $v1 == <-> ]] || ! [[ $v2 == <-> ]] || ([[ ${cur_sc_opts[(ie)--loop]} -le ${#cur_sc_opts} ]] && (( ${#cur_sc_opts} > 1 )))
-#then
-#	print_using
-#	exit 1
-#elif (( v1 < v2 )) && ([[ ${cur_sc_opts[(ie)--random]} -le ${#cur_sc_opts} ]] || [[ ${cur_sc_opts[(ie)--loop]} -le ${#cur_sc_opts} ]])
-#then
-#	echo "Error: <max_value> must be less than or equal to <count>"
-#	exit 2
-#fi
-
 v1=${argv[((${idx} + 1))]}
 v2=${argv[((${idx} + 2))]}
 if [[ $v1 == <-> ]] && [[ $v2 == <-> ]]
@@ -145,7 +132,7 @@ then
 	then
 		echo "{$nums}($(($op_cnt)))[$cur]"
 	else
-		echo "[$cur]"
+		echo "($(( op_cnt  )))[$cur]"
 	fi
 	exit 0
 fi
