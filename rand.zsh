@@ -40,7 +40,7 @@ function run_test() {
 		then
 			echo "{$nums}($(( op_cnt )))[$cur]"
 		fi
-		if [[ $cur == "KO" ]]
+		if [[ $cur != "OK" ]]
 		then
 			echo $cur
 			echo "Failed combination is written in fail.txt"
