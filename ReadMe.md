@@ -1,4 +1,4 @@
-<h1>Push swap project in 42 School.</h1>
+#Push swap project in 42 School.
 
 
 There are 2 programs named push_swap and checker, push_swap takes
@@ -11,7 +11,7 @@ Push_swap operates 2 stacks:
     as arguments
 2) stack named 'b' which is an additional placeholder for numbers.
 
-<h2>Commands to operate stacks</h2>
+##Commands to operate stacks
   -> 'pa' - push from 'a' to 'b'
   -> 'pb' - push from 'b' to 'a'
   -> sa - swap top 2 elements in 'a'
@@ -24,7 +24,7 @@ Push_swap operates 2 stacks:
   -> rrb - reverse rotates stack 'b'
   -> rrr - reverse rotates both stacks
  
- <h3>Checker options</h3>
+ ###Checker options
     -c - colored printing both stacks, you can see
           what is going on with stacks after every
           command executed.
@@ -38,7 +38,7 @@ Push_swap operates 2 stacks:
     -s - prints statistics of operations executed (sum of all operations executed,
            and number of executions for each operation)
            
- <h3>Push_swap options</h3>
+ ###Push_swap options
     -fd <filename> - writes commands into specified file.
     
  Some ways to run:
