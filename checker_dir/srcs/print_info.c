@@ -59,7 +59,7 @@ void			print_info(t_stacks *stacks, t_opc *opc, t_pformat *pfmt)
 	t_stacks	*cpy;
 
 	cpy = new_stacks(stacks->a, stacks->b);
-	ft_printf("\033[2J\033[;;H%c%*&%c Operation: %s %c%*&%c\n", pfmt->ufmt.tl,
+	ft_printf("\033[2J\033[1;1H%c%*&%c Operation: %s %c%*&%c\n", pfmt->ufmt.tl,
 			pfmt->bi_ln, pfmt->ufmt.tm, pfmt->ufmt.tr, opc->op_name,
 			pfmt->ufmt.tl, pfmt->bi_ln, pfmt->ufmt.tm, pfmt->ufmt.tr);
 	op_print(cpy, opc->abbr, pfmt);
