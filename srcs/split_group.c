@@ -65,10 +65,8 @@ static void	get_head_back(t_stacks *stacks, int fd)
 void		split_group_a(t_stacks *stacks, int fd)
 {
 	int		top_len;
-	int		cur_grp;
 	t_list	*medians;
 
-	cur_grp = stacks->a->content_size;
 	top_len = top_grp_len(stacks->a);
 	medians = find_all_nmedians(stacks->a, top_len);
 	split_nmedian_a(stacks, medians, fd);
