@@ -16,7 +16,7 @@ CH_NAME			:= checker
 
 CC				:= gcc
 RM				:= rm -rf
-CFLAGS			:= -Wall -Werror -Wextra -g
+CFLAGS			:= -Wall -Werror -Wextra
 MFLAGS			:= --no-print-directory -C
 IFLAGS			:= -I$(PS_DEPS_DIR) -I$(FT_DEPS_DIR) -I$(FTP_DEPS_DIR) -I$(GNL_DIR) -I$(UT_DEPS_DIR)
 

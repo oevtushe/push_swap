@@ -14,7 +14,7 @@ include		Utils.mk
 include 	$(FT_DIR)/Pretty.mk
 
 CC			:= gcc
-CFLAGS		:= -Wall -Werror -Wextra -g
+CFLAGS		:= -Wall -Werror -Wextra
 MFLAGS		:= --no-print-directory -C
 RM			:= rm -rf
 AR			:= ar
