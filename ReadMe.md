@@ -20,10 +20,9 @@ if no - displays *KO*. In case of error - displays *Error*.
 
 ### Installing
 
-Clone this project, and run
+Run
 ```
-git submodule update --init
-make
+git clone https://github.com/oevtushe/push_swap.git && cd push_swap && git submodule update --init --recursive && make
 ```
 
 ### Commands to operate stacks
