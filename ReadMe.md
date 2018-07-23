@@ -19,8 +19,6 @@ if no - displays *KO*. In case of error - displays *Error*.
 * [GCC](https://gcc.gnu.org/)
 
 ### Installing
-
-Run
 ```
 git clone --recurse-submodules https://github.com/oevtushe/push_swap.git && cd push_swap && make
 ```
