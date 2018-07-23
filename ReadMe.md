@@ -22,7 +22,7 @@ if no - displays *KO*. In case of error - displays *Error*.
 
 Run
 ```
-git clone https://github.com/oevtushe/push_swap.git && cd push_swap && git submodule update --init --recursive && make
+git clone --recurse-submodules https://github.com/oevtushe/push_swap.git && cd push_swap && make
 ```
 
 ### Commands to operate stacks
