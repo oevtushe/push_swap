@@ -55,8 +55,8 @@ git clone --recurse-submodules https://github.com/oevtushe/push_swap.git && cd p
     
  ### Ways to run
  ```
-    1. ARG='<random numbers>; ./push_swap $ARG | ./checker $ARG
-    2. ARG='<random numbers>; ./push_swap $ARG | ./checker -c $ARG
-    3. ARG='<random numbers>; ./push_swap $ARG | ./checker -s $ARG
-    4. ARG='<random numbers>; ./push_swap $ARG | ./checker --pretty='^_^:: ^ ' $ARG
+    1. ARG='<random numbers>'; ./push_swap $ARG | ./checker $ARG
+    2. ARG='<random numbers>'; ./push_swap $ARG | ./checker -c $ARG
+    3. ARG='<random numbers>'; ./push_swap $ARG | ./checker -s $ARG
+    4. ARG='<random numbers>'; ./push_swap $ARG | ./checker --pretty='^_^:: ^ ' $ARG
  ```
